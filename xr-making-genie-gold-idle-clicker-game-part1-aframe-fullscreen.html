@@ -1,0 +1,2414 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Minty Crisp | Making an XR Idle Click Game Pt.1 Fullscreen</title>
+<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="./favicon.ico"/>
+<link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!-- Search Info -->
+<meta name="description" content="Minty Crisp | Making an XR Idle Click Game Pt.1 Fullscreen">
+<meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp,idle,click,game,in-progress,development,orbit,genie,gold,coin,events,store">
+<!-- Social Media Share -->
+<meta property="og:title" content="Minty Crisp | Making an XR Idle Click Game Pt.1 Fullscreen">
+<meta property="og:type" content="XR">
+<meta property="og:url" content="mintycrisp.com">
+<meta property="og:image" content="assets/img/share.jpg">
+<!-- A-Frame official release 1.2.0 -->
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<!-- A-Frame Extras 6.1.0 -->
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+<!-- 3 Gradient Shader 0.0.1 -->
+<script src="https://unpkg.com/@tlaukkan/aframe-three-color-gradient-shader@0.0.1/index.js"></script>
+<!-- Sky Gradient -->
+<script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+<!-- Animation Timeline 2.0.0 -->
+<script src="https://unpkg.com/aframe-animation-timeline-component@2.0.0/dist/aframe-animation-timeline-component.min.js"></script>
+<!-- Orbit Controls -->
+<script src="https://unpkg.com/aframe-orbit-controls@1.3.0/dist/aframe-orbit-controls.min.js"></script>
+<!-- Curve Component | Support for Along Path -->
+<!-- Requiring A-Frame downgrade to 1.2.0 to operate -->
+<script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+<!-- Along Path -->
+<script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="assets/css/geniegold.css">
+<!-- Font-Awesome -->
+<link href="assets/css/all.min.css" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<!-- JS -->
+<script src="assets/js/geniegold.js"></script>
+</head>
+
+<style>
+a-scene {
+z-index: 0;
+display: block;
+pointer-events: auto;
+}
+
+.a-enter-ar, .a-enter-vr {
+position: fixed;
+}
+
+@media screen and (max-width: 736px) {
+.articlePagenationFullscreen h1{
+margin-bottom: 0;
+}
+}
+
+</style>
+
+<body class="">
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Sticky Logo | Connect Links -->
+<div id="logoBlock" class="sticky" style="z-index: 100">
+<div class="landingName">
+<a href="index.html" class="logo">
+<span class="symbol landingName"><img src="assets/img/logo-site.png" alt="logo" /></span><span class="title landingName">Minty Crisp</span></a></div>
+<span><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style2 fa-github-alt"><span class="label">GitHub</span></a></span>
+<span><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style2 fa-dev"><span class="label">Dev</span></a></span>
+<span><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style2 fa-itch-io"><span class="label">Itch.io</span></a></span>
+<span><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style2 fa-mug-hot"><span class="label">Ko-Fi</span></a></span>
+</div>
+
+<!-- Header -->
+<header id="header">
+<div class="inner">
+
+<!-- Nav -->
+<nav id="navBlock">
+	<ul>
+		<li><a href="#menu">Menu</a></li>
+	</ul>
+</nav>
+
+</div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+<span class="landingName">
+<img id="menuLogo" src="assets/img/logo-site.png" alt="logo"/><h2 id="menuName">Minty Crisp</h2></span>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a id="randomarticle" href="index.html">Open a Random Article of mine</a></li>
+<li><a href="https://github.com/Minty-Crisp">View my Github Repositories</a></li>
+<li><a href="https://glitch.com/@mintycrisp">Remix some of my projects on Glitch</a></li>
+<li><a href="https://dev.to/mintycrisp">Read my Dev.to Articles</a></li>
+<li><a href="https://mintycrisp.itch.io/">Check out my Itch.io Store</a></li>
+<li><a href="https://reddit.com/user/Minty-Crisp/">Spy on my Reddit Comments</a></li>
+<li><a href="https://twitter.com/minty_crisp">Peruse my Tweets</a></li>
+<li><a href="https://www.twitch.tv/mintycrisp0">See my gaming skills on Twitch</a></li>
+<li>Goof around with me on Snapchat : @Minty-Crisp</li>
+<li>Let's discuss Web XR and Games on Discord : @mintycrisp#8102</li>
+<li><a href="https://ko-fi.com/mintycrisp">Ko-fi tips if you enjoy my work</a></li>
+<li><a href="https://www.patreon.com/user/mintycrisp">or Patreon to support me</a></li>
+<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241">My Linkedout work profile to study</a></li>
+<li>Reach me at my Electronic Mail address : minty-crisp@ proton . me</li>
+<li><a href="about-me.html">And more about me, Minty Crisp...</a></li>
+</ul>
+</nav>
+
+
+<!-- Main -->
+<div id="main">
+<div class="inner">
+
+<!-- Pagenation -->
+<span class="articlePagenationFullscreen">
+<!-- Scene Title -->
+<h1>Making an XR Idle Click Game Pt.1</h1>
+<!-- Return -->
+<h3><a href="xr-making-genie-gold-idle-clicker-game-part1-aframe.html">&lt; Return to Article</a></h3>
+</span>
+
+
+
+<!-- Gold Counter -->
+<div id="goldcounter" class="goldcounter topright shadow" style="z-index:100">
+<div>
+<h2 id="goldcountertext">0 Gold</h2>
+</div>
+</div>
+
+<!-- Event Bonus & Gold Counter -->
+<div id="eventgoldcounter" class="eventgoldcounter topright2 shadow" style="z-index:101">
+<div class="updownEventGC">
+<h3 id="eventgoldcountertext">1,000,000,000,000,000 Gold</h3>
+</div>
+</div>
+
+<div id="eventbonusnotification" class="eventgoldcounter topright3 shadow" style="z-index:101">
+<div class="updownEventGC">
+<h3 id="eventbonustext">Bonus: + Crit Chance X &amp; Rate Y</h3>
+</div>
+</div>
+
+<!-- Event Notification -->
+<div id="eventNotification" class="event eventTextContainer toptop shadow">
+<div class="eventLines">
+<h5 id="eventline1"></h5>
+<h5 id="eventline2"></h5>
+<h5 id="eventline3"></h5>
+<h5 id="eventline4"></h5>
+</div>
+</div>
+
+<!-- Bonus Round Event Selections -->
+<div id="bonusRoundScreen" class="bonusRoundSelection">
+<button id="bonus1" class="bonusSelection shadow"><h2 id="bonus1Text">?</h2></button>
+<button id="bonus2" class="bonusSelection shadow"><h2 id="bonus2Text">?</h2></button>
+<button id="bonus3" class="bonusSelection shadow"><h2 id="bonus3Text">?</h2></button>
+<button id="bonus4" class="bonusSelection shadow"><h2 id="bonus4Text">?</h2></button>
+<button id="bonus5" class="bonusSelection shadow"><h2 id="bonus5Text">?</h2></button>
+
+</div>
+
+<!-- Error Notification -->
+<div id="error" class="errors topmid shadow">
+<div class="">
+<h2 id="errorText">Unsuccessful Attempt</h2>
+</div>
+</div>
+
+<!-- Clicker Gold Notifications -->
+<!-- Notification Event Reward -->
+<div id="notificationEvent" class="notifications topleft shadow" style="z-index:110">
+<div class="notificationText">
+<h2 id="notificationEventText">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 0 -->
+<div id="notification0" class="notifications topleft shadow" style="z-index:99">
+<div class="notificationText">
+<h2 id="notification0Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 1 -->
+<div id="notification1" class="notifications topleft shadow" style="z-index:98">
+<div class="notificationText">
+<h2 id="notification1Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 2 -->
+<div id="notification2" class="notifications topleft shadow" style="z-index:97">
+<div class="notificationText">
+<h2 id="notification2Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 3 -->
+<div id="notification3" class="notifications topleft shadow" style="z-index:96">
+<div class="notificationText">
+<h2 id="notification3Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 4 -->
+<div id="notification4" class="notifications topleft shadow" style="z-index:95">
+<div class="notificationText">
+<h2 id="notification4Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 5 -->
+<div id="notification5" class="notifications topleft shadow" style="z-index:94">
+<div class="notificationText">
+<h2 id="notification5Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 6 -->
+<div id="notification6" class="notifications topleft shadow" style="z-index:93">
+<div class="notificationText">
+<h2 id="notification6Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 7 -->
+<div id="notification7" class="notifications topleft shadow" style="z-index:92">
+<div class="notificationText">
+<h2 id="notification7Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 8 -->
+<div id="notification8" class="notifications topleft shadow" style="z-index:91">
+<div class="notificationText">
+<h2 id="notification8Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 9 -->
+<div id="notification9" class="notifications topleft shadow" style="z-index:90">
+<div class="notificationText">
+<h2 id="notification9Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 10 -->
+<div id="notification10" class="notifications topleft shadow" style="z-index:89">
+<div class="notificationText">
+<h2 id="notification10Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 11 -->
+<div id="notification11" class="notifications topleft shadow" style="z-index:88">
+<div class="notificationText">
+<h2 id="notification11Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Notification 12 -->
+<div id="notification12" class="notifications topleft shadow" style="z-index:87">
+<div class="notificationText">
+<h2 id="notification12Text">+ 1 Gold</h2>
+</div>
+</div>
+
+<!-- Main Buttons -->
+<div id="buttons">
+<!-- Settings -->
+<button id="settingsButton" class="uiItem">Menu</button>
+
+<!-- Store -->
+<button id="storeButton" class="uiItem">Store</button>
+</div>
+
+<!-- Upgrade Sub Screen -->
+<div id="upgradeSubScreen" class="shadow">
+
+
+<div id="upgradeTitles" class="upgradeSections">
+<!-- Title -->
+<h2 id="badgeImage">Badge 1 Image</h2>
+<h4 id="badgeTitle1">Badge 1 Title 1</h4>
+<!-- <h4 id="badgeTitle2">Badge 1 Title 2</h4> -->
+
+<h4 id="badgeLevel">Level 0</h4>
+</div>
+
+
+<div id="badgeInfo" class="upgradeSubs upgradeSections">
+<p id="badgeDescription" class="stat">Badge 1 description in a sentence of what it does. More info to give the player a better understanding of what they are buying.</p>
+
+<p id="badgeBonus1" class="stat">Badge 1 Bonus +1</p>
+<p id="badgeBonus2" class="stat">Badge 1 Other +1</p>
+</div>
+
+<!-- Stats & Level Upgrades -->
+<div id="storeStats" class="upgradeSections">
+<p id="lifetimeClickshtml" class="stat">Lifetime Clicks: XYZ </p>
+
+<p id="overallCps" class="stat">Current Total Clicks Per Seconds: X /sec</p>
+
+<p id="nextBonusCost" class="stat">Next Purchase Cost: 50</p>
+<p id="nextBonusBenefit1" class="stat">Next Purchase Increase : +X /sec</p>
+<p id="nextBonusBenefit2" class="stat">Next Purchase Increase : +Y /sec</p>
+
+</div>
+
+
+<!-- Upgrade Buttons -->
+<div id="upgrades" class="upgradeSections">
+<button id="storeBuyAC" class="uiStoreItem buy">Buy 1 Thing</button>
+</div>
+<!-- End Upgrade Sub Screen -->
+</div>
+
+<!-- Seperate On Top Upgrade Sub Screen -->
+<div id="upgradeClickOff"></div>
+
+<!-- Sub Screen -->
+<div id="subScreen" class="shadow subScreenStartHidden">
+
+<!-- Sub Screen Title -->
+<div id="subScreenTitle">
+
+<div id="buttonTitle">
+<button id="subScreenAction" class="">Close</button>
+<h2 id="screenTitle">Screen Title</h2>
+</div>
+
+<!-- Discounts -->
+<div id="discountButtons">
+<!-- Discount Half -->
+<div id="storeDiscountHeldHalf" class="storeDiscounts">
+<button id="storeDiscountHeldHalfButton"><h4 id="storeDiscountHeldHalfText">50% Off Discount Tickets : 0</h4></button>
+</div>
+<!-- Discount Full -->
+<div id="storeDiscountHeldFull" class="storeDiscounts">
+<button id="storeDiscountHeldFullButton"><h4 id="storeDiscountHeldFullText">Free Discount Tickets : 0</h4></button>
+</div>
+</div>
+<!-- Line Seperator -->
+<div id="lineSep"></div>
+</div>
+
+<!-- Sub Screen Body -->
+<div id="subScreenBody">
+
+<!-- Settings -->
+<div id="settingsScreen" class="settingsScreenStartHidden">
+
+<!-- Store Section Body -->
+<div id="settingsBody">
+<button id="stats" class="uiSettingsItem">Stats / User Card</button>
+<!-- Stats -->
+<div id="statsScreen" style="display:none">
+<p>Stats:</p>
+<p>All money earned amount</p>
+<p>All money spent amount</p>
+<p>All money clicks amount</p>
+<p>All time played</p>
+<p>Achievements Unlocked V/XYZ</p>
+<p>Time when first started and length ago that was</p>
+</div>
+<button id="achievementsButton" class="uiSettingsItem">Achievements</button>
+<button id="instructions" class="uiSettingsItem">Game Instructions</button>
+<button id="aboutSupportGame" class="uiSettingsItem">About | Support Game</button>
+<button id="language" class="uiSettingsItem">Language</button>
+<button id="resetGame" class="uiSettingsItem">Reset Game</button>
+</div>
+</div>
+
+<!-- Store -->
+<div id="storeScreen" class="storeScreenStartHidden">
+
+<!-- Store Section Body -->
+<div id="storeBody">
+
+<!-- Upgrade Options -->
+<div id="badgeStore">
+
+<button id="badge1" class=" circleStore">
+<div id="badge1Inner" class="badgeInner">
+
+<div id="badge1Unlock">
+<div id="badge1UnlockMsg" class="badgeUnlockMsg">Unlock : ???Testing</div>
+</div>
+
+<div id="badge1Lock">
+<div id="badge1Cost" class="storeCostOverlay">Badge 1 Co$t</div>
+<img id="badge1Image" class="thumbnail" >
+<h3 id="badge1Title1">Player Tap</h3>
+<h4 id="badge1Title2" class="description">Increase Player Tap Per Second</h4>
+<h4 id="badge1Level">Level 0</h4>
+</div>
+
+</div>
+</button>
+
+<button id="badge2" class=" circleStore">
+<div id="badge2Inner">
+<div id="badge2Unlock">
+<div id="badge2UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge2Lock">
+<div id="badge2Cost" class="storeCostOverlay">Badge 2 Co$t</div>
+<img id="badge2Image" class="thumbnail" >
+<h3 id="badge2Title1">Lucky Goldfish</h3>
+<h4 id="badge2Title2" class="description">Increase Player Critical Hit &amp; Rate</h4>
+<h4 id="badge2Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge3" class=" circleStore">
+<div id="badge3Inner">
+<div id="badge3Unlock">
+<div id="badge3UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge3Lock">
+<div id="badge3Cost" class="storeCostOverlay">Badge 3 Co$t</div>
+<img id="badge3Image" class="thumbnail" >
+<h3 id="badge3Title1">Genie Hand 1</h3>
+<h4 id="badge3Title2" class="description">Auto Tap Assist</h4>
+<h4 id="badge3Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge4" class=" circleStore">
+<div id="badge4Inner">
+<div id="badge4Unlock">
+<div id="badge4UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge4Lock">
+<div id="badge4Cost" class="storeCostOverlay">Badge 4 Co$t</div>
+<img id="badge4Image" class="thumbnail" >
+<h3 id="badge4Title1">Genie Hand 2</h3>
+<h4 id="badge4Title2" class="description">Auto Tap Assist</h4>
+<h4 id="badge4Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge5" class=" circleStore">
+<div id="badge5Inner5">
+<div id="badge5Unlock">
+<div id="badge5UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge5Lock">
+<div id="badge5Cost" class="storeCostOverlay">Badge 5 Co$t</div>
+<img id="badge5Image" class="thumbnail" >
+<h3 id="badge5Title1">Genie Hand 3</h3>
+<h4 id="badge5Title2" class="description">Auto Tap Assist</h4>
+<h4 id="badge5Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge6" class=" circleStore">
+<div id="badge6Inner">
+<div id="badge6Unlock">
+<div id="badge6UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge6Lock">
+<div id="badge6Cost" class="storeCostOverlay">Badge 6 Co$t</div>
+<img id="badge6Image" class="thumbnail" >
+<h3 id="badge6Title1">High Noon</h3>
+<h4 id="badge6Title2" class="description">Event</h4>
+<h4 id="badge6Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge7" class=" circleStore">
+<div id="badge7Inner">
+<div id="badge7Unlock">
+<div id="badge7UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge7Lock">
+<div id="badge7Cost" class="storeCostOverlay">Badge 7 Co$t</div>
+<img id="badge7Image" class="thumbnail" >
+<h3 id="badge7Title1">Gold Coin Storm</h3>
+<h4 id="badge7Title2" class="description">Event</h4>
+<h4 id="badge7Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge8" class=" circleStore">
+<div id="badge8Inner">
+<div id="badge8Unlock">
+<div id="badge8UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge8Lock">
+<div id="badge8Cost" class="storeCostOverlay">Badge 8 Co$t</div>
+<img id="badge8Image" class="thumbnail" >
+<h3 id="badge8Title1">Genie Challenge</h3>
+<h4 id="badge8Title2" class="description">Event</h4>
+<h4 id="badge8Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge9" class=" circleStore">
+<div id="badge9Inner">
+<div id="badge9Unlock">
+<div id="badge9UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge9Lock">
+<div id="badge9Cost" class="storeCostOverlay">Badge 9 Co$t</div>
+<img id="badge9Image" class="thumbnail" >
+<h3 id="badge9Title1">Bonus Round</h3>
+<h4 id="badge9Title2" class="description">Event</h4>
+<h4 id="badge9Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge10" class=" circleStore">
+<div id="badge10Inner">
+<div id="badge10Unlock">
+<div id="badge10UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge10Lock">
+<div id="badge10Cost" class="storeCostOverlay">Badge 10 Co$t</div>
+<img id="badge10Image" class="thumbnail" >
+<h3 id="badge10Title1">Blue Moon</h3>
+<h4 id="badge10Title2" class="description">Event</h4>
+<h4 id="badge10Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge11" class=" circleStore">
+<div id="badge11Inner">
+<div id="badge11Unlock">
+<div id="badge11UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge11Lock">
+<div id="badge11Cost" class="storeCostOverlay">Badge 11 Co$t</div>
+<img id="badge11Image" class="thumbnail" >
+<h3 id="badge11Title1">Hades Prowl</h3>
+<h4 id="badge11Title2" class="description">Event</h4>
+<h4 id="badge11Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<button id="badge12" class=" circleStore">
+<div id="badge12Inner">
+<div id="badge12Unlock">
+<div id="badge12UnlockMsg" class="badgeUnlockMsg">Unlock : ???</div>
+</div>
+
+<div id="badge12Lock">
+<div id="badge12Cost" class="storeCostOverlay">Badge 12 Co$t</div>
+<img id="badge12Image" class="thumbnail" >
+<h3 id="badge12Title1">Cosmic Aurora</h3>
+<h4 id="badge12Title2" class="description">Event</h4>
+<h4 id="badge12Level">Level 0</h4>
+</div>
+</div>
+</button>
+
+<!-- End Badges -->
+</div>
+
+<!-- End Body -->
+</div>
+
+<!-- End Store Screen -->
+</div>
+
+<!-- Achievements -->
+<div id="achievementsScreen" class="acheivementsScreenStartHidden">
+
+<div id="a1" class="achievement">A1</div>
+<div id="a2" class="achievement">A2</div>
+<div id="a3" class="achievement">A3</div>
+<div id="a4" class="achievement">A4</div>
+<div id="a5" class="achievement">A5</div>
+<div id="a6" class="achievement">A6</div>
+<div id="a7" class="achievement">A7</div>
+<div id="a8" class="achievement">A8</div>
+<div id="a9" class="achievement">A9</div>
+
+</div>
+
+<!-- End Sub Screen Body -->
+</div>
+<!-- End Sub Screen -->
+</div>
+
+<!-- A-Scene -->
+<a-scene id="ascene"
+
+timer-system
+loading-screen="dotsColor: red; backgroundColor: black"
+device-orientation-permission-ui="enabled: false"
+vr-mode-ui="enabled: false"
+fog="type: exponential; color: #E27802; density: 0.002; near: 1; far: 700;"
+renderer="antialias: true; colorManagement: true; sortObjects: true"
+
+animation-timeline__1="timeline: #sunopac; loop: true"
+animation-timeline__1="timeline: #sunopacback; loop: true"
+animation-timeline__2="timeline: #starsopac; loop: true"
+animation-timeline__3="timeline: #skytop; loop: true"
+animation-timeline__4="timeline: #moonopac; loop: true"
+animation-timeline__4="timeline: #moonopacback; loop: true"
+
+animation__backgroundcolor="property: background.color; from: #CF7500; to: #1B1A17; dur: 120000; delay: 60000; loop: true; dir: alternate; easing: linear; elasticity: 400; autoplay: true; enabled: false;"
+
+animation__fogdaynight="property: fog.color; from: #E27802; to: #99154E; dur: 120000; delay: 60000; loop: true; dir: alternate; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__fogevent1="property: fog.density; from: 0.002; to: 0.02; dur: 5000; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventGoldCoinStorm, eventBlueMoon, eventCosmicAurora"
+
+animation__fogevent2="property: fog.density; from: 0.02; to: 0.02; dur: 50000; delay: 5000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: eventGoldCoinStorm, eventBlueMoon, eventCosmicAurora"
+
+animation__fogevent3="property: fog.density; from: 0.02; to: 0.002; dur: 5000; delay: 55000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventGoldCoinStorm, eventBlueMoon, eventCosmicAurora"
+
+animation__fogcosmiccolor1="property: fog.color; from: #E27802; to: #1bbe6c; dur: 1000; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor2="property: fog.color; from: #1bbe6c; to: #be1bb1; dur: 5000; delay: 6000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor3="property: fog.color; from: #be1bb1; to: #1b53be; dur: 5000; delay: 11000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor4="property: fog.color; from: #1b53be; to: #be7f1b; dur: 5000; delay: 16000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor5="property: fog.color; from: #be7f1b; to: #661bbe; dur: 5000; delay: 21000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor6="property: fog.color; from: #661bbe; to: #1b98be; dur: 5000; delay: 26000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor7="property: fog.color; from: #1b98be; to: #be1b1b; dur: 5000; delay: 31000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor8="property: fog.color; from: #be1b1b; to: #1bbe1b; dur: 5000; delay: 36000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor9="property: fog.color; from: #1bbe1b; to: #b81bbe; dur: 5000; delay: 41000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor10="property: fog.color; from: #b81bbe; to: #1b4dbe; dur: 5000; delay: 46000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor11="property: fog.color; from: #1b4dbe; to: #1bbe6c; dur: 5000; delay: 51000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+animation__fogcosmiccolor12="property: fog.color; from: #1bbe6c; to: #99154E; dur: 4000; delay: 56000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCosmicAurora"
+
+pool__coinrain="mixin: fallingcoin; size: 42"
+
+
+>
+<!-- - - - - - - - - - - Assets - - - - - - - - - - -->
+<a-assets timeout="5000">
+
+    <!-- Sky Image -->
+    <img id="skyAlpha" src="assets/img/star-sky-alpha.png" preload="auto" crossorigin="anonymous">
+
+    <!-- Floor Gird Image -->
+    <img id="grid" src="assets/img/grid.png" preload="auto" crossorigin="anonymous">
+
+    <!-- 3D Assets -->
+    <!-- Coin -->
+    <a-asset-item id="genieCoin" src="assets/3d/geniecoin.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Blank Coin | Outer | Add Circle -->
+    <a-asset-item id="genieCoinBlankOuter" src="assets/3d/geniecoin-blank-outer.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Genie -->
+    <a-asset-item id="genieWireframe" src="assets/3d/genie.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Genie Hand Armature -->
+    <a-asset-item id="ghand" src="assets/3d/ghand.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Goldfish Armature -->
+    <a-asset-item id="goldfish" src="assets/3d/goldfish.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <!-- Goldfish Wireframe -->
+    <a-asset-item id="goldfish-wf" src="assets/3d/goldfish-wf.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Hades Anim -->
+    <a-asset-item id="hades-anim" src="assets/3d/hades-anim.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Palm Tree Obj -->
+    <a-asset-item id="palmtreeobj" src="assets/3d/still-palm-tree.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Cloud Obj -->
+    <a-asset-item id="cloudobj" src="assets/3d/cloud.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+    <!-- Cactus Obj -->
+    <a-asset-item id="cactusobj" src="assets/3d/cactus.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+<!-- - - - - - - - - - - Animation Timeline - - - - - - - - - - -->
+
+<a-timeline-group>
+<a-timeline id="skytop">
+    <a-timeline-animation select="#sky" name="sunrise"></a-timeline-animation>
+    <a-timeline-animation select="#sky" name="sunday"></a-timeline-animation>
+    <a-timeline-animation select="#sky" name="sunset"></a-timeline-animation>
+    <a-timeline-animation select="#sky" name="nightin"></a-timeline-animation>
+    <a-timeline-animation select="#sky" name="night"></a-timeline-animation>
+    <a-timeline-animation select="#sky" name="nightout"></a-timeline-animation>
+</a-timeline> 
+
+<a-timeline id="sunopac">
+    <a-timeline-animation select="#sun" name="opaconsky"></a-timeline-animation>
+    <a-timeline-animation select="#sun" name="opacityoutsky"></a-timeline-animation>
+    <a-timeline-animation select="#sun" name="opacoffsky"></a-timeline-animation>
+    <a-timeline-animation select="#sun" name="opacityinsky"></a-timeline-animation>
+</a-timeline>
+
+<a-timeline id="sunopacback">
+    <a-timeline-animation select="#sunback" name="opaconsky"></a-timeline-animation>
+    <a-timeline-animation select="#sun" name="opacityoutsky"></a-timeline-animation>
+    <a-timeline-animation select="#sunback" name="opacoffsky"></a-timeline-animation>
+    <a-timeline-animation select="#sunback" name="opacityinsky"></a-timeline-animation>
+</a-timeline>
+
+<a-timeline id="moonopac">
+    <a-timeline-animation select="#moon" name="opacoffmoon"></a-timeline-animation>
+    <a-timeline-animation select="#moon" name="opacityinmoon"></a-timeline-animation>
+    <a-timeline-animation select="#moon" name="opaconmoon"></a-timeline-animation>
+    <a-timeline-animation select="#moon" name="opacityoutmoon"></a-timeline-animation>
+</a-timeline>
+
+<a-timeline id="moonopacback">
+    <a-timeline-animation select="#moonback" name="opacoffmoon"></a-timeline-animation>
+    <a-timeline-animation select="#moonback" name="opacityinmoon"></a-timeline-animation>
+    <a-timeline-animation select="#moonback" name="opaconmoon"></a-timeline-animation>
+    <a-timeline-animation select="#moonback" name="opacityoutmoon"></a-timeline-animation>
+</a-timeline>
+
+<a-timeline id="starsopac">
+    <a-timeline-animation select="#nightsky" name="opacoffstar"></a-timeline-animation>
+    <a-timeline-animation select="#nightsky" name="opacityinstar"></a-timeline-animation>
+    <a-timeline-animation select="#nightsky" name="opaconstar"></a-timeline-animation>
+    <a-timeline-animation select="#nightsky" name="opacityoutstar"></a-timeline-animation>
+</a-timeline>
+
+
+</a-timeline-group>
+
+<!-- - - - - - - - - - - Mixins - - - - - - - - - - -->
+<a-mixin id="sunfade"
+
+animation__opaconsky="property: material.opacity; from: 1; to: 1; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityoutsky="property: material.opacity; from: 1; to: 0; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacoffsky="property: material.opacity; from: 0; to: 0; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityinsky="property: material.opacity; from: 0; to: 1; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+></a-mixin>
+
+<a-mixin id="sunblend"
+
+animation__sunblend1="property: material.blending; from: subtractive; to: multiply; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__sunblend2="property: material.blending; from: multiply; to: multiply; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__sunblend3="property: material.blending; from: multiply; to: subtractive;  dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__sunblend4="property: material.blending; from: subtractive; to: subtractive; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+></a-mixin>
+
+<a-mixin id="moonfade"
+
+animation__opacoffmoon="property: material.opacity; from: 0.25; to: 0.25; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityinmoon="property: material.opacity; from: 0.25; to: 1; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opaconmoon="property: material.opacity; from: 1; to: 1; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityoutmoon="property: material.opacity; from: 1; to: 0.25; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+></a-mixin>
+
+<a-mixin id="moonblend"
+
+animation__moonblend1="property: material.blending; from: multiply; to: subtractive; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__moonblend2="property:material.blending; from: subtractive; to: subtractive; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__moonblend3="property: material.blending; from: subtractive; to: multiply; dur: 6000000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__moonblend4="property:  material.blending; from: multiply; to: multiply; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+></a-mixin>
+
+<a-mixin id="starfade"
+animation__opacoffstar="property: material.opacity; from: 1; to: 1; dur: 660000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityinstar="property: material.opacity; from: 1; to:0.91; dur: 60000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opaconstar="property: material.opacity; from: 0.9; to: 0.9; dur: 660000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityoutstar="property: material.opacity; from: 0.9; to: 1; dur: 60000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+></a-mixin>
+
+<a-mixin id="colorfade"
+animation__opacoffcolor="property: material.opacity; from: 1; to: 1; dur: 660000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityincolor="property: material.opacity; from: 1; to:0.91; dur: 60000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opaconcolor="property: material.opacity; from: 0.9; to: 0.9; dur: 660000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__opacityoutcolor="property: material.opacity; from: 0.9; to: 1; dur: 60000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+></a-mixin>
+
+<a-mixin id="clickableHover" 
+
+animation__onClickScale="property: scale; to: 2.5 2.5 2.5; dur: 100; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick;"
+
+animation__offClickScale="property: scale; to: 2 2 2; dur: 50; delay: 100; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick;"
+
+></a-mixin>
+
+<!-- Gold Coin Storm Coins -->
+<a-mixin id="fallingCoin"
+
+rotation="90 0 0"
+
+geometry="primitive: cylinder; height: 0.5; openEnded: false; radius: 1; segmentsHeight: 1; segmentsRadial: 8; thetaStart: 0; thetaLength: 360"
+
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+
+animation__falling="property: object3D.position.y; from: 50; to: -10; dur: 1500; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__spinning="property: object3D.rotation.y; from: 0; to: 720; dur: 8000; delay: 0; loop: true; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true;"
+></a-mixin>
+
+
+<a-mixin id="usergps"
+position="-0.43 2 0"
+scale="0.01 0.01 0.01"
+rotation="0 0 0"
+
+text="value: Gold Per Second; color: white; align: center; width: 20; opacity: 1; font: roboto; side: double"
+
+animation__scaleIn="property: scale; from: 0.01 0.01 0.01; to: 1 1 1; dur: 200; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true; startEvents: goldclick"
+
+animation__fallUp="property: object3D.position.y; from: 2; to: 8; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick"
+
+animation__fade="property: text.opacity; from: 1; to: 0; dur: 950; delay: 0; loop: false; dir: normal; easing: easeInOutCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick"
+
+animation__scaleOut="property: scale; from: 1 1 1; to: 0.01 0.01 0.01; dur: 400; delay: 600; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick"
+
+></a-mixin>
+
+<a-mixin id="usergpscrit"
+
+text="value: Gold Per Second; color: #F0A500; align: center; width: 25; opacity: 1; font: roboto; side: double"
+
+animation__scaleIn="property: scale; from: 0.01 0.01 0.01; to: 1.5 1.5 1.5; dur: 200; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true; startEvents: goldclick"
+
+animation__fallUp="property: object3D.position.y; from: 1; to: 9; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick"
+
+animation__fade="property: text.opacity; from: 1; to: 0; dur: 950; delay: 0; loop: false; dir: normal; easing: easeInOutCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick"
+
+animation__scaleOut="property: scale; from: 1.5 1.5 1.5; to: 0.01 0.01 0.01; dur: 400; delay: 600; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: goldclick"
+
+></a-mixin>
+
+<a-mixin id="acgps"
+
+text="value: Gold Per Second; color: white; align: center; width: 20; opacity: 1; font: roboto; side: double"
+
+animation__scaleIn="property: scale; from: 0.01 0.01 0.01; to: 1 1 1; dur: 200; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true; startEvents: autoclick"
+
+animation__fade="property: text.opacity; from: 1; to: 0; dur: 950; delay: 0; loop: false; dir: normal; easing: easeInOutCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+
+animation__scaleOut="property: scale; from: 1 1 1; to: 0.01 0.01 0.01; dur: 400; delay: 600; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+></a-mixin>
+
+<a-mixin id="acgpscrit"
+
+text="value: Gold Per Second; color: #F0A500; align: center; width: 25; opacity: 1; font: roboto; side: double"
+
+animation__scaleIn="property: scale; from: 0.01 0.01 0.01; to: 1.5 1.5 1.5; dur: 200; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true; startEvents: autoclick"
+
+animation__fade="property: text.opacity; from: 1; to: 0; dur: 950; delay: 0; loop: false; dir: normal; easing: easeInOutCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+
+animation__scaleOut="property: scale; from: 1.5 1.5 1.5; to: 0.01 0.01 0.01; dur: 400; delay: 600; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+></a-mixin>
+
+
+<a-mixin id="hadesgps"
+
+text="value: Gold Per Second; color: #ea2379; align: center; width: 25; opacity: 1; font: roboto; side: double"
+
+animation__scaleIn="property: scale; from: 0.01 0.01 0.01; to: 1.25 1.25 1.25; dur: 200; delay: 0; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true; startEvents: hadesclick"
+
+animation__fallUp="property: object3D.position.y; from: 2.5; to: 10.5; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: hadesclick"
+
+animation__fade="property: text.opacity; from: 1; to: 0; dur: 950; delay: 0; loop: false; dir: normal; easing: easeInOutCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: hadesclick"
+
+animation__scaleOut="property: scale; from: 1.25 1.25 1.25; to: 0.01 0.01 0.01; dur: 400; delay: 600; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: hadesclick"
+
+></a-mixin>
+
+<a-mixin id="palmTree"
+scale="1 1 1"
+
+obj-model="obj: #palmtreeobj"
+material="color: #1da21d; emissive: #1da21d; emissiveIntensity: 0.75; wireframe: true; opacity: 1; fog: false; roughness: 0.42"
+></a-mixin>
+
+<a-mixin id="cactus"
+scale="1 1 1"
+
+obj-model="obj: #cactusobj"
+material="color: #147114; emissive: #147114; emissiveIntensity: 0.75; wireframe: true; opacity: 1; fog: false; roughness: 0.42"
+></a-mixin>
+
+<a-mixin id="slotFace"
+scale="1 1 1"
+
+geometry="primitive: plane; height: 0.75; width: 0.75"
+material="shader: standard; color: #F0A500; roughness: 0.42; side: double"
+></a-mixin>
+
+<a-mixin id="slotChamber"
+rotation="22.5 0 90"
+scale="1 1 1"
+
+geometry="primitive: cylinder; height: 1; openEnded: true; radius: 0.9; segmentsHeight: 1; segmentsRadial: 7; thetaStart: 0; thetaLength: 360"
+material="shader: standard; color: #99154E; roughness: 0.42; metalness: 1"
+
+animation__spinning="property: object3D.rotation.x; from: 22.5; to: 382.5; dur: 1500; delay: 500; loop: 4; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCheck"
+
+animation__spinTo1="property: object3D.rotation.x; to: 382.5; dur: 2100; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: highnoon"
+
+animation__spinTo2="property: object3D.rotation.x; to: 435; dur: 2250; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: goldcoinstorm"
+
+animation__spinTo3="property: object3D.rotation.x; to: 483; dur: 2350; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: rivalgenie"
+
+animation__spinTo4="property: object3D.rotation.x; to: 535; dur: 2500; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: bonusround"
+
+animation__spinTo5="property: object3D.rotation.x; to: 582; dur: 2350; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: bluemoon"
+
+animation__spinTo6="property: object3D.rotation.x; to: 636; dur: 2250; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: hadesprowl"
+
+animation__spinTo7="property: object3D.rotation.x; to: 688; dur: 2100; delay: 6500; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: cosmicaurora"
+></a-mixin>
+
+<!-- Face 1 | x: 22.5deg -->
+<!-- Face 2 | 75 deg -->
+<!-- Face 3 | 123 -->
+<!-- Face 4 | 175 -->
+<!-- Face 5 | 222 -->
+<!-- Face 6 | 276 -->
+<!-- Face 7 | 328 -->
+
+</a-assets>
+
+<!-- - - - - - - - - - - Scene - - - - - - - - - - -->
+<!-- - - - - - - - - - - Badges 12 - - - - - - - - - - -->
+<a-entity id="coinTest"
+position="10 2.25 -10"
+rotation="0 0 0"
+
+>
+<a-entity id="coinTitle"
+position="0 -1.5 0"
+rotation="0 -30 0"
+
+text="value: Badge Name; color: white; align: center; width: 12; opacity: 1; font: roboto; side: double;"
+></a-entity>
+
+<a-entity id="coinModel"
+gltf-model="#genieCoinBlankOuter"
+
+position="0 0 0"
+rotation="90 0 0"
+
+animation__spinning="property: object3D.rotation.y; from: 0; to: 720; dur: 45000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+>
+<a-entity id="coinTestInner"
+position="0 0 0"
+rotation="-90 0 0"
+
+geometry="primitive: circle; radius: 0.9; segments: 12; thetaStart: 0; thetaLength: 360"
+
+material="shader: flat; color: green; side: double"
+
+></a-entity>
+<a-entity id="coinLevel1"
+position="0 0.075 -0.5"
+rotation="-90 0 0"
+
+text="value: IV; color: green; align: center; width: 25; opacity: 1; font: mozillavr; side: front;"
+></a-entity>
+
+<a-entity id="coinLevel2"
+position="0 -0.065 -0.5"
+rotation="90 180 0"
+
+text="value: IV; color: green; align: center; width: 25; opacity: 1; font: mozillavr; side: double;"
+></a-entity>
+
+</a-entity>
+</a-entity>
+
+<!-- - - - - - - - - - - Event Slot Machine - - - - - - - - - - -->
+<a-entity id="slotMachine"
+position="-23.5 -4 -36"
+scale="3 3 3"
+rotation="0 30 0"
+>
+
+<a-entity id="slotTitle"
+position="0.026 6.7 0.9"
+rotation="0 0 0"
+
+text="value: Event Slots!; color: #F0A500; align: center; width: 13; opacity: 1; font: mozillavr; side: front;"
+material="roughness: 0.42; metalness: 1"
+></a-entity>
+
+<a-entity id="slotSign"
+position="0 8.367 -0.4"
+
+rotation="90 0 0"
+
+geometry="primitive: cylinder; height: 0.5; openEnded: false; radius: 1; segmentsHeight: 1; segmentsRadial: 8; thetaStart: 0; thetaLength: 360"
+
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 0.25"
+
+animation__spinning="property: object3D.rotation.y; from: 0; to: -720; dur: 60000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<a-entity id="slotHinge"
+position="2.04 4.12 -0.38"
+rotation="0 0 90"
+
+geometry="primitive: cylinder; height: 0.35; segmentsHeight: 1; radius: 0.35; segmentsRadial: 12"
+
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+
+animation__pull="property: object3D.rotation.x; from: 0; to: 60; dur: 1000; delay: 0; loop: 1; dir: alternate; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventCheck"
+
+><a-entity id="slotPull"
+position="1.258 0 0"
+rotation="0 0 90"
+
+geometry="primitive: cylinder; height: 2; segmentsHeight: 1; radius: 0.1; segmentsRadial: 12"
+material="shader: standard; color: #99154E; roughness: 0.42; metalness: 1"
+
+></a-entity>
+
+<a-entity id="slotPullKnob"
+position="2.4 0 0"
+rotation="0 0 90"
+
+geometry="primitive: dodecahedron; radius: 0.25;"
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+></a-entity>
+</a-entity>
+
+<a-entity id="slotMask"
+position="0 -0.86 -0.73"
+scale="1.2 1.2 1.2"
+>
+<a-entity id="slotMask1"
+position="0 5.4 1.39"
+rotation="0 0 0"
+
+geometry="primitive: box; height: 0.25; width: 3; depth: 0.34"
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+
+></a-entity>
+
+<a-entity id="slotMask2"
+position="0 4.5 1.39"
+rotation="0 0 0"
+
+geometry="primitive: box; height: 0.25; width: 3; depth: 0.34"
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+
+></a-entity>
+
+
+<a-entity id="slotMask3"
+position="-1.375 4.9 1.39"
+rotation="0 0 -90"
+
+geometry="primitive: box; height: 0.25; width: 0.75; depth: 0.34"
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+
+></a-entity>
+
+
+<a-entity id="slotMask4"
+position="1.375 4.9 1.39"
+rotation="0 0 -90"
+
+geometry="primitive: box; height: 0.25; width: 0.75; depth: 0.34"
+material="shader: standard; color: #F0A500; roughness: 0.42; metalness: 1"
+
+></a-entity>
+
+<a-entity id="slotMask5"
+height="5" width="3.1" depth="2"
+position="0 4.1 0.31"
+rotation="0 0 0"
+
+geometry="primitive: box; height: 5; width: 3.1; depth: 2"
+material="shader: standard; color: #99154E; roughness: 0.42; metalness: 1"
+
+></a-entity>
+</a-entity>
+
+<a-entity id="slotWinArea"
+position="0 2.5 0.975"
+
+rotation="0 0 0"
+
+geometry="primitive: box; height: 1; width: 2.5; depth: 0.2"
+
+material="shader: standard; color: #F0A500; side: back; roughness: 0.42; metalness: 1"
+
+></a-entity>
+
+<!-- 52.5 + -->
+<a-entity id="slotChamber1" mixin="slotChamber"
+position="0 5 0"
+>
+<!-- Face 1 | x: 22.5deg -->
+<a-entity id="slot1Face1" mixin="slotFace"
+rotation="0 25 -90"
+position="0.43 0 0.83"
+text="value: HN; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 2 | 75 deg -->
+<a-entity id="slot1Face2" mixin="slotFace"
+rotation="0 75 -90"
+position=".92 0 0.175"
+text="value: RS; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 3 | 123 -->
+<a-entity id="slot1Face3" mixin="slotFace"
+rotation="0 130 -90"
+position="0.75 0 -0.58"
+text="value: GC; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 4 | 175 -->
+<a-entity id="slot1Face4" mixin="slotFace"
+rotation="180 0 90"
+position="0 0 -0.91"
+text="value: BR; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 5 | 222 -->
+<a-entity id="slot1Face5" mixin="slotFace"
+rotation="180 50 90"
+position="-0.7 0 -0.65"
+text="value: BM; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 6 | 276 -->
+<a-entity id="slot1Face6" mixin="slotFace"
+rotation="180 100 90"
+position="-0.9 0 0.18"
+text="value: HP; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 7 | 328 -->
+<a-entity id="slot1Face7" mixin="slotFace"
+rotation="0 -25 -90"
+position="-0.41 0 0.82"
+text="value: CA; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+</a-entity>
+
+
+<a-entity id="slotChamber2" mixin="slotChamber"
+position="-1 5 0"
+>
+<!-- Face 1 | x: 22.5deg -->
+<a-entity id="slot2Face1" mixin="slotFace"
+rotation="0 25 -90"
+position="0.43 0 0.83"
+text="value: HN; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 2 | 75 deg -->
+<a-entity id="slot2Face2" mixin="slotFace"
+rotation="0 75 -90"
+position=".92 0 0.175"
+text="value: RS; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 3 | 123 -->
+<a-entity id="slot2Face3" mixin="slotFace"
+rotation="0 130 -90"
+position="0.75 0 -0.58"
+text="value: GC; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 4 | 175 -->
+<a-entity id="slot2Face4" mixin="slotFace"
+rotation="180 0 90"
+position="0 0 -0.91"
+text="value: BR; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 5 | 222 -->
+<a-entity id="slot2Face5" mixin="slotFace"
+rotation="180 50 90"
+position="-0.7 0 -0.65"
+text="value: BM; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 6 | 276 -->
+<a-entity id="slot2Face6" mixin="slotFace"
+rotation="180 100 90"
+position="-0.9 0 0.18"
+text="value: HP; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 7 | 328 -->
+<a-entity id="slot2Face7" mixin="slotFace"
+rotation="0 -25 -90"
+position="-0.41 0 0.82"
+text="value: CA; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+</a-entity>
+
+<a-entity id="slotChamber3" mixin="slotChamber"
+position="1 5 0"
+>
+<!-- Face 1 | x: 22.5deg -->
+<a-entity id="slot3Face1" mixin="slotFace"
+rotation="0 25 -90"
+position="0.43 0 0.83"
+text="value: HN; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 2 | 75 deg -->
+<a-entity id="slot3Face2" mixin="slotFace"
+rotation="0 75 -90"
+position=".92 0 0.175"
+text="value: RS; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 3 | 123 -->
+<a-entity id="slot3Face3" mixin="slotFace"
+rotation="0 130 -90"
+position="0.75 0 -0.58"
+text="value: GC; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 4 | 175 -->
+<a-entity id="slot3Face4" mixin="slotFace"
+rotation="180 0 90"
+position="0 0 -0.91"
+text="value: BR; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 5 | 222 -->
+<a-entity id="slot3Face5" mixin="slotFace"
+rotation="180 50 90"
+position="-0.7 0 -0.65"
+text="value: BM; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 6 | 276 -->
+<a-entity id="slot3Face6" mixin="slotFace"
+rotation="180 100 90"
+position="-0.9 0 0.18"
+text="value: HP; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+<!-- Face 7 | 328 -->
+<a-entity id="slot3Face7" mixin="slotFace"
+rotation="0 -25 -90"
+position="-0.41 0 0.82"
+text="value: CA; color: #1B1A17; align: center; width: 10; opacity: 1; font: roboto; side: front"
+></a-entity>
+</a-entity>
+
+
+
+</a-entity>
+<!-- 
+emissive: #000;
+emissiveIntensity: 1;
+wireframe: false;
+wireframeLinewidth: 2;
+blending: normal or none or additive or subtractive or multiply;
+
+Gold 1 - #F0A500
+Gold 2 - #F88F01
+Gold 3 - #E27802
+Gold 4 - #CF7500
+Magenta - #99154E
+Off White - #FFDDCC
+Yellow - #FFC93C
+Pink - #FFBBCC
+Dark - #1B1A17
+
+material="shader: gradient; topColor: 227 21 119; bottomColor: 16 94 157; "
+material="shader: threeColorGradientShader; topColor: #6c5637; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+
+//Easing
+//easeInQuad 	    easeOutQuad 	easeInOutQuad 	linear
+//easeInCubic 	easeOutCubic 	easeInOutCubic 	
+//easeInQuart 	easeOutQuart 	easeInOutQuart 	
+//easeInQuint 	easeOutQuint 	easeInOutQuint 	
+//easeInSine 	    easeOutSine 	easeInOutSine 	
+//easeInExpo 	    easeOutExpo 	easeInOutExpo 	
+//easeInCirc 	    easeOutCirc 	easeInOutCirc 	
+//easeInBack 	    easeOutBack 	easeInOutBack 	
+//easeInElastic 	easeOutElastic 	easeInOutElastic
+ -->
+<!-- - - - - - - - - - - Main Clicker - - - - - - - - - - -->
+<!-- Clicker Coin  -->
+<a-entity id="clickerButton" mixin="clickableHover" class="clickable"
+rotation="90 0 0" position="0 2.25 0" scale="2 2 2"
+gltf-model="#genieCoin"
+
+animation__spin="property: object3D.rotation.y; from: 0; to: 360; dur: 7000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__bob="property: object3D.position.y; from: 2.25; to: 2; dur: 12000; delay: 6000; loop: true; dir: alternate; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+
+></a-entity>
+
+<!-- - - - - - - - - - - Auto Clicker - - - - - - - - - - -->
+
+<!-- Should make a curve track for the hand to follow -->
+
+<!-- Genie Hand 1  -->
+<a-entity id="genieHand1" mixin="" class="" visible="false"
+rotation="-12 90 0" position="1.9 4.5 -1" scale="0.2 0.2 0.2"
+gltf-model="#ghand" animation-mixer="timeScale:0; crossFadeDuration: .3"
+
+animation__bob="property: object3D.position.y; from: 4.5; to: 4.7; dur: 3000; delay: 0; loop: true; dir: alternate; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true;"
+
+></a-entity>
+
+<!-- Genie Hand 2  -->
+<a-entity id="genieHand2" mixin="" class="" visible="false"
+rotation="17 174 -5" position="-1.18 1.8 -4.14" scale="0.3 0.3 0.3"
+gltf-model="#ghand" animation-mixer="timeScale:0; crossFadeDuration: .3"
+
+animation__bob="property: object3D.position.y; from: 1.8; to: 2; dur: 4000; delay: 0; loop: true; dir: alternate; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true;"
+
+></a-entity>
+
+<!-- Genie Hand 3  -->
+<a-entity id="genieHand3" mixin="" class="" visible="false"
+rotation="15 30 0" position="4 1.4 3.5" scale="0.4 0.4 0.4"
+gltf-model="#ghand" animation-mixer="timeScale:0; crossFadeDuration: .3"
+
+animation__bob="property: object3D.position.y; from: 1.4; to: 1.6; dur: 5000; delay: 0; loop: true; dir: alternate; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true;"
+
+></a-entity>
+
+<!-- - - - - - - - - - - Gold/Second Notification Counter - - - - - - - - - - -->
+
+<!-- User Gold Per Second 2D Text Notification -->
+<a-entity id="usergoldpersecond" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond2" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond3" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond4" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond5" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond6" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond7" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond8" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond9" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond10" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond11" mixin="usergps"
+></a-entity>
+
+<a-entity id="usergoldpersecond12" mixin="usergps"
+></a-entity>
+
+<!-- - - - - - - - - - - Auto Clickers - - - - - - - - - - -->
+
+
+<!-- User Gold Per Second 2D Text Notification -->
+<a-entity id="ghand1goldpersecond" mixin="acgps"
+
+rotation="0 -45 0" position="1 3.6 0"
+scale="0.01 0.01 0.01"
+
+animation__fallUp1="property: object3D.position.y; from: 3.6; to: 8; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+></a-entity>
+
+
+<!-- User Gold Per Second 2D Text Notification -->
+<a-entity id="ghand2goldpersecond" mixin="acgps"
+
+rotation="0 -15 0" position="-1.9 1.8 -2.4"
+scale="0.01 0.01 0.01"
+
+animation__fallUp2="property: object3D.position.y; from: 1.8; to: 7; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+></a-entity>
+
+<!-- User Gold Per Second 2D Text Notification -->
+<a-entity id="ghand3goldpersecond" mixin="acgps"
+
+rotation="0 -30 0" position="1.8 1.4 1.3"
+scale="0.01 0.01 0.01"
+
+animation__fallUp3="property: object3D.position.y; from: 1.4; to: 6; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: autoclick"
+></a-entity>
+
+<!-- - - - - - - - - - - Hades Clicker - - - - - - - - - - -->
+
+
+<!-- User Gold Per Second 2D Text Notification -->
+<a-entity id="hadesgpstext" mixin="hadesgps"
+
+rotation="0 0 0" position="1 0 0"
+scale="0.01 0.01 0.01"
+></a-entity>
+
+
+<!-- - - - - - - - - - - Gold Counter - - - - - - - - - - -->
+<!-- A-Frame Gold Counter Text -->
+<a-entity 
+id="textArea"
+position="26 4 -26"
+rotation="0 -30 0"
+
+text="value: Gold; color: #F0A500; align: center; width: 150; opacity: 1; font: roboto; side: double"
+></a-entity>
+
+<!-- A-Frame Genie Bet Text -->
+<a-entity visible="false"
+id="genieBetText"
+position="72.5 20 -111" rotation="0 -45 0" scale="1 1 1"
+
+text="value: Bet for $1,000 Gold; color: #F0A500; align: center; width: 150; opacity: 0; font: roboto; side: double"
+
+animation__opacIn="property: text.opacity; from: 0; to: 1; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: eventChallengeStart"
+
+animation__opacOut="property: text.opacity; from: 1; to: 0; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: eventChallengeEnd"
+
+></a-entity>
+
+<!-- - - - - - - - - - - Environment - - - - - - - - - - -->
+<!-- Three Color Gradient Sky -->
+<a-sky id="sky" geometry=""
+rotation="0 -90 0" scale="1 1 1"
+
+material="shader: threeColorGradientShader; topColor: #99154E; middleColor: #99154E; bottomColor: #372643;"
+
+animation__sunrise="property: material.topColor; from: #99154E; to: #CF7500; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__sunday="property: material.topColor; from: #CF7500; to: #CF7500; dur: 480000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__sunset="property: material.topColor; from: #CF7500; to: #99154E; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__nightin="property: material.topColor; from: #99154E; to: #372643; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__night="property: material.topColor; from: #372643; to: #372643; dur: 480000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+
+animation__nightout="property: material.topColor; from: #372643; to: #99154E; dur: 120000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true;"
+></a-sky>
+
+<!-- Night Sky -->
+<a-entity id="nightsky" mixin="starfade" visible="true"
+position="0 0 0" rotation="0 0 0" scale="1 1 1"
+geometry="primitive: sphere; radius:460;"
+material="opacity: 0; src: #skyAlpha; alphaTest: 0.89; transparent: true; side: double; blending: multiply;" 
+
+animation__rotate1="property: object3D.rotation.x; from: 0; to: -360; dur: 720000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__rotate2="property: object3D.rotation.z; from: 0; to: 360; dur: 1440000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Star Color -->
+<a-entity id="nightcolor" visible="true" mixin=""
+position="0 0 0" rotation="0 0 0" scale="1 1 1"
+geometry="primitive: sphere; radius: 480;"
+
+material="shader: threeColorGradientShader; topColor: #159957; middleColor: #3e1599; bottomColor: #db116e; opacity: 0; side: double; blending: normal;" 
+
+animation__colors1="property: material.topColor; from: #159957; to: #d9b620; dur: 50000; delay: 0; loop: true; dir: alternate; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__colors2="property: material.middleColor; from: #3e1599; to: #d96820; dur: 70000; delay: 0; loop: true; dir: alternate; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__colors3="property: material.bottomColor; from: #db116e; to: #3f8644; dur: 60000; delay: 0; loop: true; dir: alternate; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Sky Dome Top -->
+<a-entity id="skyDomeTop" 
+geometry="primitive: cone; radius-top: 125; radius-bottom: 490; height: 400; openEnded: true; segmentsHeight: 4; segmentsRadial: 16"
+rotation="0 0 0" position="0 200 0" scale="1 1 1"
+material="color: #2a7bd9; emissive: #2a7bd9; emissiveIntensity: 0.25; wireframe: true; opacity: 1; fog: false; roughness: 0.42"
+></a-entity>
+
+<!-- Ocean Floor -->
+<a-entity id="oceanFloor" 
+geometry="primitive: cone; radius-top: 490; radius-bottom: 125; height: 400; openEnded: true; segmentsHeight: 4; segmentsRadial: 16"
+rotation="0 0 0" position="0 -200 0" scale="1 1 1"
+material="color: #113865; emissive: #113865; emissiveIntensity: 1; wireframe: true; opacity: 1; fog: false; roughness: 0.42"
+></a-entity>
+
+<!-- Sun -->
+<a-entity id="sunOuter"
+position="0 0 0"
+rotation="10 -10 0"
+
+animation__sunRotate="property: object3D.rotation.x; from: 0; to: 360; dur: 1440000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;">
+<!-- Directional Light -->
+<a-entity id="directionalLight"
+light="type: directional; color: #F0A500; intensity: 4.5; castShadow: false" position="0 0 -1"
+
+animation__eventHighNoon1="property: light.intensity; from: 4.5; to: 16; dur: 5000; delay: 0; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventHighNoon"
+
+animation__eventHighNoon2="property: light.intensity; from: 16; to: 16; dur: 80000; delay: 5000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: eventHighNoon"
+
+animation__eventHighNoon3="property: light.intensity; from: 16; to: 4.5; dur: 5000; delay: 85000; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventHighNoon"
+
+
+
+
+
+
+></a-entity> 
+<!-- Sun Graphic -->
+<a-entity id="sun" src="" class="" mixin="sunfade sunblend" visible="true"
+position="0 0 -350" rotation="0 0 0" scale="1 1 1"
+geometry="primitive: circle; radius: 30; segments: 32; thetaStart: 0; thetaLength: 360"
+material="color: #F0A500; opacity: 1; side: front; wireframe: true; wireframeLinewidth: 4; emissive: #F0A500; emissiveIntensity: 1; blending: subtractive; roughness: 0.42"
+></a-entity>
+<!-- Sun Backlight -->
+<a-entity id="sunback" src="" class="" mixin="sunfade" visible="true"
+position="0 0 -355" rotation="0 0 0" scale="1 1 1"
+geometry="primitive: circle; radius: 31; segments: 32; thetaStart: 0; thetaLength: 360"
+material="shader: flat; color: #CF7500; opacity: 1; side: front; wireframe: false;"
+
+animation__eventHighNoon1="property: material.color; from: #CF7500; to: #F0A500; dur: 5000; delay: 0; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventHighNoon"
+
+animation__eventHighNoon2="property: material.color; from: #F0A500; to: #F0A500; dur: 80000; delay: 5000; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventHighNoon"
+
+animation__eventHighNoon3="property: material.color; from: #F0A500; to: #CF7500; dur: 5000; delay: 85000; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventHighNoon"
+></a-entity>
+</a-entity>
+
+<!-- Moon -->
+<a-entity id="moonOuter"
+position="0 0 0"
+rotation="10 -10 0"
+
+animation__moonRotate="property: object3D.rotation.x; from: 180; to: 540; dur: 1440000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;">
+<!-- Directional Light -->
+<a-entity id="moonLight"
+light="type: directional; color: #593abf; intensity: 2; castShadow: false" position="0 0 -1"
+
+animation__eventBlueMoon1="property: light.intensity; from: 2; to: 12; dur: 5000; delay: 0; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventBlueMoon"
+
+animation__eventBlueMoon2="property: light.intensity; from: 12; to: 12; dur: 80000; delay: 5000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: eventBlueMoon"
+
+animation__eventBlueMoon3="property: light.intensity; from: 12; to: 2; dur: 5000; delay: 85000; loop: false; dir: normal; easing: easeOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventBlueMoon"
+
+
+></a-entity> 
+<!-- Moon Graphic -->
+<a-entity id="moon" src="" class="" mixin="moonfade moonblend" visible="true"
+position="0 0 -345" rotation="0 0 0" scale="1 1 1"
+geometry="primitive: circle; radius: 24; segments: 32; thetaStart: 0; thetaLength: 360"
+material="color: #5c2196; opacity: 0.25; side: front; wireframe: true; wireframeLinewidth: 4; emissive: #8138c9; emissiveIntensity: 1; blending: subtractive; roughness: 0.42"
+></a-entity>
+<!-- Moon Backlight -->
+<a-entity id="moonback" src="" class="" mixin="moonfade" visible="true"
+position="0 0 -348" rotation="0 0 0" scale="1 1 1"
+geometry="primitive: circle; radius: 25; segments: 32; thetaStart: 0; thetaLength: 360"
+material="shader: flat; color: #593abf; opacity: 0.25; side: double;"
+
+
+animation__eventBlueMoon1="property: material.color; from: #593abf; to: #5c2196; dur: 5000; delay: 0; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventBlueMoon"
+
+animation__eventBlueMoon2="property: material.color; from: #5c2196; to: #5c2196; dur: 80000; delay: 5000; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventBlueMoon"
+
+animation__eventBlueMoon3="property: material.color; from: #5c2196; to: #593abf; dur: 5000; delay: 85000; loop: false; dir: normal; easing: easeInSine; elasticity: 400; autoplay: false; enabled: true; startEvents: eventBlueMoon"
+></a-entity>
+
+</a-entity>
+
+
+
+<!-- Genie -->
+<a-entity id="genie"
+rotation="105 -30 10" position="170 0 -125" scale="42 42 42"
+gltf-model="#genieWireframe"
+
+
+animation__sway="property: rotation; from: 105 -30 10; to: 105 -33 12; dur: 13000; delay: 0; loop: true; dir: alternate; easing: easeInOutBack; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__breathe="property: scale; from: 43 43 43; to: 41 41 41; dur: 5500; delay: 0; loop: true; dir: alternate; easing: easeInOutCirc; elasticity: 200; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Genie 2 -->
+<a-entity id="genie2"
+rotation="105 -30 10" position="75 0 -121" scale="6 6 6"
+gltf-model="#genieWireframe"
+
+animation__sway="property: rotation; from: 105 -30 10; to: 105 -31 11; dur: 13000; delay: 100; loop: true; dir: alternate; easing: easeInOutBack; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__breathe="property: scale; from: 6.5 6.5 6.5; to: 6.25 6.25 6.25; dur: 5500; delay: 100; loop: true; dir: alternate; easing: easeInOutCirc; elasticity: 200; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Hades -->
+<a-entity id="hades" visible="false" animation-mixer="timeScale:0.25"
+rotation="90 -30 100" position="-90 100 -250" scale="300 300 300"
+gltf-model="#hades-anim"
+
+></a-entity>
+
+
+<!-- - - - - - - - - - - Floor - - - - - - - - - - -->
+
+<!-- Grid Floor -->
+<a-entity id="gridFloor" 
+geometry="primitive: plane; width: 500; height: 500;"
+rotation="90 0 0" position="0 0 0" scale="1 1 1"
+material="src: #grid; repeat: 500 500; color: #99154E; emissive: #99154E; emissiveIntensity: 1; opacity: 0.5; transparent: true; metalness:0.8; roughness: 0.42;  side: double;"
+></a-entity>
+
+
+<!-- - - - - - - - - - - Oasis - - - - - - - - - - -->
+<a-entity id="oasis"
+position="154 0 -115"
+scale="1 1 1"
+>
+<!-- Pond -->
+<a-entity id="pond" 
+geometry="primitive: circle; radius: 22;"
+rotation="90 0 0" position="0 0 0" scale="1 1 1"
+material="color: #2a7bd9; emissive: #2a7bd9; emissiveIntensity: 1; wireframe: true; opacity: 1; fog: false; roughness: 0.69"
+></a-entity>
+
+<!-- Palm Tree 1 -->
+<a-entity id="palmTree1" mixin="palmTree"
+position="-5 0 -20"
+rotation="0 90 0"
+scale="2 2 2"
+></a-entity>
+
+<!-- Palm Tree 2 -->
+<a-entity id="palmTree2" mixin="palmTree"
+position="20 0 -20"
+rotation="0 30 0"
+scale="2.5 2.5 2.5"
+></a-entity>
+
+<!-- Palm Tree 3 -->
+<a-entity id="palmTree3" mixin="palmTree"
+position="20 0 5"
+rotation="0 120 0"
+scale="1.75 1.75 1.75"
+></a-entity>
+
+<!-- Palm Tree 4 -->
+<a-entity id="palmTree4" mixin="palmTree"
+position="-30 0 -100"
+rotation="0 45 0"
+scale="2 2 2"
+></a-entity>
+
+<!-- Palm Tree 5 -->
+<a-entity id="palmTree5" mixin="palmTree"
+position="-131 0 -42"
+rotation="0 115 0"
+scale="2 2 2"
+></a-entity>
+
+<!-- End Oasis -->
+</a-entity>
+
+<!-- - - - - - - - - - - Cactus - - - - - - - - - - -->
+
+<a-entity id="cacti">
+<!-- Cactus 1 -->
+<a-entity id="cactus1" mixin="cactus"
+position="36 0 50"
+rotation="0 15 0"
+scale="2 2 2"
+></a-entity>
+
+<!-- Cactus 2 -->
+<a-entity id="cactus2" mixin="cactus"
+scale="3 3 3"
+position="-5 0 80"
+rotation="0 0 0"
+></a-entity>
+
+<!-- Cactus 3 -->
+<a-entity id="cactus3" mixin="cactus"
+scale="1.75 1.75 1.75"
+position="-60 0 50"
+rotation="0 180 0"
+></a-entity>
+
+<!-- Cactus 4 -->
+<a-entity id="cactus4" mixin="cactus"
+position="42 0 160"
+rotation="0 45 0"
+scale="2.5 2.5 2.5"
+></a-entity>
+
+<!-- End Cacti -->
+</a-entity>
+
+<!-- - - - - - - - - - - Coin Piles - - - - - - - - - - 
+
+<a-entity id="coinpiles">
+<!-- Coin Pile 1 
+<a-entity id="pile1"
+scale="0.25 0.2 0.25"
+position="52 0 -40"
+rotation="0 45 0"
+
+gltf-model="#coinPile1"
+></a-entity>-->
+
+<!-- Coin Pile 2
+<a-entity id="pile2"
+scale="0.25 0.2 0.25"
+position="65 0 -20"
+rotation="0 15 0"
+
+gltf-model="#coinPile2"
+></a-entity> -->
+<!--End Coin Piles 
+</a-entity> -->
+
+
+
+<!-- - - - - - - - - - - Pyramids - - - - - - - - - - -->
+
+<a-mixin id="pyColor"
+
+material="color: #99154E; emissive: #99154E; emissiveIntensity: 1; opacity: 1; side: double; wireframe: true; wireframeLinewidth: 2"
+></a-mixin>
+
+<a-entity id="pyramids">
+<!-- Pyramid 1-->
+<a-entity id="pyramid1"
+scale="50 25 50"
+position="-57 0 -59"
+rotation="0 30 0"
+>
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+
+<!-- Pyramid 2 -->
+<a-entity id="pyramid2"
+scale="80 40 80"
+position="-370 0 -75"
+rotation="0 135 0"
+>
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+
+
+<!-- Pyramid 3-->
+<a-entity id="pyramid3"
+scale="80 40 80"
+position="-180 0 280"
+rotation="0 90 0"
+>
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+
+
+<!-- Pyramid 4 -->
+<a-entity id="pyramid4"
+scale="80 40 80"
+position="285 0 -80"
+rotation="0 60 0"
+>
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+
+
+<!-- Pyramid 5-->
+<a-entity id="pyramid5"
+scale="50 25 50"
+position="225 0 170"
+rotation="0 75 0"
+>
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+
+
+<!-- Pyramid 6 -->
+<a-entity id="pyramid6"
+scale="50 25 50"
+position="184 0 -210"
+rotation="0 135 0"
+>
+<!-- 3 4 Triangles into a prism pyramid -->
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+
+
+<!-- Pyramid 7 -->
+<a-entity id="pyramid7"
+scale="50 25 50"
+position="15 0 -350"
+rotation="0 30 0"
+>
+<!-- 3 4 Triangles into a prism pyramid -->
+<!-- Triangle -->
+<a-triangle id="tri1" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0.866 0 -0.5"
+></a-triangle>
+
+<a-triangle id="tri2" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="-0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+
+<a-triangle id="tri3" mixin="pyColor"
+color="#CCC"
+vertex-a="0 2 0"
+vertex-b="0.866 0 -0.5"
+vertex-c="0 0 1"
+></a-triangle>
+</a-entity>
+<!-- End Pyramids -->
+</a-entity>
+
+
+<!-- - - - - - - - - - - Below Ground - - - - - - - - - - -->
+
+<a-entity id="goldfish">
+<!-- Goldfish 1 Track -->
+<a-curve id="goldfish1track">
+<a-curve-point position="-100 -50 0"></a-curve-point>
+<a-curve-point position="-100 -50 -100"></a-curve-point>
+<a-curve-point position="0 -50 -200"></a-curve-point>
+<a-curve-point position="100 -50 -100"></a-curve-point>
+<a-curve-point position="200 -25 0"></a-curve-point>
+<a-curve-point position="100 -25 200"></a-curve-point>
+<a-curve-point position="0 -25 300"></a-curve-point>
+<a-curve-point position="-100 -50 200"></a-curve-point>
+<a-curve-point position="-100 -50 0"></a-curve-point>
+</a-curve>
+<!-- goldfish 1 -->
+<a-entity id="goldfish"
+scale="3 3 3"
+gltf-model="#goldfish-wf" animation-mixer 
+alongpath="curve: #goldfish1track; dur: 480000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish Track 2 -->
+<a-curve id="goldfish2track" rotation="0 90 0">
+<a-curve-point position="-100 -150 0"></a-curve-point>
+<a-curve-point position="-100 -150 -100"></a-curve-point>
+<a-curve-point position="0 -150 -200"></a-curve-point>
+<a-curve-point position="100 -150 -100"></a-curve-point>
+<a-curve-point position="200 -100 0"></a-curve-point>
+<a-curve-point position="100 -100 200"></a-curve-point>
+<a-curve-point position="0 -100 300"></a-curve-point>
+<a-curve-point position="-100 -150 200"></a-curve-point>
+<a-curve-point position="-100 -150 0"></a-curve-point>
+</a-curve>
+<!-- goldfish 2 | Large -->
+<a-entity id="goldfish2"
+scale="10 10 10"
+gltf-model="#goldfish-wf" animation-mixer 
+alongpath="curve: #goldfish2track; dur: 360000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish 3 Track -->
+<a-curve id="goldfish3track" rotation="0 270 0">
+<a-curve-point position="-100 -75 0"></a-curve-point>
+<a-curve-point position="-100 -75 -100"></a-curve-point>
+<a-curve-point position="0 -75 -200"></a-curve-point>
+<a-curve-point position="100 -75 -100"></a-curve-point>
+<a-curve-point position="200 -100 0"></a-curve-point>
+<a-curve-point position="100 -100 200"></a-curve-point>
+<a-curve-point position="0 -100 300"></a-curve-point>
+<a-curve-point position="-100 -75 200"></a-curve-point>
+<a-curve-point position="-100 -75 0"></a-curve-point>
+</a-curve>
+<!-- goldfish 3 -->
+<a-entity id="goldfish3"
+scale="4 4 4"
+gltf-model="#goldfish-wf" animation-mixer 
+alongpath="curve: #goldfish3track; dur: 420000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish 4 Track -->
+<a-curve id="goldfish4track" rotation="0 45 0">
+
+<a-curve-point position="-100 -125 0"></a-curve-point>
+<a-curve-point position="-100 -125 200"></a-curve-point>
+<a-curve-point position="0 -75 300"></a-curve-point>
+<a-curve-point position="100 -75 200"></a-curve-point>
+<a-curve-point position="200 -75 0"></a-curve-point>
+<a-curve-point position="100 -125 -100"></a-curve-point>
+<a-curve-point position="0 -125 -200"></a-curve-point>
+<a-curve-point position="-100 -125 -100"></a-curve-point>
+<a-curve-point position="-100 -125 0"></a-curve-point>
+
+</a-curve>
+<!-- goldfish 4 -->
+<a-entity id="goldfish4"
+scale="3 3 3"
+gltf-model="#goldfish-wf" animation-mixer 
+alongpath="curve: #goldfish4track; dur: 720000; loop: true; rotate: true"
+></a-entity>
+
+<!-- Goldfish 5 Track -->
+<a-curve id="goldfish5track" rotation="0 45 0">
+
+<a-curve-point position="-100 -25 0"></a-curve-point>
+<a-curve-point position="-100 -25 200"></a-curve-point>
+<a-curve-point position="0 -50 300"></a-curve-point>
+<a-curve-point position="100 -50 200"></a-curve-point>
+<a-curve-point position="200 -50 0"></a-curve-point>
+<a-curve-point position="100 -25 -100"></a-curve-point>
+<a-curve-point position="0 -25 -200"></a-curve-point>
+<a-curve-point position="-100 -25 -100"></a-curve-point>
+<a-curve-point position="-100 -25 0"></a-curve-point>
+
+</a-curve>
+<!-- goldfish 5 -->
+<a-entity id="goldfish5"
+scale="3 3 3"
+gltf-model="#goldfish-wf" animation-mixer 
+alongpath="curve: #goldfish5track; dur: 480000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish 6 Track | Tiny on User -->
+<a-curve id="goldfish6track" rotation="0 180 0">
+
+<a-curve-point position="-10 -5 0"></a-curve-point>
+<a-curve-point position="-10 -5 20"></a-curve-point>
+<a-curve-point position="0 -10 30"></a-curve-point>
+<a-curve-point position="10 -10 20"></a-curve-point>
+<a-curve-point position="20 -10 0"></a-curve-point>
+<a-curve-point position="10 -5 -10"></a-curve-point>
+<a-curve-point position="0 -5 -20"></a-curve-point>
+<a-curve-point position="-10 -5 -10"></a-curve-point>
+<a-curve-point position="-10 -5 0"></a-curve-point>
+
+</a-curve>
+<!-- goldfish 6 -->
+<a-entity id="goldfish6"
+scale="1 1 1"
+gltf-model="#goldfish-wf" animation-mixer 
+alongpath="curve: #goldfish6track; dur: 60000; loop: true; rotate: true"
+></a-entity>
+
+<!-- - - - - - - - - - - Sky - - - - - - - - - - -->
+
+
+<!-- Goldfish 1 Track -->
+<a-curve id="goldfish1tracksky">
+<a-curve-point position="-100 50 0"></a-curve-point>
+<a-curve-point position="-100 50 -100"></a-curve-point>
+<a-curve-point position="0 50 -200"></a-curve-point>
+<a-curve-point position="100 50 -100"></a-curve-point>
+<a-curve-point position="200 25 0"></a-curve-point>
+<a-curve-point position="100 25 200"></a-curve-point>
+<a-curve-point position="0 25 300"></a-curve-point>
+<a-curve-point position="-100 50 200"></a-curve-point>
+<a-curve-point position="-100 50 0"></a-curve-point>
+</a-curve>
+<!-- goldfish 1 -->
+<a-entity id="goldfishsky"
+scale="3 3 3"
+gltf-model="#goldfish" animation-mixer 
+alongpath="curve: #goldfish1tracksky; dur: 480000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish Track 2 -->
+<a-curve id="goldfish2tracksky" rotation="0 90 0">
+<a-curve-point position="-100 150 0"></a-curve-point>
+<a-curve-point position="-100 150 -100"></a-curve-point>
+<a-curve-point position="0 150 -200"></a-curve-point>
+<a-curve-point position="100 150 -100"></a-curve-point>
+<a-curve-point position="200 100 0"></a-curve-point>
+<a-curve-point position="100 100 200"></a-curve-point>
+<a-curve-point position="0 100 300"></a-curve-point>
+<a-curve-point position="-100 150 200"></a-curve-point>
+<a-curve-point position="-100 150 0"></a-curve-point>
+</a-curve>
+<!-- goldfish 2 | Large -->
+<a-entity id="goldfish2sky"
+scale="10 10 10"
+gltf-model="#goldfish" animation-mixer 
+alongpath="curve: #goldfish2tracksky; dur: 360000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish 3 Track -->
+<a-curve id="goldfish3tracksky" rotation="0 270 0">
+<a-curve-point position="-100 75 0"></a-curve-point>
+<a-curve-point position="-100 75 -100"></a-curve-point>
+<a-curve-point position="0 75 -200"></a-curve-point>
+<a-curve-point position="100 75 -100"></a-curve-point>
+<a-curve-point position="200 100 0"></a-curve-point>
+<a-curve-point position="100 100 200"></a-curve-point>
+<a-curve-point position="0 100 300"></a-curve-point>
+<a-curve-point position="-100 75 200"></a-curve-point>
+<a-curve-point position="-100 75 0"></a-curve-point>
+</a-curve>
+<!-- goldfish 3 -->
+<a-entity id="goldfish3sky"
+scale="4 4 4"
+gltf-model="#goldfish" animation-mixer 
+alongpath="curve: #goldfish3tracksky; dur: 420000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish 4 Track -->
+<a-curve id="goldfish4tracksky" rotation="0 45 0">
+
+<a-curve-point position="-100 125 0"></a-curve-point>
+<a-curve-point position="-100 125 200"></a-curve-point>
+<a-curve-point position="0 75 300"></a-curve-point>
+<a-curve-point position="100 75 200"></a-curve-point>
+<a-curve-point position="200 75 0"></a-curve-point>
+<a-curve-point position="100 125 -100"></a-curve-point>
+<a-curve-point position="0 125 -200"></a-curve-point>
+<a-curve-point position="-100 125 -100"></a-curve-point>
+<a-curve-point position="-100 125 0"></a-curve-point>
+
+</a-curve>
+<!-- goldfish 4 -->
+<a-entity id="goldfish4sky"
+scale="3 3 3"
+gltf-model="#goldfish" animation-mixer 
+alongpath="curve: #goldfish4tracksky; dur: 720000; loop: true; rotate: true"
+></a-entity>
+
+<!-- Goldfish 5 Track -->
+<a-curve id="goldfish5tracksky" rotation="0 45 0">
+
+<a-curve-point position="-100 25 0"></a-curve-point>
+<a-curve-point position="-100 25 200"></a-curve-point>
+<a-curve-point position="0 50 300"></a-curve-point>
+<a-curve-point position="100 50 200"></a-curve-point>
+<a-curve-point position="200 50 0"></a-curve-point>
+<a-curve-point position="100 25 -100"></a-curve-point>
+<a-curve-point position="0 25 -200"></a-curve-point>
+<a-curve-point position="-100 25 -100"></a-curve-point>
+<a-curve-point position="-100 25 0"></a-curve-point>
+
+</a-curve>
+<!-- goldfish 5 -->
+<a-entity id="goldfish5sky"
+scale="3 3 3"
+gltf-model="#goldfish" animation-mixer 
+alongpath="curve: #goldfish5tracksky; dur: 480000; loop: true; rotate: true"
+></a-entity>
+
+
+<!-- Goldfish 6 Track -->
+<a-curve id="goldfish6tracksky" rotation="0 180 0">
+
+<a-curve-point position="-10 5 0"></a-curve-point>
+<a-curve-point position="-10 5 20"></a-curve-point>
+<a-curve-point position="0 10 30"></a-curve-point>
+<a-curve-point position="10 10 20"></a-curve-point>
+<a-curve-point position="20 10 0"></a-curve-point>
+<a-curve-point position="10 5 -10"></a-curve-point>
+<a-curve-point position="0 5 -20"></a-curve-point>
+<a-curve-point position="-10 5 -10"></a-curve-point>
+<a-curve-point position="-10 5 0"></a-curve-point>
+
+</a-curve>
+<!-- goldfish 6 -->
+<a-entity id="goldfish6sky"
+scale="1 1 1"
+gltf-model="#goldfish" animation-mixer 
+alongpath="curve: #goldfish6tracksky; dur: 60000; loop: true; rotate: true"
+></a-entity>
+<!-- End Goldfish -->
+</a-entity>
+
+<!-- - - - - - - - - - - Clouds - - - - - - - - - - -->
+<a-entity id="clouds">
+<!-- Cloud 1 Track -->
+<a-curve id="cloud1track">
+<a-curve-point position="-100 150 0"></a-curve-point>
+<a-curve-point position="-100 150 -100"></a-curve-point>
+<a-curve-point position="0 125 -200"></a-curve-point>
+<a-curve-point position="100 150 -100"></a-curve-point>
+<a-curve-point position="200 150 0"></a-curve-point>
+<a-curve-point position="100 150 200"></a-curve-point>
+<a-curve-point position="0 150 300"></a-curve-point>
+<a-curve-point position="-100 125 200"></a-curve-point>
+<a-curve-point position="-100 150 0"></a-curve-point>
+</a-curve>
+<!-- Cloud 1 -->
+<a-entity id="cloud1"
+scale="3 3 3"
+obj-model="obj: #cloudobj"
+material="color: #d39db4; emissive: #d39db4; emissiveIntensity: 1; opacity: 1; side: double; wireframe: true; wireframeLinewidth: 2"
+
+alongpath="curve: #cloud1track; dur: 720000; loop: true; rotate: false"
+
+animation__1="property: object3D.rotation.x; from: 0; to: 360; dur: 250000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__2="property: object3D.rotation.y; from: 0; to: 360; dur: 300000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__3="property: object3D.rotation.z; from: 0; to: 360; dur: 400000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+
+<!-- Cloud 2 Track -->
+<a-curve id="cloud2track" rotation="0 180 0">
+<a-curve-point position="-100 200 0"></a-curve-point>
+<a-curve-point position="-100 200 -100"></a-curve-point>
+<a-curve-point position="0 175 -200"></a-curve-point>
+<a-curve-point position="100 200 -100"></a-curve-point>
+<a-curve-point position="200 200 0"></a-curve-point>
+<a-curve-point position="100 200 200"></a-curve-point>
+<a-curve-point position="0 200 300"></a-curve-point>
+<a-curve-point position="-100 175 200"></a-curve-point>
+<a-curve-point position="-100 200 0"></a-curve-point>
+</a-curve>
+<!-- Cloud 2 -->
+<a-entity id="cloud2"
+scale="2 2 2"
+obj-model="obj: #cloudobj"
+material="color: #d39db4; emissive: #d39db4; emissiveIntensity: 1; opacity: 1; side: double; wireframe: true; wireframeLinewidth: 2"
+
+alongpath="curve: #cloud2track; dur: 700000; loop: true; rotate: false"
+
+animation__1="property: object3D.rotation.x; from: 0; to: -360; dur: 250000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__2="property: object3D.rotation.y; from: 0; to: 360; dur: 300000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__3="property: object3D.rotation.z; from: 0; to: -360; dur: 400000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Cloud 3 Track -->
+<a-curve id="cloud3track" rotation="0 90 0">
+<a-curve-point position="-100 100 0"></a-curve-point>
+<a-curve-point position="-100 100 -100"></a-curve-point>
+<a-curve-point position="0 75 -100"></a-curve-point>
+<a-curve-point position="100 100 -100"></a-curve-point>
+<a-curve-point position="200 100 0"></a-curve-point>
+<a-curve-point position="100 100 200"></a-curve-point>
+<a-curve-point position="0 100 300"></a-curve-point>
+<a-curve-point position="-100 75 200"></a-curve-point>
+<a-curve-point position="-100 100 0"></a-curve-point>
+</a-curve>
+<!-- Cloud 3 -->
+<a-entity id="cloud3"
+scale="1 1 1"
+obj-model="obj: #cloudobj"
+material="color: #d39db4; emissive: #d39db4; emissiveIntensity: 1; opacity: 1; side: double; wireframe: true; wireframeLinewidth: 2"
+
+alongpath="curve: #cloud3track; dur: 680000; loop: true; rotate: false"
+
+animation__1="property: object3D.rotation.x; from: 0; to: 360; dur: 250000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__2="property: object3D.rotation.y; from: 0; to: -360; dur: 300000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__3="property: object3D.rotation.z; from: 0; to: 360; dur: 400000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+<!-- End Clouds -->
+</a-entity>
+
+
+<!-- - - - - - - - - - - Camera - - - - - - - - - - -->
+<a-entity id="playerbase"
+position="0 0 0" visible="true" rotation="0 0 0"
+>
+<!-- Camera | Orbit Controls -->
+<a-entity id="orbit"
+camera
+raycaster="enabled: true; autoRefresh: true; objects: .clickable; origin: 0, 0, 0; direction: 0, 0, -1; far: infinity; near: 0; interval: 0; lineColor: red; lineOpacity: 0.69; showLine: false; useWorldCoordinates: false"
+orbit-controls="
+autoRotate: false;
+autoRotateSpeed: 0.1;
+dampingFactor: 0.1;
+enabled: true;
+enableDamping: true;
+enableKeys: true;
+enablePan: true;
+enableRotate: true;
+enableZoom: true;
+initialPosition: 3 3 7;
+keyPanSpeed: 7;
+maxDistance: 30;
+minDistance: 1;
+maxPolarAngle: 180;
+minPolarAngle: 0;
+minZoom: 1;
+panSpeed: 1;
+rotateSpeed: 0.05;
+screenSpacePanning: false;
+target: 0 2 0;
+zoomSpeed: 0.5;
+"></a-entity>
+<!-- Cursor Rig -->
+<a-entity id="rig" 
+rotation="0 0 0"
+position="0 4 4"
+>
+    <a-entity id="cursor" visible="true" 
+    position="0 -1.25 -2.5"
+    scale="1 1 1"
+
+    cursor="fuse: false; rayOrigin: orbit; mouseCursorStylesEnabled: true;"
+    ></a-entity>
+</a-entity>
+
+</a-entity> 
+
+
+<!-- - - - - - - - - - - Lights - - - - - - - - - - -->
+<!-- Lights -->
+
+<!-- Point -->
+<a-entity id="pointLight"
+light="type: point; intensity: 0.5; distance: 50; decay: 2" position="0 0 0"
+target="#clickerButton"
+></a-entity>
+
+<!-- Ambient -->
+<a-entity id="ambientLight"
+light="type: ambient; color: #F88F01; intensity: 1"
+></a-entity> 
+</a-scene>
+
+<!-- End Inner -->
+</div>
+<!-- End Main -->
+</div>
+
+
+
+<!-- End Body Wrapper -->
+</div>
+
+
+<!--
+Phantom by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

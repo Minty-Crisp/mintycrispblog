@@ -1,0 +1,173 @@
+
+/* Notification ID */
+#notificationBlock {
+opacity: 1;
+background-color: #328d6b;
+padding-left: 1em;
+}
+
+#notificationBlock h2 {
+margin-bottom: 0;
+}
+
+/* All HTMl Elements Container Class*/
+.grid-container  {
+display: block;
+height: 100%;
+width: 100%;
+flex-direction: column;
+grid-template-areas: 
+'notification' 
+'aframe-block controller';
+}
+/* A-Frame and Controller Elements Container Class */
+.grid-container2  {
+display: block;
+height: 100%;
+width: 100%;
+flex-direction: row;
+grid-template-areas: 
+'notification' 
+'aframe-block controller';
+}
+
+#aframeController {
+display: inline-flex;
+flex-direction: row;
+height: 94%;
+}
+
+
+/* A-Frame Block Class */
+.aframe-block {
+grid-area: aframe-block;
+width: 60%;
+max-height: 100%;
+max-width: 100%;
+height: 100%;
+width: 100%;
+}
+
+/* Controller Section ID */
+#controllerBlock {
+
+/* Align Node All Container to Center */
+text-align: center;
+
+/* Max Height */
+max-height: 100%;
+
+/* Test Background */ 
+background-color: #4b98e6; 
+
+/* Arrow Guide */
+background-image: url("../img/controller-arrow-guide.png");
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+/*  Controller Section Class */
+.controller {
+grid-area: controller;
+width: 39.5%;
+max-height:100%;
+max-width:100%;
+height: 100%;
+width: 100%;
+
+}
+
+/* SVG Lock ID */
+#lock {
+max-height: 100%;
+max-width: 100%;
+overflow: visible;
+position: relative;
+top: 50%;
+transform: translateY(-50%);
+}
+
+/* SVG PatternLock Class */
+svg.patternlock {
+
+}
+
+/* Pattern Lock Defaults */
+/* Pattern Lock Defaults | Node Circle Highlight Outer */
+svg.patternlock g.lock-actives circle {
+fill: #c6bdbd;
+opacity: .75;
+animation: lock-activate-dot-anim .15s 0s ease 1;
+transform-origin: center;
+stroke-width: 1;
+stroke: blue;
+}
+
+/* Pattern Lock Defaults | Node Line */
+svg.patternlock g.lock-lines line {
+opacity: 0.75;
+stroke-width: 4;
+stroke: #ada6a6;
+stroke-linecap: round;
+}
+
+/* Pattern Lock Defaults | Node Circle Inner */
+svg.patternlock g.lock-dots circle {
+fill: #c6bdbd;
+}
+
+/* Pattern Lock Success */
+/* Pattern Lock Success | Node Circle Outer */
+svg.patternlock.success g.lock-actives circle {
+ fill: #28d06f;
+ stroke-width: 1;
+ stroke: #28d06f;
+}
+
+/* Pattern Lock Success | Node Line */
+svg.patternlock.success g.lock-lines line {
+stroke: #26be66;
+}
+/* Pattern Lock Success | Node Circle Inner */
+svg.patternlock.success g.lock-dots circle {
+fill: #c6bdbd;
+stroke-width: 1;
+stroke: #28d06f;
+}
+
+/* Pattern Lock Error */
+/* Pattern Lock Error | Node Circle Outer */
+svg.patternlock.error g.lock-actives circle {
+fill: #c6bdbd;
+ stroke-width: 1;
+ stroke: red;
+}
+/* Pattern Lock Error | Node Line */
+svg.patternlock.error g.lock-lines line {
+stroke: red;
+}
+/* Pattern Lock Error | Node Circle Inner */
+svg.patternlock.error g.lock-dots circle {
+fill: #c6bdbd;
+stroke-width: 0;
+stroke: #c6bdbd;
+}
+
+
+/* Animations */
+@keyframes lock-activate-dot-anim {
+0% {
+	transform: scale(1.0);
+}
+50% {
+	transform: scale(1.0);
+}
+75% {
+	transform: scale(1.0);
+}
+100% {
+	transform: scale(1.0);
+}
+}
+/* End Animations */

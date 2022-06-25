@@ -1,0 +1,1017 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Minty Crisp | XR Isometric Node Navigation</title>
+<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="./favicon.ico"/>
+<link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!-- Search Info -->
+<meta name="description" content="Minty Crisp | XR Isometric Node Navigation">
+<meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp,node,nodes,grid,locomotion,travel,isometric,iso">
+<!-- Social Media Share -->
+<meta property="og:title" content="Minty Crisp | XR Isometric Node Navigation">
+<meta property="og:type" content="XR">
+<meta property="og:url" content="mintycrisp.com">
+<meta property="og:image" content="assets/img/share.jpg">
+<!-- A-Frame official release 1.3.0 -->
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<!-- A-Frame Extras 6.1.0 -->
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+<!-- Orbit Controls -->
+<script src="https://unpkg.com/aframe-orbit-controls@1.3.0/dist/aframe-orbit-controls.min.js"></script>
+<!-- Look-At -->
+<script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+<!-- JS -->
+<script src="assets/js/nodetravel.js"></script>
+<!-- Font-Awesome -->
+<link href="assets/css/all.min.css" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<link rel="stylesheet" href="assets/css/node-horizontal.css" />
+</head>
+
+<style>
+/* Embedded A-Scene  */
+#allHtml {
+z-index: 0;
+display: block;
+margin-bottom: 2em;
+height: auto;
+width: 100%;
+max-height: 50%;
+aspect-ratio: auto 1 / 0.7;
+pointer-events: auto;
+overflow: hidden;
+contain: paint;
+background-color: #3EB489;
+border: 1em;
+border-color: #3EB489;
+border-style: inset;
+}
+@media screen and (min-width: 640px) {
+#allHtml {
+aspect-ratio: auto 1 / 0.5;
+}
+}
+
+@media screen and (min-width: 1024px) {
+#allHtml {
+aspect-ratio: auto 1 / 0.4;
+}
+}
+@media screen and (min-width: 1400px) {
+#allHtml {
+aspect-ratio: auto 1 / 0.35;
+}
+}
+
+
+</style>
+
+
+<body class="">
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Sticky Logo | Connect Links -->
+<div id="logoBlock" class="sticky" style="z-index: 100">
+<div class="landingName">
+<a href="index.html" class="logo">
+<span class="symbol landingName"><img src="assets/img/logo-site.png" alt="logo" /></span><span class="title landingName">Minty Crisp</span></a></div>
+<span><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style2 fa-github-alt"><span class="label">GitHub</span></a></span>
+<span><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style2 fa-dev"><span class="label">Dev</span></a></span>
+<span><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style2 fa-itch-io"><span class="label">Itch.io</span></a></span>
+<span><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style2 fa-mug-hot"><span class="label">Ko-Fi</span></a></span>
+</div>
+
+<!-- Header -->
+<header id="header">
+<div class="inner">
+
+<!-- Nav -->
+<nav id="navBlock">
+	<ul>
+		<li><a href="#menu">Menu</a></li>
+	</ul>
+</nav>
+
+</div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+<span class="landingName">
+<img id="menuLogo" src="assets/img/logo-site.png" alt="logo"/><h2 id="menuName">Minty Crisp</h2></span>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a id="randomarticle" href="index.html">Open a Random Article of mine</a></li>
+<li><a href="https://github.com/Minty-Crisp">View my Github Repositories</a></li>
+<li><a href="https://glitch.com/@mintycrisp">Remix some of my projects on Glitch</a></li>
+<li><a href="https://dev.to/mintycrisp">Read my Dev.to Articles</a></li>
+<li><a href="https://mintycrisp.itch.io/">Check out my Itch.io Store</a></li>
+<li><a href="https://reddit.com/user/Minty-Crisp/">Spy on my Reddit Comments</a></li>
+<li><a href="https://twitter.com/minty_crisp">Peruse my Tweets</a></li>
+<li><a href="https://www.twitch.tv/mintycrisp0">See my gaming skills on Twitch</a></li>
+<li>Goof around with me on Snapchat : @Minty-Crisp</li>
+<li>Let's discuss Web XR and Games on Discord : @mintycrisp#8102</li>
+<li><a href="https://ko-fi.com/mintycrisp">Ko-fi tips if you enjoy my work</a></li>
+<li><a href="https://www.patreon.com/user/mintycrisp">or Patreon to support me</a></li>
+<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241">My Linkedout work profile to study</a></li>
+<li>Reach me at my Electronic Mail address : minty-crisp@ proton . me</li>
+<li><a href="about-me.html">And more about me, Minty Crisp...</a></li>
+</ul>
+</nav>
+
+<!-- Main -->
+<div id="main">
+<div class="inner">
+
+<div id="mainStick" class="image main sticky">
+<span class="articleTitle" ><h1>XR Isometric Node Navigation</h1>
+</span>
+
+<!-- Entire Body Content -->
+<div id="allHtml" class="grid-container">
+
+<div id="notificationBlock" class="notification">
+<h2 id="notificationText" >Current Location</h2>
+</div>
+
+<!-- Aframe and Controller -->
+<div id="aframeController" class="grid-container2">
+<!-- - - - - - - - - - - A-Frame - - - - - - - - - - -->
+
+<div id="aframeBlock" class="aframe-block">
+
+<a-scene embedded id="ascene"
+node-grid-gen
+device-orientation-permission-ui="enabled: false"
+vr-mode-ui="enabled: false"
+fog="type: exponential; color: #e84db2; density: 0.00025; near: 1; far: 1000;"
+renderer="antialias: true; colorManagement: true; sortObjects: true"
+>
+<!-- - - - - - - - - - - Assets - - - - - - - - - - -->
+<a-assets timeout="3000">
+    <!-- Sky -->
+    <img id="sky1" src="assets/img/sky.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky-alpha" src="assets/img/star-sky-alpha.png" preload="auto" crossorigin="anonymous">
+    <!-- Gradient -->
+    <img id="gradient" src="assets/img/UI-colors.PNG" preload="auto" crossorigin="anonymous">
+
+<!-- - - - - - - - - - - Animation Timeline - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - Mixins - - - - - - - - - - -->
+<a-mixin id="clickableHover" 
+
+animation__onHover="property: scale; to: 1.05 1.05 1.05; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: mouseenter;"
+
+animation__onHover2="property: material.emissiveIntensity; to: 0.1; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: mouseenter;"
+
+animation__onHover3="property: material.opacity; from: 0: to: 1; dur: 1000; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; target: #playerHover;"
+
+animation__offHover="property: scale; to: 1 1 1; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: mouseleave;"
+
+
+animation__offHover2="property: material.emissiveIntensity; to: 0; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: mouseleave;"
+></a-mixin>
+
+<a-mixin id="node" 
+
+geometry="primitive: cylinder;
+height: 2;
+openEnded: false;
+radius: 4;
+segmentsHeight: 9;
+segmentsRadial: 16;
+thetaStart: 0;
+thetaLength: 360"
+material="emissive: #FFFFFF; emissiveIntensity: 0;"></a-mixin>
+
+</a-assets>
+
+
+<!-- - - - - - - - - - - Scene - - - - - - - - - - -->
+
+<a-entity id="titleText"
+position="20 20 -40" scale="1 1 1"
+text="value:XR Isometric/nNode Navigation; width: 100; color: white; align: center; font: sourcecodepro;"
+></a-entity>
+
+
+<!-- - - - - - - - - - - Sky - - - - - - - - - - -->
+<!-- Fading Gradient Alpha Background Night Sky  -->
+<a-sky id="nightsky" material="opacity: 1;" geometry="" rotation="0 -90 0" scale="0.95 0.95 0.95" src="#sky1"
+
+animation__rotate="property: rotation; from: 0 0 0; to: 0 0 360; dur: 800000; delay: 0; loop: true; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: true; enabled: true;"
+></a-sky>
+<!-- Works with Older A-Frame 0.7.0
+<a-camera raycaster="interval: 10" crawling-cursor="target: cursor;"></a-camera>
+<a-cursor id="cursor" geometry="primitive: ring; radius-outer: 0.2; radius-inner: 0.06" material="color: lightblue" opacity="0.7"></a-cursor>
+-->
+<!-- Custom Controls -->
+
+<!-- Big Cursos 
+<a-entity id="bigCursor" visible="true"
+position="0 0 0"
+
+geometry="primitive: cylinder;
+height: 1;
+openEnded: false;
+radius: 2;
+segmentsHeight: 9;
+segmentsRadial: 16;
+thetaStart: 0;
+thetaLength: 360"
+material="color: orange; opacity: 1; emissive: #FFFFFF; emissiveIntensity: 0;"
+movement-controls="enabled: false; controls: gamepad, trackpad, keyboard, touch; speed: 0.5; fly: false; constrainToNavMesh: false; camera: #player;"
+></a-entity>
+rotation="-35.264 45 0"
+-->
+<a-entity id="playerOnBoard" player-travel
+position="0 0 0" visible="true" rotation="0 0 0"
+
+>
+<a-entity id="playerHover" look-at="#player"
+rotation="0 0 0" position="0 5 0" scale="1 1 1"
+geometry="primitive: plane;
+height: 2.5;
+width: 2.5;"
+material="color: #1fceac; emissive: #1fceac; emissiveIntensity: 1; opacity: 0.25; side: both;"
+></a-entity> 
+<a-entity id="playerAvatar" visible="false"
+rotation="0 0 0" position="0 -4 0" scale="1 1 1"
+geometry="primitive: box;
+height: 2;
+width: 5;
+depth: 5;"
+material="color: #1fceac; emissive: #1fceac; emissiveIntensity: 1; opacity: 0.25; side: both;"
+></a-entity> 
+
+<!-- Enables on Ground POV
+spectator: true;
+Magic Camera Numbers: 35.264 45 0
+position="0 45 35.264"
+orbit-controls="
+autoRotate: false;
+autoRotateSpeed: 0.1;
+dampingFactor: 0.1;
+enabled: true;
+enableDamping: true;
+enableKeys: true;
+enablePan: true;
+enableRotate: true;
+enableZoom: true;
+initialPosition: 0 5 7;
+keyPanSpeed: 7;
+maxDistance: 10;
+minDistance: 1;
+maxPolarAngle: 180;
+minPolarAngle: 0;
+minZoom: 0;
+panSpeed: 1;
+rotateSpeed: 0.05;
+screenSpacePanning: false;
+target: 0 1.6 0;
+zoomSpeed: 0.5;"
+-->
+<!--  Player, Head & Controller | Click Cursor & Raycaster  
+movement-controls="enabled: false; controls: gamepad, trackpad, keyboard, touch; speed: 0.5; fly: false; constrainToNavMesh: false; camera: #userView;"
+-->
+<!-- the blank look-at="" allows it to look at it's parent source -->
+<a-entity id="player" 
+rotation="0 0 0"
+position="-12 35.264 20"
+camera="
+active: true;
+near: 0.005;
+far: 1000;
+fov: 80;
+spectator: false;
+zoom: 1;
+"
+look-at=""
+look-controls="enabled: false"
+>
+        <a-entity id="cursor" visible="true" 
+        position="0 0 -2.5"
+        scale="1 1 1"
+        geometry="primitive: ring; radiusInner: 0.04; radiusOuter: 0.06"
+        material="color: red; shader: flat; side: double"
+        raycaster="enabled: true; autoRefresh: true; objects: .clickable; origin: 0, 0, 0; direction: 0, 0, -1; far: infinity; near: 0; interval: 0; lineColor: red; lineOpacity: 0.69; showLine: false; useWorldCoordinates: false"
+        cursor="fuse: false; rayOrigin: cursor; mouseCursorStylesEnabled: true;"
+
+        animation__fusing="property: scale; from: 1 1 1; to: 0.05 0.05 0.05; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: false; startEvents: fusing;"
+
+        animation__cursorAnim1="property: geometry.thetaLength; from: 360; to: 0; dur: 1000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: false; startEvents: fusing"
+        animation__cursorAnim2="property: rotation; from: 0 0 0; to: 0 180 180; dur: 1; delay: 1000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: false; startEvents: fusing"
+        animation__cursorAnim3="property: geometry.thetaLength; from: 0; to: 360; dur: 1000; delay: 2001; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: false; startEvents: fusing"
+        animation__cursorAnim4="property: rotation; from: 0 180 180; to: 0 0 0; dur: 1; delay: 4001; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: false; startEvents: fusing"
+
+        animation__mousereset="property: scale; to: 1 1 1; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: false; startEvents: mouseleave;"
+        ></a-entity>
+</a-entity>
+
+</a-entity> 
+
+<!-- - - - - - - - - - - Lights - - - - - - - - - - -->
+<!-- Lights -->
+<!-- Directional -->
+<a-entity id="directionalLight"
+light="type: directional; intensity: 0.5; castShadow: false" position="-0.5 0.65 0.25"
+></a-entity> 
+<!-- Ambient -->
+<a-entity id="ambientLight"
+light="type: ambient; color: #716a9a; intensity: 0.5"
+></a-entity> 
+        </a-scene>
+    </div>
+<!-- - - - - - - - - - - Controller - - - - - - - - - - -->
+
+<div id="controllerBlock" class="controller">
+<!-- Pin Switch -->
+<i id="pinSwitch" class="fa-solid fa-thumbtack pin"></i>
+        <svg class="patternlock" id="lock" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+            <g class="lock-actives"></g>
+            <g class="lock-lines"></g>
+            <g class="lock-dots">
+                <!-- Top Row | Yes -->
+                <!-- Center -->
+                <circle cx="60%" cy="10%" r="4" stroke-width="4" />
+
+                <!-- Top Mid Row -->
+                <!-- Left -->
+                <circle cx="25%" cy="30%" r="4" stroke-width="4"/>
+                <!-- Right -->
+                <circle cx="95%" cy="30%" r="4" stroke-width="4"/>
+
+                <!-- Main Mid Row -->
+                <!-- Left -->
+                <circle cx="5%" cy="50%" r="2" stroke-width="4"/>
+                <!-- Center -->
+                <circle cx="60%" cy="50%" r="6" stroke-width="4"/>
+                <!-- Right
+                <circle cx="100%" cy="50%" r="2" stroke-width="4"/> -->
+
+                <!-- Bottom Mid Row -->
+                <!-- Left -->
+                <circle cx="25%" cy="70%" r="4" stroke-width="4"/>
+                <!-- Right -->
+                <circle cx="95%" cy="70%" r="4" stroke-width="4"/>
+
+                <!-- Bottom Row -->
+                <!-- Center -->
+                <circle cx="60%" cy="90%" r="4" stroke-width="4"/>
+            </g>
+        </svg>
+
+</div><!-- End Controller -->
+</div><!-- End A-Frame and Controller-->
+
+
+</div> <!-- End Main Body Div -->
+
+</div>
+
+<span id="#articleText">
+
+<!-- Full Screen Version -->
+<h3 class="tar"><a href="xr-isometric-node-navigation-aframe-fullscreen.html">Full Screen &gt; </a></h3>
+
+<h2>Summary</h2>
+<p>The scene is split into 2 halves and configured for Isometric view only. 1 with the 3D Iso world and the other with the HTML player controller. Use the controller in blue to move your cube avatar from the starting point around the field.</p>
+<!-- Line Break -->
+<hr />
+<h2>Controls</h2>
+<div class="row">
+<div class="col-6 col-12-medium">
+<h4>Avatar Movement</h4>
+<ul>
+	<li>Desktop</li>
+	<li>Mobile</li>
+	<li>Use the player controller to move Up Left, Up Right, Down Left or Down Right within the connected nodes.</li>
+</ul>
+</div>
+<div class="col-6 col-12-medium">
+<h4>Player Controller</h4>
+<ul>
+	<li>Desktop - Click &amp; Drag from the center circle to 1 of the 4 directional options.</li>
+	<li>Mobile - Swipe from the center circle to 1 of the 4 directional options.</li>
+</ul>
+<p>Only the movement options are active.</p>
+</div>
+</div>
+
+
+<!-- Line Break -->
+<hr />
+
+<h2>What to Do</h2>
+<p>Using the player controller, select a direction in which your avatar would be able to travel on the node map. <strong>Avatar Travel</strong> requires a lined connection and cooresponds to the directions of <strong>Up Left</strong>, <strong>Up Right</strong>, <strong>Down Left</strong> and <strong>Down Right</strong> based on the user's location to the connected node.</p>
+
+
+<!-- Line Break -->
+<hr />
+
+<div class="row">
+<div class="col-12 col-12-medium">
+<h2>Components</h2>
+<h4>Built</h4>
+<ul class="alt">
+	<li><i>node-grid-gen : </i>Generates the numbered grid, lines, colors, positions, layout and animation stack for each node. Every node that has a line connecting to 1 of it's 4 sides generates an animation to that line's end position which activates from an event naming scheme of node#to-node#. As well as an accompanying entity with it's own reveal and hide animation when the user moves to and from that node specifically.</li>
+	<li><i>player-travel : </i>Hardwired logic for traversing the node map in it's current form, animation event timings, the player controller inputs as well as event emitters for all possible movements that activate the avatar's position animation./li>
+</ul>
+<h4>Public</h4>
+<ul>
+	<li><a href="https://github.com/aframevr/aframe/" target="_blank">A-Frame 1.3.0</a></li>
+	<li><a href="https://github.com/n5ro/aframe-extras" target="_blank">A-Frame Extras 6.1.0 </a></li>
+	<li><a href="https://github.com/supermedium/superframe/tree/master/components/orbit-controls" target="_blank">A-Frame Orbit Controls </a></li>
+	<li><a href="https://github.com/matrix-org/aframe-look-at-component" target="_blank">A-Frame Look At</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Line Break -->
+<hr />
+
+<div class="row">
+<h2>Favorites</h2>
+<p>If you are a quick swiper you can move quite fast and even off the line animation grid to kind of fly through to your destination. This is an interesting side effect of the current implementation which simply animates the user to the node's current position and that animation being updated on each subsequent directional input. Otherwise it seems that you would have to create an animation queue to cycle through the selected list in a a-timeline as animations will conflict with each other if they share the same properties at the same time.</p>
+</div>
+
+<!-- Line Break -->
+<hr />
+
+<div class="row">
+<h2>Difficulties</h2>
+<p>The player controller is built out of another dev's great work to recreate the Android lock screen in javascript <a href="https://github.com/Tympanix/pattern-lock-js" target="_blank">they shared</a>. While it provided in HTML what I had envisioned, I could not seem to integrate those functions within the XR scene to allow the same drag style in the 3D world. To many wide differences with how they utilized classes and svg's to create the effects for use with the default code. Also very helpful when I am ready to recreate it within XR too.</p>
+</div>
+<!-- Line Break -->
+<hr />
+
+<h3>What I want to build upon this, in the future...</h3>
+<blockquote>This effect in VR finally and support the normal click / swipe to start a drag, click to stop drag or drag to option for selection which seems to cover Desktop, Mobile and VR controller. Or instant / activated hover select dragging with additional control selections similar to the locomotion belt controller in the Hub scene. And allow the user to travel this node map with the teleportation mode types as well.</blockquote>
+<!-- Line Break -->
+<hr />
+
+<!-- End Article Text -->
+</span>
+
+
+<!-- Pagenation -->
+<span class="articlePagenation">
+<!-- Return -->
+<h3><a href="index.html">&lt; Previous</a></h3>
+
+<!-- Top -->
+<h3><a href="#main">&#94; Top</a></h3>
+
+<!-- Full Screen Version -->
+<h3><a href="xr-isometric-node-navigation-aframe-fullscreen.html">Full Screen &gt; </a></h3>
+</span>
+
+<!-- End Inner Main -->
+</div>
+<!-- End Main -->
+</div>
+
+
+
+<!-- Footer -->
+<footer id="footer">
+<div class="inner">
+
+<!-- Connect Links -->
+<section>
+<h2>Connect</h2>
+<ul class="icons">
+	<li><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style3 fa-github-alt"><span class="label">GitHub</span></a></li>
+	<li><a href="https://glitch.com/@mintycrisp" target="_blank" class="icon solid style3 fa-fish"><span class="label">Glitch</span></a></li>
+	<li><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style3 fa-dev"><span class="label">Dev</span></a></li>
+	<li><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style3 fa-itch-io"><span class="label">Itch.io</span></a></li>
+	<li><a href="https://reddit.com/user/Minty-Crisp/" target="_blank" class="icon brands style3 fa-reddit-alien"><span class="label">Reddit</span></a></li>
+	<li><a href="https://twitter.com/minty_crisp" target="_blank" class="icon brands style3 fa-twitter"><span class="label">Twitter</span></a></li>
+	<li><a href="https://www.twitch.tv/mintycrisp0" target="_blank" class="icon brands style3 fa-twitch"><span class="label">Twitch</span></a></li>
+	<li><a href="about-me.html#snap" target="_blank" class="icon brands style3 fa-snapchat"><span class="label">Snapchat</span></a></li>
+	<li><a href="about-me.html#discord" target="_blank" class="icon brands style3 fa-discord"><span class="label">Discord</span></a></li>
+	<li><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style3 fa-mug-hot"><span class="label">Ko-Fi</span></a></li>
+	<li><a href="https://www.patreon.com/user/mintycrisp" target="_blank" class="icon brands style3 fa-patreon"><span class="label">Patreon</span></a></li>
+	<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241" target="_blank" class="icon brands style3 fa-linkedin"><span class="label">Linkedin</span></a></li>
+	<li><a href="about-me.html#email" class="icon solid style3 fa-envelope"><span class="label">Email</span></a></li>
+	<li><a href="about-me.html" class="icon solid style3 fa-address-card"><span class="label">About Me</span></a></li>
+</ul>
+</section>
+
+<!-- Tag Cloud -->
+<section>
+<div>
+<h2>Great Resources for Web XR</h2>
+<span>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Fundamentals" target="_blank">Web XR API</a>
+<a href="https://blender.org/" target="_blank">Blender</a>
+<a href="blendswap.com/">Blend Swap</a>
+<a href="https://aframe.io/docs" target="_blank">A-Frame Docs</a>
+<a href="https://blog.glitch.com/">Glitch Blog</a>
+<a href="https://www.youtube.com/playlist?list=PL8MkBHej75fJD-HveDzm4xKrciC5VfYuV">Learn A-Frame Video Playlist</a>
+<a href="https://supermedium.com/superframe/">Supermedium Component</a>
+<a href="https://js13kgames.github.io/resources/">Resource Collection List</a>
+<a href="https://threejs.org/examples/" target="_blank">ThreeJS Examples</a>
+<a href="https://webglfundamentals.org/webgl/lessons/resources/webgl-state-diagram.html">WebGL Shader Editor</a>
+<a href="https://thebookofshaders.com/">The Book of Shaders w/ Editor</a>
+<a href="https://css-tricks.com/archives/">Css Tricks Blog</a>
+</span>
+</div>
+</section>
+
+<!-- Bottom Page Quote -->
+<section id="footerQuote">
+<div>
+
+<blockquote id="randomquote">"Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore." - Scruff McGruff</blockquote>
+
+</div>
+</section>
+
+<!-- Copyright & Credit Info -->
+<ul class="copyright">
+<li>&copy; Minty Crisp. All rights reserved</li>
+<li>Base Template by: <a href="http://html5up.net">HTML5 UP</a></li>
+</ul>
+
+<!-- End Footer Wrapper -->
+</div>
+</footer>
+
+<!-- End Body Wrapper -->
+</div>
+
+<!-- JQuery -->
+<script src="assets/js/vendor.js"></script>
+
+<!-- Lock Support -->
+<script>
+
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+(function (factory) {
+    var global = Function('return this')() || (0, eval)('this');
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], function ($) {
+            return factory($, global);
+        });
+    } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory(require('jquery'), global);
+    } else {
+        // Browser globals (global is window)
+        global.PatternLock = factory(global.jQuery, global);
+    }
+})(function ($, window) {
+    var _scrollKeys;
+
+    var svgns = 'http://www.w3.org/2000/svg';
+    var moveEvent = 'touchmove mousemove';
+
+    var scrollKeys = (_scrollKeys = {
+        37: true, // left
+        38: true, // up
+        39: true, // right
+        40: true, // down
+        32: true }, _defineProperty(_scrollKeys, '38', true), _defineProperty(_scrollKeys, 34, true), _defineProperty(_scrollKeys, 35, true), _defineProperty(_scrollKeys, 36, true), _scrollKeys);
+
+/*
+    function vibrate() {
+        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+        if (navigator.vibrate) {
+            window.navigator.vibrate(25);
+        }
+    }
+*/
+    function PatternLock(element, options) {
+        var svg = $(element);
+        var self = this;
+        var root = svg[0];
+        var dots = svg.find('.lock-dots circle');
+        var lines = svg.find('.lock-lines');
+        var actives = svg.find('.lock-actives');
+        var pt = root.createSVGPoint();
+        var code = [];
+        var currentline = void 0;
+        var currenthandler = void 0;
+
+        options = Object.assign(PatternLock.defaults, options || {});
+
+        svg.on('touchstart mousedown', function (e) {
+
+/**/
+            clear(); //issue
+            e.preventDefault();
+            disableScroll(); 
+            svg.on(moveEvent, discoverDot); //issue
+            var endEvent = e.type == 'touchstart' ? 'touchend' : 'mouseup';
+            $(document).one(endEvent, function (e) {
+                end();
+            });
+
+
+
+
+        }); 
+
+        // Exported methods
+        Object.assign(this, {
+            clear: clear,
+            success: success,
+            error: error,
+            getPattern: getPattern
+        });
+
+        function success() {
+            svg.removeClass('error');
+            svg.addClass('success');
+        }
+
+        function error() {
+            svg.removeClass('success');
+            svg.addClass('error');
+        }
+
+        function getPattern() {
+            return parseInt(code.map(function (i) {
+                return dots.index(i) + 1;
+            }).join(''));
+        }
+
+        //Custom do something with Pattern Created
+        function withPattern() {
+            return parseInt(code.map(function (i) {
+                return dots.index(i) + 1;
+            }).join(''));
+        }
+
+        function end() {
+            //enableScroll();
+            stopTrack(currentline);
+            currentline && currentline.remove();
+            svg.off(moveEvent, discoverDot);
+            var val = options.onPattern.call(self, getPattern());
+            if (val === true) {
+                success();
+            } else if (val === false) {
+                error();
+            }
+        }
+
+        //Must be causing the mobile controller size flicker
+        function clear() {
+            code = [];
+            currentline = undefined;
+            currenthandler = undefined;
+            svg.removeClass('success error');
+            lines.empty();
+            actives.empty();
+        }
+
+        function preventDefault(e) {
+            e = e || window.event;
+            //if (e.preventDefault) e.preventDefault();
+            e.returnValue = 'false';
+        }
+
+        function preventDefaultForScrollKeys(e) {
+            if (scrollKeys[e.keyCode]) {
+                preventDefault(e);
+                return false;
+            }
+        }
+
+        function disableScroll() {
+            if (window.addEventListener) // older FF
+                window.addEventListener('DOMMouseScroll', preventDefault, false);
+            window.onwheel = preventDefault; // modern standard
+            window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+            window.ontouchmove = preventDefault; // mobile
+            document.onkeydown = preventDefaultForScrollKeys;
+        }
+
+        function enableScroll() {
+            if (window.removeEventListener) window.removeEventListener('DOMMouseScroll', preventDefault, false);
+            window.onmousewheel = document.onmousewheel = null;
+            window.onwheel = null;
+            window.ontouchmove = null;
+            document.onkeydown = null;
+        }
+
+        function isUsed(target) {
+            for (var i = 0; i < code.length; i++) {
+                if (code[i] === target) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function isAvailable(target) {
+            for (var i = 0; i < dots.length; i++) {
+                if (dots[i] === target) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function updateLine(line) {
+            return function (e) {
+                e.preventDefault();
+                if (currentline !== line) return;
+                var pos = svgPosition(e.target, e);
+                line.setAttribute('x2', pos.x);
+                line.setAttribute('y2', pos.y);
+                return false;
+            };
+        }
+
+        function discoverDot(e, target) {
+            if (!target) {
+                var _getMousePos = getMousePos(e),
+                    x = _getMousePos.x,
+                    y = _getMousePos.y;
+
+                //#target
+                target = document.elementFromPoint(x, y);
+            }
+            var cx = target.getAttribute('cx');
+            var cy = target.getAttribute('cy');
+            //console.log(cx);
+            //console.log(cy);
+            if (isAvailable(target) && !isUsed(target)) {
+                stopTrack(currentline, target);
+                currentline = beginTrack(target);
+            }
+        }
+
+        function stopTrack(line, target) {
+            if (line === undefined) return;
+            if (currenthandler) {
+                svg.off('touchmove mousemove', currenthandler);
+            }
+            if (target === undefined) return;
+            var x = target.getAttribute('cx');
+            var y = target.getAttribute('cy');
+            line.setAttribute('x2', x);
+            line.setAttribute('y2', y);
+        }
+
+        function beginTrack(target) {
+            code.push(target);
+            var x = target.getAttribute('cx');
+            var y = target.getAttribute('cy');
+            var line = createNewLine(x, y);
+            var marker = createNewMarker(x, y);
+            actives.append(marker);
+            //console.log(markerParent);
+            //Testing Timeout and Setinterval
+            var testTimeout = setTimeout(function () {
+                setInterval(function() {
+                //Test Logging
+                //console.log("Interval Hit");
+            }, 2000); //Interval
+                //Test Logging
+                //console.log("Timeout Hit");
+            }, 1000); //Delay
+
+
+            currenthandler = updateLine(line);
+            svg.on('touchmove mousemove', currenthandler);
+            lines.append(line);
+            //if (options.vibrate) vibrate();
+            return line;
+        }
+
+        function createNewMarker(x, y) {
+            var marker = document.createElementNS(svgns, "circle");
+            marker.setAttribute('cx', x);
+            marker.setAttribute('cy', y);
+            marker.setAttribute('r', 6);
+            marker.setAttribute('stroke-width', 1);
+            marker.setAttribute('stroke', 'red');
+            marker.setAttribute('fill', '#403a3a');
+            return marker;
+        }
+
+        function createNewLine(x1, y1, x2, y2) {
+            var line = document.createElementNS(svgns, "line");
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            if (x2 === undefined || y2 == undefined) {
+                line.setAttribute('x2', x1);
+                line.setAttribute('y2', y1);
+            } else {
+                line.setAttribute('x2', x2);
+                line.setAttribute('y2', y2);
+            }
+            return line;
+        }
+
+        function getMousePos(e) {
+            return {
+                x: e.clientX || e.originalEvent.touches[0].clientX,
+                y: e.clientY || e.originalEvent.touches[0].clientY
+            };
+        }
+
+        function svgPosition(element, e) {
+            var _getMousePos2 = getMousePos(e),
+                x = _getMousePos2.x,
+                y = _getMousePos2.y;
+
+            pt.x = x;pt.y = y;
+            return pt.matrixTransform(element.getScreenCTM().inverse());
+        }
+    }
+
+    PatternLock.defaults = {
+        onPattern: function onPattern() {},
+        //vibrate: true
+    };
+
+    return PatternLock;
+});
+
+/* Lock */
+var e = document.getElementById('lock')
+var p = new PatternLock(e, {
+    //Call on Pattern Start
+    onPattern: function() {
+
+        //Test Logging
+        //Print Pattern to Console
+        console.log(this.getPattern());
+
+        //Notification Bar
+        let currentLocationHeader = document.getElementById('notificationBlock');
+        //Player Camera
+        let player = document.getElementById('player');
+        //Player On Board
+        let playerOnBoard = document.getElementById('playerOnBoard');
+
+        //1234 Test Password
+        if (this.getPattern() === 1234) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('Test Success');
+            currentLocationHeader.innerHTML = "<h2>Test Success!</h2>";
+        }
+
+        //51 Center to Up Yes
+        else if (this.getPattern() === 51) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('51 Success. Up, Yes!');
+            currentLocationHeader.innerHTML = "<h2>51 : Up, Yes! </h2>";
+
+            //In Game Movement
+            player.emit('51-up-yes',{});
+
+        }
+
+        //52 Center to Top Left
+        else if (this.getPattern() === 52) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('52 Success. Top Left');
+            currentLocationHeader.innerHTML = "<h2>52 Top Left</h2>";
+
+            //In Game Movement
+            player.emit('52-top-left',{});
+
+        }
+
+        //53 Center to Top Right
+        else if (this.getPattern() === 53) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('53 Success. Top Right');
+            currentLocationHeader.innerHTML = "<h2>53 : Top Right</h2>";
+
+            //In Game Movement
+            //player.emit('53-top-right',{});
+            player.emit('53-top-right',{});
+
+        } 
+        //54 Menu / Special / Ok
+        else if (this.getPattern() === 54) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('54 Success. Menu/Special/Ok Button');
+            currentLocationHeader.innerHTML = "<h2>54 Menu/Special/Ok</h2>";
+
+            //In Game Movement
+            player.emit('54-menu-special-ok',{});
+
+        }
+        //55 Button On Button - #Special #Later
+        //56 Bottom Left
+        else if (this.getPattern() === 56) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('56 Success. Bottom Left');
+            currentLocationHeader.innerHTML = "<h2>56 Bottom Left</h2>";
+
+            //In Game Movement
+            player.emit('56-bottom-left',{});
+        }
+
+        //57 Center to Bottom Right
+        else if (this.getPattern() === 57) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('57 Success. Bottom Right');
+            currentLocationHeader.innerHTML = "<h2>57 Bottom Right</h2>";
+
+            //In Game Movement
+            player.emit('57-bottom-right',{});
+        }
+
+        //58 Center to Top Right
+        else if (this.getPattern() === 58) {
+            //Validates the pattern as correct
+            this.success();
+            //Test Logging
+            console.log('58 Success. Down, No!');
+            currentLocationHeader.innerHTML = "<h2>58 : Down, No! </h2>";
+
+            //In Game Movement
+            player.emit('58-down-no',{});
+
+        }
+
+
+
+        //All Else Fail
+          else {
+            //Validates the pattern as incorrect
+            this.error();
+            //Test Logging
+            console.log('Attempt Fail!');
+            currentLocationHeader.innerHTML = "<h2>Attempt Fail!</h2>";
+        }
+
+
+        //Passwords are an order of buttons labeled 1-9 from 1 up to 9 entrys
+
+        //Functions
+        //Validates the pattern as correct
+        //this.success();
+        //Returnes the currently active pattern or NaN
+        //this.getPattern();
+        //Validates the pattern as incorrect
+        //this.error();
+        //Clears the current pattern
+        //this.clear();
+
+        //Test Logging
+        console.log('Pattern Lock Test IVX');
+    }
+});
+</script>
+
+<!-- Menu Footer Functions -->
+<script src="assets/js/menufootersupport.js"></script>
+
+<!-- Ascene Pin Switch -->
+<script src="assets/js/pinswitch.js"></script>
+
+<!--
+Phantom by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

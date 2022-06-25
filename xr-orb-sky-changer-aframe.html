@@ -1,0 +1,488 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Minty Crisp | XR Orb Sky Changer</title>
+<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="./favicon.ico"/>
+<link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!-- Search Info -->
+<meta name="description" content="Minty Crisp | XR Orb Sky Changer">
+<meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp,orb,sky,changer">
+<!-- Social Media Share -->
+<meta property="og:title" content="Minty Crisp | XR Orb Sky Changer">
+<meta property="og:type" content="XR">
+<meta property="og:url" content="mintycrisp.com">
+<meta property="og:image" content="assets/img/share.jpg">
+<!-- A-Frame official release 1.3.0 -->
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<!-- A-Frame Extras 6.1.0 -->
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+<script src="assets/js/orbs.js"></script>
+<!-- Font-Awesome -->
+<link href="assets/css/all.min.css" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+
+<style>
+/* Embedded A-Scene  */
+a-scene {
+z-index: 0;
+display: block;
+margin-bottom: 2em;
+height: auto;
+width: 100%;
+max-height: 50%;
+aspect-ratio: auto 1 / 0.7;
+pointer-events: auto;
+overflow: hidden;
+contain: paint;
+background-color: black;
+border: 1em;
+border-color: #3EB489;
+border-style: inset;
+}
+@media screen and (min-width: 640px) {
+a-scene {
+aspect-ratio: auto 1 / 0.5;
+}
+}
+
+@media screen and (min-width: 1024px) {
+a-scene {
+aspect-ratio: auto 1 / 0.4;
+}
+}
+@media screen and (min-width: 1400px) {
+a-scene {
+aspect-ratio: auto 1 / 0.35;
+}
+}
+</style>
+
+<body class="">
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Sticky Logo | Connect Links -->
+<div id="logoBlock" class="sticky" style="z-index: 100">
+<div class="landingName">
+<a href="index.html" class="logo">
+<span class="symbol landingName"><img src="assets/img/logo-site.png" alt="logo" /></span><span class="title landingName">Minty Crisp</span></a></div>
+<span><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style2 fa-github-alt"><span class="label">GitHub</span></a></span>
+<span><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style2 fa-dev"><span class="label">Dev</span></a></span>
+<span><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style2 fa-itch-io"><span class="label">Itch.io</span></a></span>
+<span><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style2 fa-mug-hot"><span class="label">Ko-Fi</span></a></span>
+</div>
+
+<!-- Header -->
+<header id="header">
+<div class="inner">
+
+<!-- Nav -->
+<nav id="navBlock">
+	<ul>
+		<li><a href="#menu">Menu</a></li>
+	</ul>
+</nav>
+
+</div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+<span class="landingName">
+<img id="menuLogo" src="assets/img/logo-site.png" alt="logo"/><h2 id="menuName">Minty Crisp</h2></span>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a id="randomarticle" href="index.html">Open a Random Article of mine</a></li>
+<li><a href="https://github.com/Minty-Crisp">View my Github Repositories</a></li>
+<li><a href="https://glitch.com/@mintycrisp">Remix some of my projects on Glitch</a></li>
+<li><a href="https://dev.to/mintycrisp">Read my Dev.to Articles</a></li>
+<li><a href="https://mintycrisp.itch.io/">Check out my Itch.io Store</a></li>
+<li><a href="https://reddit.com/user/Minty-Crisp/">Spy on my Reddit Comments</a></li>
+<li><a href="https://twitter.com/minty_crisp">Peruse my Tweets</a></li>
+<li><a href="https://www.twitch.tv/mintycrisp0">See my gaming skills on Twitch</a></li>
+<li>Goof around with me on Snapchat : @Minty-Crisp</li>
+<li>Let's discuss Web XR and Games on Discord : @mintycrisp#8102</li>
+<li><a href="https://ko-fi.com/mintycrisp">Ko-fi tips if you enjoy my work</a></li>
+<li><a href="https://www.patreon.com/user/mintycrisp">or Patreon to support me</a></li>
+<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241">My Linkedout work profile to study</a></li>
+<li>Reach me at my Electronic Mail address : minty-crisp@ proton . me</li>
+<li><a href="about-me.html">And more about me, Minty Crisp...</a></li>
+</ul>
+</nav>
+
+<!-- Main -->
+<div id="main">
+<div class="inner">
+
+<div id="mainStick" class="image main sticky">
+<span class="articleTitle" ><h1>XR Orb Sky Changer</h1>
+</span>
+
+
+
+<a-scene id="ascene" embedded
+vr-mode-ui="enabled: false"
+renderer="antialias: true; colorManagement: true; sortObjects: true">
+<!-- - - - - - - - - - - Assets - - - - - - - - - - -->
+<a-assets>
+    <img id="sky0" src="./assets/img/sky.jpg" preload="auto" crossorigin="anonymous">
+    <!-- Original HDRIs created by Greg Zaal -->
+    <img id="sky1-1k" src="./assets/img/cannon_1k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky2-1k" src="./assets/img/kloppenheim_02_1k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky3-1k" src="./assets/img/satara_night_1k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky4-1k" src="./assets/img/shanghai_bund_1k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky5-1k" src="./assets/img/spruit_sunrise_1k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky6-1k" src="./assets/img/the_sky_is_on_fire_1k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky1-2k" src="./assets/img/cannon_2k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky2-2k" src="./assets/img/kloppenheim_02_2k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky3-2k" src="./assets/img/satara_night_2k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky4-2k" src="./assets/img/shanghai_bund_2k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky5-2k" src="./assets/img/spruit_sunrise_2k.jpg" preload="auto" crossorigin="anonymous">
+    <img id="sky6-2k" src="./assets/img/the_sky_is_on_fire_2k.jpg" preload="auto" crossorigin="anonymous">
+    <!-- Skyai -->
+    <img id="skyai" src="assets/img/ai-generated-modified.jpg" preload="auto" crossorigin="anonymous">
+
+    <!-- - - - - - - - - - - Mixins - - - - - - - - - - -->
+    <!-- Orbs Slow Rotation -->
+    <a-mixin id="slowRotate"
+    animation__slowRotate="property: object3D.rotation.y; from: 0; to: 360; dur: 27000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true; pauseEvents: click; resumeEvents: resumeAnim;"
+    ></a-mixin>
+    <!-- Orbs Slow Bobbing Up and Down -->
+    <a-mixin id="bobbing"
+    animation__bobbing="property: object3D.position.y; from: 1; to: 2; dur: 3000; delay: 0; loop: true; dir: alternate; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true; pauseEvents: pauseAnim; resumeEvents: resumeAnim;"
+    ></a-mixin>
+    <!-- Orbs Expansion on Selection | Change from -->
+    <a-mixin id="expand"
+    animation__expand="property: scale; from: 1 1 1; to: 512 512 512; dur: 4000; delay: 0; loop: false; dir: normal; easing: easeInOutQuad; autoplay: false; enabled: true; startEvents: click;"
+    ></a-mixin>
+    <!-- Reset Scale of Orb after Expansion Animation-->
+    <a-mixin id="resetScale"
+    animation__resetScale="property: scale; from: 0.1 0.1 0.1; to: 1 1 1; dur: 1000; delay: 0; loop: false; dir: normal; easing: easeInOutQuad; autoplay: false; enabled: true; startEvents: orbReset;"
+    ></a-mixin>
+    <!-- Orbs Fading out after Selection and Expansion-->
+    <a-mixin id="opacOut"
+    animation__opacOut="property: opacity; from: 1; to: 0; dur: 500; delay: 2500; loop: false; dir: normal; easing: linear; autoplay: false; enabled: true; startEvents: click;"
+    ></a-mixin>
+</a-assets>
+
+<!-- Pin Switch -->
+<i id="pinSwitch" class="fa-solid fa-thumbtack pin"></i>
+
+<!-- - - - - - - - - - - Scene - - - - - - - - - - -->
+
+<!-- Return to Hub Embedded -->
+<a-entity id="homelink" class="clickable"
+position="1 1.5 4" rotation="0 0 0" scale="0.1 0.1 0.1"
+link="backgroundColor: #e620a9; borderColor: #e620a9; highlighted: false; hightlightedColor : #e620a9; href: xr-basic-hub-ui-themes-aframe-fullscreen.html; image: #skyai; on: click; peekMode: true; title: Hub; titleColor: #e620a9; visualAspectEnabled: true;"
+
+animation__portalFunPosition="property: position; from: 1 6 4; to: 1 0 4; dur: 3000; delay: 0; loop: false; dir: normal; easing: easeInOutBack; elasticity: 400; autoplay: true; enabled: true;"
+animation__portalFunPosition2="property: position; from: 1 0 4; to: 1 1.5 4; dur: 500; delay: 4000; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true;"
+animation__portalFunScale="property: scale; from: 0.01 0.01 0.01; to: 4 8 4; dur: 500; delay: 4500; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: true; enabled: true;"
+animation__portalFunScale2="property: scale; from: 4 8 4; to: 1 1.5 1; dur: 1000; delay: 5000; loop: false; dir: normal; easing: easeInOutBack; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Orb1 -->
+<a-entity id="centerOrb1" position="0 0 0" rotation="0 0 0" orbit-user>
+    <a-sphere mixin="slowRotate bobbing expand resetScale opacOut" orb-expanding
+    id="orb1" src="#sky1-1k" radius="1" position="0 1 -6" rotation="0 0 0" scale="1 1 1" opacity="1"
+    side="back" shader="flat"
+    class="clickable"
+    ></a-sphere>
+</a-entity>
+<!-- Orb2 -->
+<a-entity id="centerOrb2" position="0 0 0" rotation="0 60 0" orbit-user>
+    <a-sphere mixin="slowRotate bobbing expand resetScale opacOut" orb-expanding
+    id="orb2" src="#sky2-1k" radius="1" position="0 1 -6" rotation="0 0 0" scale="1 1 1" opacity="1"
+    side="back" shader="flat"
+    class="clickable"
+    ></a-sphere>
+</a-entity>
+<!-- Orb3 -->
+<a-entity id="centerOrb3" position="0 0 0" rotation="0 120 0" orbit-user>
+    <a-sphere mixin="slowRotate bobbing expand resetScale opacOut" orb-expanding
+    id="orb3" src="#sky3-1k" radius="1" position="0 1 -6" rotation="0 0 0" scale="1 1 1" opacity="1"
+    side="back" shader="flat"
+    class="clickable"
+    ></a-sphere>
+</a-entity>
+<!-- Orb4 -->
+<a-entity id="centerOrb4" position="0 0 0" rotation="0 180 0" orbit-user>
+    <a-sphere mixin="slowRotate bobbing expand resetScale opacOut" orb-expanding
+    id="orb4" src="#sky4-1k" radius="1" position="0 1 -6" rotation="0 0 0" scale="1 1 1" opacity="1"
+    side="back" shader="flat"
+    class="clickable"
+    ></a-sphere>
+</a-entity>
+<!-- Orb5 -->
+<a-entity id="centerOrb5" position="0 0 0" rotation="0 240 0" orbit-user>
+    <a-sphere mixin="slowRotate bobbing expand resetScale opacOut" orb-expanding
+    id="orb5" src="#sky5-1k" radius="1" position="0 1 -6" rotation="0 0 0" scale="1 1 1" opacity="1"
+    side="back" shader="flat"
+    class="clickable"
+    ></a-sphere>
+</a-entity>
+<!-- Orb6 -->
+<a-entity id="centerOrb6" position="0 0 0" rotation="0 300 0" orbit-user>
+    <a-sphere mixin="slowRotate bobbing expand resetScale opacOut" orb-expanding
+    id="orb6" src="#sky6-1k" radius="1" position="0 1 -6" rotation="0 0 0" scale="1 1 1" opacity="1"
+    side="back" shader="flat"
+    class="clickable"
+    ></a-sphere>
+</a-entity>
+
+<!-- Info | Instructions  -->
+<a-entity
+text="value: * A-Frame Orb Sky Changer *\n Hover over any Orb to swap the Sky.\n\n; color: white; align: center;"
+geometry="primitive: plane; width: 2; height: 0.6;"
+position="0 1.5 -1.5" rotation="-45 0 0"
+material="color: #304a39; shader: flat; opacity: 0.69">
+<a-text
+value="github.com/Minty-Crisp"
+color="white" align="center" width="1.25" position="0 0.225 0"
+></a-text><a-text
+value="Thanks for testing my code out!\n - Minty Crisp"
+color="white" align="center" width="1.5" position="0 -0.175 0"
+></a-text></a-entity>
+
+<!-- Floor -->
+<a-circle id="floor" color="#304a39" rotation="-90 0 0" radius="2" position="0 0 0" opacity="0.5"></a-circle>
+<!-- - - - - - - - - - - Sky - - - - - - - - - - -->
+<!-- Sky Orbit Wrap -->
+<a-entity id="centerSky" position="0 0 0" rotation="0 0 0" center-sky-fix
+animation__matchOrbit="property: rotation.y; from: 0; to: 0; dur: 1000; delay: 1000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: resetOrbitAnim;">
+<!-- Sky -->
+<a-sky id="sky" src="#sky0" material="" geometry="" rotation="0 180 0" scale="1 1 1" sky-fix class="still"></a-sky></a-entity>
+
+<!-- - - - - - - - - - - Camera, Lights & Sound - - - - - - - - - - -->
+<!-- Cursor Component | Gaze & Controller Interactions -->
+<a-entity position="0 1.6 0">
+    <a-camera look-controls="pointerLockEnabled: false" wasd-controls="enabled: false">
+        <a-entity id="mouseCursor" laser-controls raycaster="objects: .clickable" cursor="fuse: true; fuseTimeout: 2000; rayOrigin: mouseCursor;"
+        material="color: grey; shader: flat; side: double"
+        position="0 0 -0.1"
+        scale=".0025 .0025 .0025"
+        geometry="primitive: ring;"
+        animation__fusing="property: scale; from: .0025 .0025 .0025; to: 0.0005 0.0005 0.0005; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: fusing;"
+        animation__mousereset="property: scale; to: .0025 .0025 .0025; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: mouseleave, orbExpand;"
+        animation__skychange1="property: geometry.thetaLength; from: 360; to: 0; dur: 2000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true; startEvents: orbExpand"
+        animation__skychange2="property: rotation; from: 0 0 0; to: 0 180 180; dur: 1; delay: 2000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true; startEvents: orbExpand"
+        animation__skychange3="property: geometry.thetaLength; from: 0; to: 360; dur: 2000; delay: 2001; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true; startEvents: orbExpand"
+        animation__skychange4="property: rotation; from: 0 180 180; to: 0 0 0; dur: 1; delay: 4001; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true; startEvents: orbExpand"
+        ></a-entity>
+    </a-camera>
+</a-entity> 
+<!-- Lights -->
+<!-- Directional -->
+<a-entity light="type: directional; intensity: 1; castShadow: false" position="-0.5 1 1"></a-entity> 
+<!-- Ambient -->
+<a-entity light="type: ambient; color: #8b82bc; intensity: 1"></a-entity> 
+
+</a-scene>
+
+</div>
+
+<span id="#articleText">
+
+<!-- Full Screen Version -->
+<h3 class="tar"><a href="xr-orb-sky-changer-aframe-fullscreen.html">Full Screen &gt; </a></h3>
+
+<h2>Summary</h2>
+<p>Swap the scene's sky image with 1 of 6 bubble selections that each hold a unique 360 image.</p>
+<!-- Line Break -->
+<hr />
+<h2>Controls</h2>
+<div class="row">
+<div class="col-6 col-12-medium">
+<h4>View Cursor Movement</h4>
+<ul>
+	<li>Desktop - Mouse</li>
+	<li>Mobile - Gyro / Swipe</li>
+	<li>VR - Headset</li>
+</ul>
+</div>
+<div class="col-6 col-12-medium">
+<h4>Click &amp; Selection</h4>
+<ul>
+	<li>Desktop - Fuse Click (Hover for 2sec)</li>
+	<li>Mobile - Fuse Click (Hover for 2sec)</li>
+	<li>VR - Fuse Click (Hover for 2sec)</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<!-- Line Break -->
+<hr />
+
+<h2>What to Do</h2>
+<p>Use the View Cursor to look around the 360 environment and <strong>Hover</strong> over a floating bubble. This will pause the orbit rotation for all bubbles.  Continue to hover over that bubble for <strong>2 seconds</strong> to select it as a sky replacement. When activated, the sky swap animation will play. Once completed, the bubbles will resume their orbit and you may continue to swap through all of the images.</p>
+
+<!-- Line Break -->
+<hr />
+
+<div class="row">
+<div class="col-12 col-12-medium">
+<h2>Components</h2>
+<h4>Built</h4>
+<ul class="alt">
+	<li><i>orb-expanding : </i>Controls the main animations, timings and adjustments of the entity properties for the bubble swaps. Also assists in disabling of additional user interaction during the swap phases.</li>
+	<li><i>sky-fix : </i>The sphere of the bubbles themselves are constantly rotating to show off their scenery. Once selected, the bubble's rotation will not match the sky's and this aligns the sky to smooth the transition.</li>
+	<li><i>center-sky-fix : </i>Because of the inheritance with parent / child relationship and their properties as well as the way the orbit is configured, matching the sky's rotation required it's own parent and that parent needed it's own rotation to be calculated for a match. This syncs the bubble's parent rotation with the sky's parent rotation for a smooth transition as well.</li>
+	<li><i>orbit-user : </i>This builds the continuous orbit loop animation for each bubble based upon their parent. Each bubble has a parent which is rotated based on how many spheres equally from 360. Each of the children hold a sphere and have a position offset in 1 direction which acts like a radius of a circle around the user.</li>
+</ul>
+<h4>Public</h4>
+<ul>
+	<li><a href="https://github.com/aframevr/aframe/" target="_blank">A-Frame 1.3.0</a></li>
+	<li><a href="https://github.com/n5ro/aframe-extras" target="_blank">A-Frame Extras 6.1.0 </a></li>
+
+</ul>
+</div>
+</div>
+
+<!-- Line Break -->
+<hr />
+
+<div class="row">
+<h2>Favorites</h2>
+<p>The floating bubble animations and expand with fade as well were quite satisfying to nail down, but I really enjoyed making the animations for the cursor countdown on Fusing.</p>
+
+</div>
+
+<!-- Line Break -->
+<hr />
+
+<div class="row">
+<h2>Difficulties</h2>
+<p>It was mostly just figuring out the method and types of variables that A-Frame would accept changes from Javascript for dynamic animations.</p>
+</div>
+<!-- Line Break -->
+<hr />
+
+<h3>What I want to build upon this, in the future...</h3>
+<blockquote>A scene with a sea of bubbles floating all around the user with a gradient colored environment. The user can 'reach out' and pull in any bubble closer to inspect in better detail. Every bubble contains a set of media and plays a preview of it when the user holds it. A song, a video, an image, a handheld animated 3D scene of a fully immersive one, a soundeffect, a scene effect like fireworks or a sunset animation, the ability to float or shoot fireballs. Just an endless stream of selectable user creations wether traditional entertainment like 2D media or more integrated XR items like assets, scenes, components and configurations. Even things like mini-games, puzzles and quests as well. Also having ways of sorting and identifying things far away. Things like categories that have specific colors/textures, material properties, shapes, animations, media previews and easy ways of sorting.</blockquote>
+<!-- Line Break -->
+<hr />
+
+<!-- End Article Text -->
+</span>
+
+
+<!-- Pagenation -->
+<span class="articlePagenation">
+<!-- Return -->
+<h3><a href="index.html">&lt; Previous</a></h3>
+
+<!-- Top -->
+<h3><a href="#main">&#94; Top</a></h3>
+
+<!-- Full Screen Version -->
+<h3><a href="xr-orb-sky-changer-aframe-fullscreen.html">Full Screen &gt; </a></h3>
+</span>
+
+
+<!-- End Inner Main -->
+</div>
+<!-- End Main -->
+</div>
+
+
+
+<!-- Footer -->
+<footer id="footer">
+<div class="inner">
+
+<!-- Connect Links -->
+<section>
+<h2>Connect</h2>
+<ul class="icons">
+	<li><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style3 fa-github-alt"><span class="label">GitHub</span></a></li>
+	<li><a href="https://glitch.com/@mintycrisp" target="_blank" class="icon solid style3 fa-fish"><span class="label">Glitch</span></a></li>
+	<li><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style3 fa-dev"><span class="label">Dev</span></a></li>
+	<li><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style3 fa-itch-io"><span class="label">Itch.io</span></a></li>
+	<li><a href="https://reddit.com/user/Minty-Crisp/" target="_blank" class="icon brands style3 fa-reddit-alien"><span class="label">Reddit</span></a></li>
+	<li><a href="https://twitter.com/minty_crisp" target="_blank" class="icon brands style3 fa-twitter"><span class="label">Twitter</span></a></li>
+	<li><a href="https://www.twitch.tv/mintycrisp0" target="_blank" class="icon brands style3 fa-twitch"><span class="label">Twitch</span></a></li>
+	<li><a href="about-me.html#snap" target="_blank" class="icon brands style3 fa-snapchat"><span class="label">Snapchat</span></a></li>
+	<li><a href="about-me.html#discord" target="_blank" class="icon brands style3 fa-discord"><span class="label">Discord</span></a></li>
+	<li><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style3 fa-mug-hot"><span class="label">Ko-Fi</span></a></li>
+	<li><a href="https://www.patreon.com/user/mintycrisp" target="_blank" class="icon brands style3 fa-patreon"><span class="label">Patreon</span></a></li>
+	<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241" target="_blank" class="icon brands style3 fa-linkedin"><span class="label">Linkedin</span></a></li>
+	<li><a href="about-me.html#email" class="icon solid style3 fa-envelope"><span class="label">Email</span></a></li>
+	<li><a href="about-me.html" class="icon solid style3 fa-address-card"><span class="label">About Me</span></a></li>
+</ul>
+</section>
+
+<!-- Tag Cloud -->
+<section>
+<div>
+<h2>Great Resources for Web XR</h2>
+<span>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Fundamentals" target="_blank">Web XR API</a>
+<a href="https://blender.org/" target="_blank">Blender</a>
+<a href="blendswap.com/">Blend Swap</a>
+<a href="https://aframe.io/docs" target="_blank">A-Frame Docs</a>
+<a href="https://blog.glitch.com/">Glitch Blog</a>
+<a href="https://www.youtube.com/playlist?list=PL8MkBHej75fJD-HveDzm4xKrciC5VfYuV">Learn A-Frame Video Playlist</a>
+<a href="https://supermedium.com/superframe/">Supermedium Component</a>
+<a href="https://js13kgames.github.io/resources/">Resource Collection List</a>
+<a href="https://threejs.org/examples/" target="_blank">ThreeJS Examples</a>
+<a href="https://webglfundamentals.org/webgl/lessons/resources/webgl-state-diagram.html">WebGL Shader Editor</a>
+<a href="https://thebookofshaders.com/">The Book of Shaders w/ Editor</a>
+<a href="https://css-tricks.com/archives/">Css Tricks Blog</a>
+</span>
+</div>
+</section>
+
+<!-- Bottom Page Quote -->
+<section id="footerQuote">
+<div>
+
+<blockquote id="randomquote">"Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore." - Scruff McGruff</blockquote>
+
+</div>
+</section>
+
+<!-- Copyright & Credit Info -->
+<ul class="copyright">
+<li>&copy; Minty Crisp. All rights reserved</li>
+<li>Base Template by: <a href="http://html5up.net">HTML5 UP</a></li>
+</ul>
+
+<!-- End Footer Wrapper -->
+</div>
+</footer>
+
+<!-- End Body Wrapper -->
+</div>
+
+<!-- Menu Footer Functions -->
+<script src="assets/js/menufootersupport.js"></script>
+
+<!-- Ascene Pin Switch -->
+<script src="assets/js/pinswitch.js"></script>
+
+<!--
+Phantom by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
