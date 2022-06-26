@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Minty Crisp | Making an XR Idle Click Game Pt.1</title>
+<title>Minty Crisp | Making an XR Idle Click Game Pt.1 Fullscreen</title>
 <link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="./favicon.ico"/>
 <link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -13,10 +13,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <!-- Search Info -->
-<meta name="description" content="Minty Crisp | Making an XR Idle Click Game Pt.1">
+<meta name="description" content="Minty Crisp | Making an XR Idle Click Game Pt.1 Fullscreen">
 <meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp,idle,click,game,in-progress,development,orbit,genie,gold,coin,events,store">
 <!-- Social Media Share -->
-<meta property="og:title" content="Minty Crisp | Making an XR Idle Click Game Pt.1">
+<meta property="og:title" content="Minty Crisp | Making an XR Idle Click Game Pt.1 Fullscreen">
 <meta property="og:type" content="XR">
 <meta property="og:url" content="mintycrisp.com">
 <meta property="og:image" content="assets/img/share.jpg">
@@ -26,12 +26,14 @@
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 <!-- 3 Gradient Shader 0.0.1 -->
 <script src="https://unpkg.com/@tlaukkan/aframe-three-color-gradient-shader@0.0.1/index.js"></script>
+<!-- Sky Gradient -->
+<script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
 <!-- Animation Timeline 2.0.0 -->
 <script src="https://unpkg.com/aframe-animation-timeline-component@2.0.0/dist/aframe-animation-timeline-component.min.js"></script>
 <!-- Orbit Controls -->
 <script src="https://unpkg.com/aframe-orbit-controls@1.3.0/dist/aframe-orbit-controls.min.js"></script>
 <!-- Curve Component | Support for Along Path -->
-<!-- Requiring A-Frame 1.2.0 to operate -->
+<!-- Requiring A-Frame downgrade to 1.2.0 to operate -->
 <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
 <!-- Along Path -->
 <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
@@ -47,41 +49,19 @@
 </head>
 
 <style>
-/* Embedded A-Scene  */
 a-scene {
-z-index: 1;
+z-index: 0;
 display: block;
-margin-bottom: 2em;
-height: auto;
-min-height: 70%;
-width: 100%;
-max-height: 50%;
-aspect-ratio: auto 1 / 0.7;
 pointer-events: auto;
-overflow: hidden;
-contain: paint;
-background-color: black;
-border: 1em;
-border-color: #3EB489;
-border-style: inset;
-}
-@media screen and (min-width: 640px) {
-a-scene {
-aspect-ratio: auto 1 / 0.5;
-min-height: 50%;
-}
 }
 
-@media screen and (min-width: 1024px) {
-a-scene {
-aspect-ratio: auto 1 / 0.4;
-min-height: 40%;
+.a-enter-ar, .a-enter-vr {
+position: fixed;
 }
-}
-@media screen and (min-width: 1400px) {
-a-scene {
-aspect-ratio: auto 1 / 0.35;
-min-height: 35%;
+
+@media screen and (max-width: 736px) {
+.articlePagenationFullscreen h1{
+margin-bottom: 0;
 }
 }
 
@@ -98,55 +78,20 @@ min-height: 35%;
 <span class="symbol landingName"><img src="assets/img/logo-site.png" alt="logo" /></span><span class="title landingName">Minty Crisp</span></a></div>
 <span><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style2 fa-github-alt"><span class="label">GitHub</span></a></span>
 <span><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style2 fa-dev"><span class="label">Dev</span></a></span>
-<span><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style2 fa-itch-io"><span class="label">Itch.io</span></a></span>
 <span><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style2 fa-mug-hot"><span class="label">Ko-Fi</span></a></span>
 </div>
 
-<!-- Header -->
-<header id="header">
-<div class="inner">
-
-<!-- Nav -->
-<nav id="navBlock">
-	<ul>
-		<li><a href="#menu">Menu</a></li>
-	</ul>
-</nav>
-
-</div>
-</header>
-
-<!-- Menu -->
-<nav id="menu">
-<span class="landingName">
-<img id="menuLogo" src="assets/img/logo-site.png" alt="logo"/><h2 id="menuName">Minty Crisp</h2></span>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a id="randomarticle" href="index.html">Open a Random Article of mine</a></li>
-<li><a href="https://github.com/Minty-Crisp">View my Github Repositories</a></li>
-<li><a href="https://glitch.com/@mintycrisp">Remix some of my projects on Glitch</a></li>
-<li><a href="https://dev.to/mintycrisp">Read my Dev.to Articles</a></li>
-<li><a href="https://mintycrisp.itch.io/">Check out my Itch.io Store</a></li>
-<li><a href="https://reddit.com/user/Minty-Crisp/">Spy on my Reddit Comments</a></li>
-<li><a href="https://twitter.com/minty_crisp">Peruse my Tweets</a></li>
-<li><a href="https://www.twitch.tv/mintycrisp0">See my gaming skills on Twitch</a></li>
-<li>Goof around with me on Snapchat : @Minty-Crisp</li>
-<li>Let's discuss Web XR and Games on Discord : @mintycrisp#8102</li>
-<li><a href="https://ko-fi.com/mintycrisp">Ko-fi tips if you enjoy my work</a></li>
-<li><a href="https://www.patreon.com/user/mintycrisp">or Patreon to support me</a></li>
-<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241">My Linkedout work profile to study</a></li>
-<li>Reach me at my Electronic Mail address : minty-crisp@ proton . me</li>
-<li><a href="about-me.html">And more about me, Minty Crisp...</a></li>
-</ul>
-</nav>
 
 <!-- Main -->
 <div id="main">
 <div class="inner">
 
-<div id="mainStick" class="image main sticky">
-<span class="articleTitle" ><h1>Making an XR Idle Click Game Pt.1</h1>
+<!-- Pagenation -->
+<span class="articlePagenationFullscreen">
+<!-- Scene Title -->
+<h1>Making an XR Idle Click Game Pt.1</h1>
 </span>
+
 
 
 <!-- Gold Counter -->
@@ -635,7 +580,7 @@ min-height: 35%;
 </div>
 
 <!-- A-Scene -->
-<a-scene embedded id="ascene"
+<a-scene id="ascene"
 
 timer-system
 loading-screen="dotsColor: red; backgroundColor: black"
@@ -994,9 +939,6 @@ animation__spinTo7="property: object3D.rotation.x; to: 688; dur: 2100; delay: 65
 <!-- Face 7 | 328 -->
 
 </a-assets>
-
-<!-- Pin Switch -->
-<i id="pinSwitch" class="fa-solid fa-thumbtack pin"></i>
 
 <!-- - - - - - - - - - - Scene - - - - - - - - - - -->
 <!-- - - - - - - - - - - Badges 12 - - - - - - - - - - -->
@@ -2406,211 +2348,16 @@ light="type: ambient; color: #F88F01; intensity: 1"
 ></a-entity> 
 </a-scene>
 
-
-<!-- END -->
-</div>
-
-<span id="#articleText">
-
-<!-- Full Screen Version -->
-<h3 class="tar"><a href="xr-making-genie-gold-idle-clicker-game-part1-aframe-fullscreen.html">Full Screen &gt; </a></h3>
-
-<h2 class="tal">Summary</h2>
-<p>A playable demo for an in-progress idle click game built with A-Frame. In the story, you meet a genie who grants you a few wishes where you end up with a magic coin that creates money on touch. Every tap / click earns your base gold amount and you can encounter 7 different events which can pop up to help you earn huge as well as a store to spend it in for upgrades.</p>
-<!-- Line Break -->
-<hr />
-<h2 class="tal">Controls</h2>
-<div class="row">
-<div class="col-6 col-12-medium">
-<h4 class="tal">Orbit Cursor Movement</h4>
-<ul>
-	<li>Desktop - Mouse : Left Click - Orbit, Right Click - Pan, Scroll - Zoom In/Out</li>
-	<li>Mobile - Screen : Swipe - Orbit, Two Finger - Pan, Pinch - Zoom In/Out</li>
-</ul>
-</div>
-<div class="col-6 col-12-medium">
-<h4 class="tal">Click &amp; Selection</h4>
-<p>Only the movement options are active.</p>
-<ul>
-	<li>Desktop - Click</li>
-	<li>Mobile - Tap</li>
-</ul>
-</div>
-</div>
-
-
-<!-- Line Break -->
-<hr />
-
-<h2 class="tal">How to Play</h2>
-<p>Use the orbit Cursor to move around the 3D genie coin for a better view of the environment scenery and effects. You have access to a <i>2 game buttons</i> ,<strong>Menu</strong> (internal functions incomplete) and the <strong>Store</strong> which is complete. You start with a tiny fortune that wont buy all that much, but have access to <strong>100 half off / full off coupons</strong> to buy and test all the various upgrades. All Store items currently fall within 3 categories of <i>Player Upgradesfor Click Earnings</i>, <i>Auto Clicker Unlockables / Upgrades</i> as well as <i>Event Upgrades</i> . The game has an internal <strong>day/night cycle</strong> that lasts every <strong>24 minutes</strong> and has a <i>Sun</i> and <i>Moon</i> orbiting the scene in sync for current reference of the time. During these daily time periods (afternoon, sunrise, midnight, etc..) a total of <strong>7 unique events</strong> have a chance of popping up and are influenced by missed chances as well as store upgrades. You can see the <i>Slot Machine</i> play during each of these chances. When it lands on 3 matches, an event will start. These events are the real game as they have various challenges and grant huge bonuses.</p>
-
-
-<!-- Line Break -->
-<hr />
-
-<div class="row">
-<div class="col-12 col-12-medium">
-<h2 class="tal">Components</h2>
-<h4 class="tal">Built</h4>
-<ul class="alt">
-	<li><i>timer-system : </i>Throttled functions for every second, every 250ms and every 1 minute that handle html updates, auto clickers, day / night cycle and event checking.</li>
-</ul>
-<h4 class="tal">Public</h4>
-<ul>
-	<li><a href="https://github.com/aframevr/aframe/" target="_blank">A-Frame 1.2.0</a></li>
-	<li><a href="https://github.com/n5ro/aframe-extras" target="_blank">A-Frame Extras 6.1.0 </a></li>
-	<li><a href="https://github.com/supermedium/superframe/tree/master/components/orbit-controls" target="_blank">A-Frame Orbit Controls </a></li>
-	<li><a href="https://github.com/supermedium/superframe/tree/master/components/animation-timeline/" target="_blank">A-Frame Timeline 2.0.0</a></li>
-	<li><a href="https://github.com/tlaukkan/aframe-three-color-gradient-shader" target="_blank">A-Frame Three Color Gradient Shader</a></li>
-	<li><a href="https://github.com/protyze/aframe-curve-component" target="_blank">A-Frame Curve</a></li>
-	<li><a href="https://github.com/protyze/aframe-alongpath-component" target="_blank">A-Frame Along Path | Requires A-Frame 1.2.0</a></li>
-</ul>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-12 col-12-medium">
-<h4 class="tal">Game Functions Built</h4>
-<ul class="alt">
-	<li><i>Event High Noon w/ Animations : </i>During the afternoon, the sun radiates gold and grants the player / auto clickers a critical hit and chance increase bonus. Handles all event controls.</li>
-	<li><i>Event Gold Coin Storm w/ Animations: </i>Timing for event fluctuates every day, but the clouds erupt in gold coins and grants the player / auto clickers a straight bonus increase. Handles all event controls.</li>
-	<li><i>Event Genie Challenge w/ Animations : </i>Timing for event fluctuates every day, the genie will challenge you to a varied amount click challenge and deduct a bet based on the difficulty of the challenge. If you win, you win big otherwise you lose your bet. Handles all event controls.</li>
-	<li><i>Event Bonus Round w/ Animations : </i>During the sunrise, the genie being impressed with your recent work rewards you a slew of prize money options. And if you don't make a selection in time, 1 will be chosen for you.</li>
-	<li><i>Event Blue Moon w/ Animations : </i>During the midnight, the moon beams bright blue and offers a series of temp event bonuses and 1/2 off store coupons earnable at set, but unknown click amount goals. Handles all event controls.</li>
-	<li><i>Event Hades Prowl w/ Animations : </i>Timing for event fluctuates every day, but a great beast named Hades attacks the player's gold pile syphoning off their treasure. If the player out earns the amount being stolen by the end of the event, they earn a 1 Free Item store coupon otherwise Hades will take 1 final swipe before fleeing. Handles all event controls.</li>
-	<li><i>Event Cosmic Aurora w/ Animations : </i>During the sunset, the starry sky opens up and gives a cosmic light show granting the player / auto clickers critical hit / chance and straight bonus increase for huge jackpots. Handles all event controls.</li>
-	<li><i>Event Checker w/ Animations : </i>The main controller function for events and checking at the predetermined as well as generated times for each event every day. Event chance is varied every day from missed increases, pop resets to store upgrades</li>
-	<li><i>PrettyNums : </i>Handles prettying js numbers for display in html by adding symbols, commas every 3rd post period digit and managing decimal points for quartered increments.</li>
-	<li><i>Store Screen Control &amp; Updates : </i>Handling of CSS changes, but also updating the 1 shared badge sub screen in the store.</li>
-	<li><i>Player Click  </i>Checks for critical hits on every tap as well as handles event player click stats and some event bonuses.</li>
-	<li><i>Auto Clicker 1/2/3 Synced : </i>Checks for critical hits on every tap as well as handles event player click stats and some event bonuses.</li>
-	<li><i>A few A-Frame and HTML updates : </i>Included as much feedback as reasonable with inside A-Frame and HTML entities.</li>
-
-</ul>
-</div>
-</div>
-
-<!-- Line Break -->
-<hr />
-
-<div class="row">
-<h2 class="tal">Favorites</h2>
-<p>The overall scene itself and a few event animations. While an idle click game does not lend itself to vr in it's current form, the immersiveness of the scene would be extra effective on a headset. It would require a more interesting interact mechainc, something like strumming a string or banging a drum. Also, the slot machine and animations, gold fish and curve following, event animation sequences and that shiny gold coin with earning notifications all look good.</p>
-</div>
-
-<!-- Line Break -->
-<hr />
-
-<div class="row">
-<h2 class="tal">Difficulties</h2>
-<p>CSS and Project Scale. Took a bit at first to nail down the CSS animation workflow and how Javascript can control it, but after that hump it became clear how powerful it is especially in the normal 2D web. For the project scale. No matter how small of an idea I kept trying to design for, there was just too much I wanted to do. Took a bit whittling down that list a few times, but in the end I have the project goals all more managable to create my vision in a completable timeframe.</p>
-</div>
-<!-- Line Break -->
-<hr />
-
-<h3 class="tal">What I want to build upon this, in the future...</h3>
-<blockquote>I still have a bit more polish and essential functions to implement before it's ready for general release. With all the basic gameplay completed, I can also start user testing and getting some feedback as well for additional tweaks while attacking my next roadblock of JSON file use.</blockquote>
-<!-- Line Break -->
-<hr />
-
-<!-- End Article Text -->
-</span>
-
-
-<!-- Pagenation -->
-<span class="articlePagenation">
-<!-- Return -->
-<h3><a href="index.html">&lt; Previous</a></h3>
-
-<!-- Top -->
-<h3><a href="#main">&#94; Top</a></h3>
-
-<!-- Full Screen Version -->
-<h3><a href="xr-making-genie-gold-idle-clicker-game-part1-aframe-fullscreen.html">Full Screen &gt; </a></h3>
-</span>
-
-<!-- End Inner Main -->
+<!-- End Inner -->
 </div>
 <!-- End Main -->
 </div>
 
 
 
-<!-- Footer -->
-<footer id="footer">
-<div class="inner">
-
-<!-- Connect Links -->
-<section>
-<h2>Connect</h2>
-<ul class="icons">
-	<li><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style3 fa-github-alt"><span class="label">GitHub</span></a></li>
-	<li><a href="https://glitch.com/@mintycrisp" target="_blank" class="icon solid style3 fa-fish"><span class="label">Glitch</span></a></li>
-	<li><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style3 fa-dev"><span class="label">Dev</span></a></li>
-	<li><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style3 fa-itch-io"><span class="label">Itch.io</span></a></li>
-	<li><a href="https://reddit.com/user/Minty-Crisp/" target="_blank" class="icon brands style3 fa-reddit-alien"><span class="label">Reddit</span></a></li>
-	<li><a href="https://twitter.com/minty_crisp" target="_blank" class="icon brands style3 fa-twitter"><span class="label">Twitter</span></a></li>
-	<li><a href="https://www.twitch.tv/mintycrisp0" target="_blank" class="icon brands style3 fa-twitch"><span class="label">Twitch</span></a></li>
-	<li><a href="about-me.html#snap" target="_blank" class="icon brands style3 fa-snapchat"><span class="label">Snapchat</span></a></li>
-	<li><a href="about-me.html#discord" target="_blank" class="icon brands style3 fa-discord"><span class="label">Discord</span></a></li>
-	<li><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style3 fa-mug-hot"><span class="label">Ko-Fi</span></a></li>
-	<li><a href="https://www.patreon.com/user/mintycrisp" target="_blank" class="icon brands style3 fa-patreon"><span class="label">Patreon</span></a></li>
-	<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241" target="_blank" class="icon brands style3 fa-linkedin"><span class="label">Linkedin</span></a></li>
-	<li><a href="about-me.html#email" class="icon solid style3 fa-envelope"><span class="label">Email</span></a></li>
-	<li><a href="about-me.html" class="icon solid style3 fa-address-card"><span class="label">About Me</span></a></li>
-</ul>
-</section>
-
-<!-- Tag Cloud -->
-<section>
-<div>
-<h2>Great Resources for Web XR</h2>
-<span>
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Fundamentals" target="_blank">Web XR API</a>
-<a href="https://blender.org/" target="_blank">Blender</a>
-<a href="blendswap.com/">Blend Swap</a>
-<a href="https://aframe.io/docs" target="_blank">A-Frame Docs</a>
-<a href="https://blog.glitch.com/">Glitch Blog</a>
-<a href="https://www.youtube.com/playlist?list=PL8MkBHej75fJD-HveDzm4xKrciC5VfYuV">Learn A-Frame Video Playlist</a>
-<a href="https://supermedium.com/superframe/">Supermedium Component</a>
-<a href="https://js13kgames.github.io/resources/">Resource Collection List</a>
-<a href="https://threejs.org/examples/" target="_blank">ThreeJS Examples</a>
-<a href="https://webglfundamentals.org/webgl/lessons/resources/webgl-state-diagram.html">WebGL Shader Editor</a>
-<a href="https://thebookofshaders.com/">The Book of Shaders w/ Editor</a>
-<a href="https://css-tricks.com/archives/">Css Tricks Blog</a>
-</span>
-</div>
-</section>
-
-<!-- Bottom Page Quote -->
-<section id="footerQuote">
-<div>
-
-<blockquote id="randomquote">"Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore." - Scruff McGruff</blockquote>
-
-</div>
-</section>
-
-<!-- Copyright & Credit Info -->
-<ul class="copyright">
-<li>&copy; Minty Crisp. All rights reserved</li>
-<li>Base Template by: <a href="http://html5up.net">HTML5 UP</a></li>
-</ul>
-
-<!-- End Footer Wrapper -->
-</div>
-</footer>
-
 <!-- End Body Wrapper -->
 </div>
 
-<!-- Menu Footer Functions -->
-<script src="assets/js/menufootersupport.js"></script>
-
-<!-- Ascene Pin Switch -->
-<script src="assets/js/pinswitch.js"></script>
 
 <!--
 Phantom by HTML5 UP
@@ -2623,4 +2370,5 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
