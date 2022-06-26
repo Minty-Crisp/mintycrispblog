@@ -3,6 +3,23 @@
 //Javascript
 //
 
+//
+//Quick Access Shortcuts
+//#findEventHighNoon
+//#findEventGoldCoinStorm
+//#findEventGenieChallenge
+//#findEventEventBonusRound
+//#findEventBlueMoon
+//#findEventHadesProwl
+//#findEventCosmicAurora
+//#findEventChecker
+//#findPrettyNums
+//#findScreenControls
+//#findPlayerClick
+//#findAutoClickers
+//#findHTMLUpdaters
+//#findAframeComponent
+
 
 //
 //ToDo
@@ -113,9 +130,6 @@
 
 //Timeout and Interval
 var timeout = setTimeout(function () {
-
-
-
 
 //
 //Global Variables
@@ -229,6 +243,7 @@ var storeBuyAC = document.getElementById('storeBuyAC');
 var upgradeClickOff = document.getElementById('upgradeClickOff'); 
 var discountButtons = document.getElementById('discountButtons'); 
 var upgradeSubScreen = document.getElementById('upgradeSubScreen');
+var closeUpgadeSubScreen = document.getElementById('closeUpgadeSubScreen');
 var upgrades = document.getElementById('upgrades');
 var badgeTitle1 = document.getElementById('badgeTitle1');
 var badgeTitle2 = document.getElementById('badgeTitle2');
@@ -784,7 +799,7 @@ var allBadges = [playerTapBadge, luckyGoldfishBadge, ghand1Badge, ghand2Badge, g
 //Events
 //An animation needs to play each time a decision if an event will be played or not. Use a slot machine analogy on screen to display success/fail results.
 
-
+//#findEventHighNoon
 //Event 1
 //High Noon Event
 function eventHighNoon() {
@@ -863,6 +878,7 @@ eventInterval = setInterval(function() {
 };
 
 
+//#findEventGoldCoinStorm
 //Event 2
 //Gold Coin Storm
 function eventGoldCoinStorm() {
@@ -999,6 +1015,7 @@ eventInterval = setInterval(function() {
 };
 
 
+//#findEventGenieChallenge
 //Event 3
 //Rival Genie Challenge
 function eventGenieChallenge() {
@@ -1140,6 +1157,7 @@ eventInterval = setInterval(function() {
 };
 
 
+//#findEventEventBonusRound
 //
 //Prevent Player from clicking multiple Selections
 function disableBonusRoundButtons() {
@@ -1494,6 +1512,7 @@ bonusRoundTexts[i].style.setProperty('padding-top', '0');
 }
 
 
+//#findEventBlueMoon
 //Event 5
 //Blue Moon
 function eventBlueMoon() {
@@ -1689,6 +1708,7 @@ eventRewardHtmlUpdate("Crit Rate Up +" + reward + "x", true);
 };
 
 
+//#findEventHadesProwl
 //Event 6
 //Hades Prowl
 function eventHadesProwl() {
@@ -1925,6 +1945,7 @@ hadesgpstext.emit('hadesclick',{});
 };
 
 
+//#findEventCosmicAurora
 //
 //Event 7
 //Cosmic Aurora
@@ -2874,6 +2895,7 @@ hadesProwlEvent.eventDailyTimeName = eventHadesProwlTimeName;
 };
 
 
+//#findHTMLUpdaters
 //
 //HTML Total Gold Counter
 function htmlGoldCounterUpdate() {
@@ -2986,6 +3008,7 @@ function eventRewardHtmlUpdate(text, positive) {
 };
 
 
+//#findPlayerClick
 //
 //Player Click
 function playerClick() {
@@ -3106,6 +3129,8 @@ player.lifetimeClicksEarned += currentGoldEarned;
 };
 
 
+//#findAutoClickers
+//
 //Function to ensure Hand clicks are synced
 function syncAutoClickers(){
 
@@ -3393,6 +3418,7 @@ ghand3goldpersecond.emit('autoclick',{});
 };
 
 
+//#findPrettyNums
 //
 //Pretty Numbers
 function prettyNums(num,money,runDecimal) {
@@ -3515,7 +3541,8 @@ void error.offsetWidth;
 error.classList.add("error-anim");
 };
 
-
+//#findScreenControls
+//
 //Update Indv Badges
 function storeUpdateBadgeItem(badge,num) {
 
@@ -3895,6 +3922,7 @@ function closeAllMenu() {
     root.style.setProperty('--achievementsScreenDisplay', 'none');
     upgradeClickOff.style.setProperty('display', 'none');
     discountButtons.style.setProperty('display', 'none');
+    upgradeSubScreen.style.setProperty('display', 'none');
 
 };
 
@@ -3908,6 +3936,7 @@ if(currentScreen === "badgeStore") {
 badgeStore.style.setProperty('display', 'flex');
 upgradeClickOff.style.setProperty('display', 'none');
 upgrades.style.setProperty('display', 'none');
+upgradeSubScreen.style.setProperty('display', 'none');
 //Hide Discount Ticket Redemption
 storeDiscountHeldHalf.style.setProperty('display', 'none');
 storeDiscountHeldFull.style.setProperty('display', 'none');
@@ -3916,6 +3945,7 @@ storeDiscountHeldFull.style.setProperty('display', 'none');
 //Badge Screen
 badgeStore.style.setProperty('display', 'flex');
 upgradeClickOff.style.setProperty('display', 'block');
+upgradeSubScreen.style.setProperty('display', 'flex');
 upgrades.style.setProperty('display', 'none');
 //Hide Discount Ticket Redemption
 storeDiscountHeldHalf.style.setProperty('display', 'none');
@@ -4405,6 +4435,20 @@ upgradeClickOff.addEventListener('click', function(){
 	console.log('Badge Click Off');
 
 });
+//Click off Window to Close
+closeUpgadeSubScreen.addEventListener('click', function(){
+
+	//Hide Sub Screen and Click Off Screen
+	upgradeSubScreen.style.setProperty('display', 'none');
+	upgradeClickOff.style.setProperty('display', 'none');
+	currentBadge = {name: "Home"};
+
+	console.log('Badge Click Off');
+
+});
+
+
+
 //
 //Badge 1
 badge1.addEventListener('click', function(){
@@ -4663,8 +4707,7 @@ bonusClick(5, false);
 });
 
 
-//
-//A-Frame Components
+//#findAframeComponent
 //
 //Timer System & Event Checking
 AFRAME.registerComponent('timer-system', {
