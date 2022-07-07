@@ -2,26 +2,6 @@
 Genie Gold Idle Clicker v0.5
 by Minty Crisp @ MintyCrisp.com
 CSS
-
-pointer-events: none;
-
-Gold 1 - #F0A500
-
-Gold 2 - #F88F01
-
-Gold 3 - #E27802
-
-Gold 4 - #CF7500
-
-Magenta - #99154E
-
-Off White - #FFDDCC
-
-Yellow - #FFC93C
-
-Pink - #FFBBCC
-
-Dark - #1B1A17
 */
 
 :root {
@@ -33,41 +13,6 @@ Dark - #1B1A17
 --statsScreenDisplay: none;
 --eventAnimDur: 90s;
 }
-
-/****************************
-    Mobile-First Approach 
-****************************/
-
-/* base styles */
-
-.example {
-  background-color: red;
-}
-
-/* small devices & up*/
-
-@media (min-width: 300px) {
-  .example {
-    background-color: purple;
-  }
-}
-
-/* medium devices & up */
-
-@media (min-width: 700px) {
-  .example {
-    background-color: blue;
-  }
-}
-
-/* large devices & up */
-
-@media (min-width: 1200px) {
-  .example {
-    background-color: green;
-  }
-}
-
 
 @media (max-width: 900px) {
 html { font-size: 15px; }
@@ -138,39 +83,6 @@ text-align: center;
 .a-loader-title {
 
 }
-
-/*
-
-h1, h2, h3, h4, h5 {
-color: #3EB489!important;
-}
-
-a-scene {
-display: block;
-position: absolute;
-height: -webkit-fill-available;
-width: -webkit-fill-available;
-}
-
-#ascene {
-height: 100%;
-width: -webkit-fill-available;
-pointer-events: auto;
-overflow: hidden;
-contain: paint;
-}
-
-#ascene {
-height: auto;
-width: 98%;
-max-height: 88%;
-aspect-ratio: auto 1 / 1;
-border-radius: 50%;
-contain: paint;
-overflow: hidden;
-pointer-events: auto;
-}
-*/
 
 #optionsOverlay {
 z-index: 200;
@@ -1188,26 +1100,7 @@ display: block ;
 	}
 }
 
-
-/*
-.vertical-center {
-margin: 0;
-position: absolute;
-top: 50%;
--ms-transform: translateY(-50%);
-transform: translateY(-50%);
-}
-*/
-/* 
--webkit-box-shadow: 5px 5px 15px 5px #1B1A17; 
-box-shadow: 5px 5px 15px 5px #1B1A17;
-*/
 /* - - - - - - - - - - Display Switches - - - - - - - - - - */
-
-/* 
-screenTitle
-display: var(--screenTitleDisplay); 
-*/
 
 /* Menu Screen Hidden Class */
 .subScreenStartHidden {
@@ -1229,9 +1122,4 @@ display: var(--screenTitleDisplay);
 .acheivementsScreenStartHidden {
     display: var(--achievementsScreenDisplay) !important;
 }
-
-
-
-
-
 /* - - - - - - - - - - End - - - - - - - - - - */
