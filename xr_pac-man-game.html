@@ -2343,7 +2343,9 @@ const beginDiv = document.querySelector('#beginDiv');
 const gameRestartButtonHTML = document.querySelector('#gameRestartButtonHTML');
 const enableVRHTML = document.querySelector('#enableVRHTML');
 const controlsInfoToggleAngleButtonHTML = document.querySelector('#controlsInfoToggleAngleButtonHTML');
+const controlsInfoToggleAngleButtonHTML2 = document.querySelector('#controlsInfoToggleAngleButtonHTML2');
 const enableAudioButtonHTML = document.querySelector('#enableAudioButtonHTML');
+const enableAudioButtonHTML2 = document.querySelector('#enableAudioButtonHTML2');
 const upButton = document.querySelector('#upButton');
 const leftButton = document.querySelector('#leftButton');
 const rightButton = document.querySelector('#rightButton');
@@ -11882,14 +11884,18 @@ function toggleAngleController(){
 	if(showAngleController){
 		showAngleController = false;
 		controlsInfoToggleAngleButtonHTML.innerHTML = 'Show X Controller';
+		controlsInfoToggleAngleButtonHTML2.innerHTML = 'Show X Controller';
 	} else {
 		showAngleController = true;
 		controlsInfoToggleAngleButtonHTML.innerHTML = 'Hide X Controller';
+		controlsInfoToggleAngleButtonHTML2.innerHTML = 'Hide X Controller';
 	}
 
 }
 
 controlsInfoToggleAngleButtonHTML.addEventListener('click', toggleAngleController);
+
+controlsInfoToggleAngleButtonHTML2.addEventListener('click', toggleAngleController);
 
 //Game Restart HTML Button
 gameRestartButtonHTML.addEventListener('click', newGameStart);
@@ -11908,6 +11914,7 @@ function toggleAudio(){
 	if(audioOn){
 		audioOn = false;
 		enableAudioButtonHTML.innerHTML = 'Enable Audio';
+		enableAudioButtonHTML2.innerHTML = 'Enable Audio';
 		//Stop Audio
 
 		//Remove audio info to entities
@@ -11923,6 +11930,7 @@ function toggleAudio(){
 	} else {
 		audioOn = true;
 		enableAudioButtonHTML.innerHTML = 'Disable Audio';
+		enableAudioButtonHTML2.innerHTML = 'Disable Audio';
 
 		//Add audio info to entities
 		introSound.setAttribute('sound',{src: '#introSrc', autoplay: false, loop: false, volume: 1, on: 'gameStartEvent'});
@@ -11938,6 +11946,7 @@ function toggleAudio(){
 
 }
 enableAudioButtonHTML.addEventListener('click', toggleAudio);
+enableAudioButtonHTML2.addEventListener('click', toggleAudio);
 
 //
 //Dictional Buttons
@@ -12129,6 +12138,9 @@ dotSpawner(mapBasicDots);
 //Basic Map loaded
 levelLoaded = true;
 
+//Google Chrome fix to avoid inspector camera from taking over
+camera.setAttribute('camera',{active: true})
+
 },//End Init
 
 });//End Player Movement Component
@@ -12156,16 +12168,15 @@ levelLoaded = true;
 </span>
 <ul>
 <li><button class="menu" id="gameRestartButtonHTML">Restart Game</button></li>
-<li><button class="menu" id="enableAudioButtonHTML">Enable Audio</button></li>
+<li><button class="menu" id="enableAudioButtonHTML2">Enable Audio</button></li>
 <li><div id="howToPlayHTML">How to Play :</div></li>
 <li><div id="controlsInfoHTML">Move Pac-Man Up, Right, Left or Down around the maze to eat all dots on the screen while avoiding four colored ghosts to advance to the next level. Eat Power Pellets to turn the tide on your enemies.</div></li>
 <li><div id="controlsHTML">Ways to Play :</div></li>
 <li><div id="controlsInfoKeyboardHTML">Desktop Keyboard WASD/Arrows</div></li>
 <li><div id="controlsInfoMouseHTML">Mouse Hover X Controller</div></li>
 <li><div id="controlsInfoMobileTapHTML">Mobile Tap X Controller</div></li>
-<li><button class="menu" id="controlsInfoToggleAngleButtonHTML">Hide X Controller</button></li>
+<li><button class="menu" id="controlsInfoToggleAngleButtonHTML2">Hide X Controller</button></li>
 <li><div id="controlsInfoVRJHTML">VR Headset Joystick Controller</div></li>
-<li><button class="menu" id="enableVRHTML">Enable VR</button></li>
 <li><div>See more by me: </div><a href="index.html">Minty Crisp</a></li>
 </ul>
 </nav>
