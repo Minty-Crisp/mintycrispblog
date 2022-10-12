@@ -362,7 +362,7 @@ document.body.addEventListener('ybuttondown', function (e) {
 //Joystick
 //
 //Left Controller
-document.body.addEventListener('thumbstickmoved', function (e) {
+this.el.addEventListener('thumbstickmoved', function (e) {
 	if (e.detail.y > 0.95) { 
 		updateInput('down')
 	}
@@ -381,6 +381,7 @@ document.body.addEventListener('thumbstickmoved', function (e) {
 
     }//End Init
 });
+
 </script>
 
 <body>
@@ -389,7 +390,7 @@ document.body.addEventListener('thumbstickmoved', function (e) {
 <div id="stickyBar" class="sticky flexRow">
 	<span class="flexRow flexStart">
 		<img id="stickyIcon" src="assets/img/logo.png" alt="site-icon" / class="flexCol">
-		<span id="stickyTitle" class="flexCol"><h3>Dev Template | Desktop/Quest</h3></span>
+		<span id="stickyTitle" class="flexCol"><h3>Dev Template | Desktop/Quest - 0.1</h3></span>
 	</span>
 	<span class="flexRow">
 		<button id="stickySwapControls" class="flexCol">Desktop:Enabled</button>
@@ -402,7 +403,6 @@ document.body.addEventListener('thumbstickmoved', function (e) {
 
 <a-scene
 swap-controls
-detect-inputs
 background="color: #C14B76"
 vr-mode-ui="enabled: true; enterVRButton: #sticky3D;"
 renderer="antialias: true; colorManagement: true; sortObjects: true"
@@ -490,7 +490,7 @@ wasd-controls="enabled: true; acceleration: 25;"
     </a-camera>
 
     <!-- Controller -->
-	<a-entity id="vrController" visible="false"
+	<a-entity id="vrController" visible="false" detect-inputs
     position="0 0 -1"
     rotation="0 0 0"
     scale="0.15 0.15 0.15"
