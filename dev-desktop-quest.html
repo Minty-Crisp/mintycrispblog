@@ -363,17 +363,17 @@ document.body.addEventListener('ybuttondown', function (e) {
 //
 //Left Controller
 document.body.addEventListener('thumbstickmoved', function (e) {
-	if (evt.detail.y > 0.95) { 
+	if (e.detail.y > 0.95) { 
 		updateInput('down')
 	}
-	if (evt.detail.y < -0.95) { 
+	if (e.detail.y < -0.95) { 
 		updateInput('up')
 	}
-	if (evt.detail.x < -0.95) { 
+	if (e.detail.x < -0.95) { 
 		updateInput('left')
 	}
-	if (evt.detail.x > 0.95) { 
-		updateInput('right')
+	if (e.detail.x > 0.95) { 
+		updateInput('right 2')
 	}
 });
 
