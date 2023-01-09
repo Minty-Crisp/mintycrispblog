@@ -1,351 +1,317 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-<title>Minty Crisp</title>
-<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="./favicon.ico"/>
-<link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minty Crisp | Justin Ekema - Web XR Developer &amp; Game Maker</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="assets/img/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-touch-icon.png">
+<link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#5bbad5">
+<!-- TBD
 <link rel="manifest" href="./site.webmanifest">
-<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="monetization" content="$ilp.uphold.com/zYJZybJr7np9">
+-->
 <!-- Search Info -->
-<meta name="description" content="Minty Crisp | Web XR Projects - Home">
-<meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp">
+<meta name="description" content="Minty Crisp | Justin Ekema - Web XR Developer &amp; Game Maker">
+<meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp,justin,ekema,justinekema">
 <!-- Social Media Share -->
-<meta property="og:title" content="Minty Crisp | Web XR Projects - Home">
+<meta property="og:title" content="Minty Crisp | Justin Ekema - Web XR Developer &amp; Game Maker">
 <meta property="og:type" content="XR">
-<meta property="og:url" content="mintycrisp.com">
+<meta property="og:url" content="justinekema.com">
+<!-- TBD
 <meta property="og:image" content="assets/img/share.jpg">
-<!-- Font-Awesome -->
-<link href="assets/css/all.min.css" rel="stylesheet">
+-->
+<!-- MVP.css -->
+<link rel="stylesheet" href="assets/css/mvp.css">
 <!-- CSS -->
-<link rel="stylesheet" href="assets/css/main.css" />
-<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
+<body>
 
-<!-- Body -->
-<body class="is-preload">
-<!-- Wrapper -->
-<div id="wrapper">
-
-<!-- Sticky Logo | Connect Links -->
-<div id="logoBlock" class="sticky" style="z-index: 100">
-<div class="landingName">
-<a href="index.html" class="logo">
-<span class="symbol landingName"><img src="assets/img/logo-site.png" alt="" /></span><span class="title landingName">Minty Crisp</span></a></div>
-<span><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style2 fa-github-alt"><span class="label">GitHub</span></a></span>
-<span><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style2 fa-dev"><span class="label">Dev</span></a></span>
-<span><a href="https://twitter.com/minty_crisp" target="_blank" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></span>
-<span><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style2 fa-mug-hot"><span class="label">Ko-Fi</span></a></span>
+<!-- Sticky -->
+<div id="stickyBar" class="sticky flexRow">
+	<span class="flexRow flexStart">
+		<img id="stickyIcon" src="assets/img/logo.png" alt="site-icon" / class="flexCol">
+		<span id="stickyTitle" class="flexCol"><h3>Minty Crisp | Justin Ekema</h3></span>
+	</span>
+	<!-- A-Frame version link 
+	<span class="flexRow">
+		<button id="stickyButton" class="flexCol">3D</button>
+	</span>
+	-->
 </div>
-
-<!-- Header -->
-<header id="header">
-<div class="inner">
-<!-- Nav -->
-<nav id="navBlock">
-	<ul>
-		<li><a href="#menu">Menu</a></li>
-	</ul>
-</nav>
-</div>
-</header>
-
-<!-- Menu -->
-<nav id="menu">
-<span class="landingName">
-<img id="menuLogo" src="assets/img/logo-site.png" alt="logo"/><h2 id="menuName">Minty Crisp</h2></span>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a id="randomarticle" href="index.html">Open a Random Article of mine</a></li>
-<li><a href="https://github.com/Minty-Crisp">View my Github Repositories</a></li>
-<li><a href="https://glitch.com/@mintycrisp">Remix some of my projects on Glitch</a></li>
-<li><a href="https://dev.to/mintycrisp">Read my Dev.to Articles</a></li>
-<li><a href="https://mintycrisp.itch.io/">Check out my Itch.io Store</a></li>
-<li><a href="https://reddit.com/user/Minty-Crisp/">Spy on my Reddit Comments</a></li>
-<li><a href="https://twitter.com/minty_crisp">Peruse my Tweets</a></li>
-<li><a href="https://www.twitch.tv/mintycrisp0">See my gaming skills on Twitch</a></li>
-<li>Goof around with me on Snapchat : @Minty-Crisp</li>
-<li>Let's discuss Web XR and Games on Discord : @mintycrisp#8102</li>
-<li><a href="https://ko-fi.com/mintycrisp">Ko-fi tips if you enjoy my work</a></li>
-<li><a href="https://www.patreon.com/user/mintycrisp">or Patreon to support me</a></li>
-<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241">My Linkedout work profile to study</a></li>
-<li>Reach me at my Electronic Mail address : minty-crisp@ proton . me</li>
-<li><a href="about-me.html">And more about me, Minty Crisp...</a></li>
-</ul>
-</nav>
-
 
 <!-- Main -->
-<div id="main">
-<div class="inner">
+<main>
 
-<!-- Landing Area -->
-<div>
+<!-- Header -->
+<header>
+<hgroup>
+	<h1>Web XR Developer &amp; Game Maker</h1>
+	<h2>Technology is how we hareness actual magic and I aim to make some cool spells! ^_^</h2>
+</hgroup>
+	<p>The power of Web XR is amazing! I love using
+	<a href="https://github.com/aframevr/aframe/" target="_blank">A-Frame</a> to make neat things. My diverse background in support, technology and the arts helps me bring these big design ideas all together to create some interesting XR interactive experiences. All of my power is thanks to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a>,
+	<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS</a>,
+	<a href="https://developer.mozilla.org/en-US/docs/Web/javascript" target="_blank">Javascript</a>,
+	<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Fundamentals" target="_blank">Web XR</a>,
+	<a href="https://threejs.org/" target="_blank">ThreeJS</a>,
+	<a href="https://aframe.io" target="_blank">A-Frame</a>,
+	<a href="https://blender.org/" target="_blank">Blender</a>,
+	<a href="https://www.gimp.org/" target="_blank">Photoshop</a>,
+	<a href="https://krita.org/en/" target="_blank">Illustrator</a> and
+	the contributions of everyone in this great open-source / sharing community.</p>
+	<h3>I'm available for Freelance, Work &amp; Collaboration!</h3>
+</header>
 
-<span class="landingName">
-
-<h1>Welcome to Minty Crisp!</h1>
-
-<img id="mainSymbol" src="assets/img/logo.png" alt="" />
-
-</span>
-
-<h2>Technology is how we hareness actual magic and I aim to make some cool spells ^_^</h2>
-
-<p>The power of Web XR is amazing! I love using
-<a href="https://github.com/aframevr/aframe/" target="_blank">A-Frame</a> to make neat things. My diverse background in support, technology and the arts helps me bring these big design ideas all together to create some interesting XR interactive experiences. All of my power is thanks to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS</a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/javascript" target="_blank">Javascript</a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Fundamentals" target="_blank">Web XR</a>,
-<a href="https://threejs.org/" target="_blank">ThreeJS</a>,
-<a href="https://aframe.io" target="_blank">A-Frame</a>,
-<a href="https://blender.org/" target="_blank">Blender</a>,
-<a href="https://www.gimp.org/" target="_blank">Photoshop</a>,
-<a href="https://krita.org/en/" target="_blank">Illustrator</a> and
-the contributions of everyone in this great open-source / sharing community.</p><br />
-</div>
-
-
-<!-- Titled Image Links -->
-<section class="tiles">
-
-<!-- Article : Pac-Man XR Clone -->
-<article id="pacManXR" class="style1">
-	<span class="image">
-		<img src="assets/img/pic01.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr_pac-man.html">
-		<h2>XR Pac-Man Clone</h2>
-		<div class="content">
-			<p>A clone of the original Pac-Man arcade game built in Web XR!</p>
-		</div>
-	</a>
-</article>
-
-<!-- Article : Genie Gold Idle Clicker Demo -->
-<article id="ggoldidleclicker1" class="style4">
-	<span class="image">
-		<img src="assets/img/pic12.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-making-genie-gold-idle-clicker-game-part1-aframe.html">
-		<h2>Making an XR Idle Click Game Demo</h2>
-		<div class="content">
-			<p>A demo of an Idle Click game that allows you to earn enough gold to become a Vigintillionaire!</p>
-		</div>
-	</a>
-</article>
-
-
-<!-- Article : Isometric Node Navigation -->
-<article id="isonodenav" class="style6">
-	<span class="image">
-		<img src="assets/img/pic14.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-isometric-node-navigation-aframe.html">
-		<h2>XR Isometric Node Navigation</h2>
-		<div class="content">
-			<p>Isometric view of a locomotion Teleportation with a generated node grid.</p>
-		</div>
-	</a>
-</article>
-
-
-<!-- Article : 3D Asset Color Customization -->
-<article id="assetcolorcustom" class="style3">
-	<span class="image">
-		<img src="assets/img/pic11.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-asset-color-customization-aframe.html">
-		<h2>XR Asset Color Customization</h2>
-		<div class="content">
-			<p>A basic asset color customizer that could be used with online purchasing.</p>
-		</div>
-	</a>
-</article>
-
-
-
-<!-- Article : Basic Hub, User UI & Themes -->
-<article id="basichubuithemes" class="style1">
-	<span class="image">
-		<img src="assets/img/pic10.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-basic-hub-ui-themes-aframe.html">
-		<h2>XR Hub Home, UI &amp; Locomotion</h2>
-		<div class="content">
-			<p>Playing around with in-scene UI, locomotion and the basics of a Hub's Home.</p>
-		</div>
-	</a>
-</article>
-
-
-<!-- Article : Thunder Storm Scene -->
-<article id="thunderstormscene" class="style5">
-	<span class="image">
-		<img src="assets/img/pic09.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-thunderstorm-scene-teleportation-aframe.html">
-		<h2>XR Thunderstorm Scene w/ Teleportation Types</h2>
-		<div class="content">
-			<p>An immersive minorly procedurally generated thunderstorm environment that has Node Teleportation w/ Instant, Fade, Locomotion, Sphere &amp; Blink options.</p>
-		</div>
-	</a>
-</article>
-
-
-<!-- Article : Animtation Testing Playground -->
-<article id="animatinotestingplayground" class="style4">
-	<span class="image">
-		<img src="assets/img/pic08.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-animation-testing-playground-aframe.html">
-		<h2>XR Animation Testing Playground</h2>
-		<div class="content">
-			<p>A scene testing out the many animatable properties for A-Frame entities.</p>
-		</div>
-	</a>
-</article>
-
-
-<!-- Article : Orb Sky 360 Changer -->
-<article id="orbskychanger" class="style2">
-	<span class="image">
-		<img src="assets/img/pic02.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="xr-orb-sky-changer-aframe.html">
-		<h2>XR Orb Sky Changer</h2>
-		<div class="content">
-			<p>Dynamically change the world's sky image by fuse selecting a hovering orb.</p>
-		</div>
-	</a>
-</article>
-
-<!-- Article : About Me JE -->
-<article id="aboutme" class="style3">
-	<span class="image">
-		<img src="assets/img/pic01.jpg" alt="" />
-	</span>
-	<!-- Article Location -->
-	<a href="about-me.html">
-		<h2>About Me</h2>
-		<div class="content">
-			<p>Want to know a little more about me?</p>
-		</div>
-	</a>
-</article>
-
-
+<!-- Get in Touch -->
+<section>
+<aside id="getInTouch">
+	<h2>Get in Touch</h2>
+	<p>Interested in working together? Reach out to me and we can chat about all the cool things we can build!</p>
+	<ul>
+	<li>Email : <a href="mailto:minty-crisp@proton.me">Minty-Crisp@proton.me</a></li>
+	<li>Github : <a href="https://github.com/Minty-Crisp">Minty-Crisp</a></li>
+	<li>Dev.to : <a href="https://dev.to/mintycrisp">MintyCrisp</a></li>
+	<li>Reddit : <a href="https://reddit.com/user/Minty-Crisp/">Minty-Crisp</a></li>
+	</ul>
+	<details>
+	<summary>More Ways to Connect</summary>
+	<ul>
+	<li>Twitter : <a href="https://twitter.com/minty_crisp">Minty_Crisp</a></li>
+	<li>Glitch : <a href="https://glitch.com/@mintycrisp">@MintyCrisp</a></li>
+	<li>Discord : @mintycrisp#8102</li>
+	<li>Ko-fi : <a href="https://ko-fi.com/mintycrisp">MintyCrisp</a></li>
+	<li>Patreon : <a href="https://www.patreon.com/user/mintycrisp">MintyCrisp</a></li>
+	</ul>
+	</details>
+</aside>
 </section>
 
+<!-- Currently Working On -->
+<hr>
+<h2>Currently Working On</h2>
 
-<!-- Pagenation -->
-<div id="pagenation">
-<span>
-<p>Page 1 of 1</p>
-</span>
-</div>
+<!-- Game Hub and AI -->
+<section>
+<!-- Minty XR Game Hub -->
+<aside id="mintyXR">
+	<h3>Minty XR</h3>
+	<p>Collection of A-Frame experiences with various hardware support including Quest 2.</p>
+	<ul>
+	<li>RoboVac XR</li>
+	<li>XR Museum</li>
+	<li>Crystal Summons VR|2D RPG</li>
+	</ul>
+	<a href="https://mintyxr.com"><button id="goToHub">Go to Hub</button></a><sup>Coming Soon</sup>
+</aside>
 
-<!-- End Main Inner Wrapper -->
-</div>
-</div>
+<!-- Auxl -->
+<aside id="auxl">
+	<h3>A-Frame UX Library Engine XR System</h3>
+	<p>A Library &amp; System built to streamline the creation of dynamic A-Frame XR site experiences. Support for VR | Desktop | Mobile.</p>
+	<ul>
+	<li><a href="https://minty-crisp.github.io/AUXL/">Example Scenario</a></li>
+	<li><a href="https://github.com/Minty-Crisp/AUXL">Repo</a></li>
+	</ul>
+	<a href="https://github.com/Minty-Crisp/AUXL"><button id="checkOutAUXL">Check Out</button></a><sup>Wiki Coming Soon</sup>
+</aside>
+</section>
+
+<!-- More -->
+<section>
+<!-- Aframe.io -->
+<aside id="aframe">
+	<h3>A-Frame Open-Source</h3>
+	<p>Framework &amp; Wiki contributions.</p>
+	<ul>
+	<li>Wiki : <a href="https://aframe.io/">A-Frame Docs</a></li>
+	<li>Repo : <a href="https://github.com/aframevr/">A-Frame Code</a></li>
+	</ul>
+</aside>
+<!-- Stores -->
+<aside id="stores">
+	<h3>Stores</h3>
+	<p>Physical &amp; Digital online shops ^-^</p>
+	<ul>
+	<li>Itch.io : <a href="https://mintycrisp.itch.io/">MintyCrisp</a></li>
+	<li>Merch : <a href="">Coming Soon</a></li>
+	</ul>
+</aside>
+</section>
+
+<!-- Code -->
+<hr>
+<h2>Open Source Code</h2>
+
+<!-- Code Repos -->
+<section>
+<aside id="repos">
+	<h3>Github Repositories</h3>
+	<p>Check out some of my open source work and various contributions.</p>
+	<ul>
+	<li>A-Frame UX Library : <a href="https://minty-crisp.github.io/AUXL/">Example</a> - <a href="https://github.com/Minty-Crisp/AUXL">Repo</a></li>
+	<li>Pac-Man XR : <a href="https://minty-crisp.github.io/Pac-Man-XR_A-Frame/">Play</a> - <a href="https://github.com/Minty-Crisp/Pac-Man-XR_A-Frame">Repo</a> - <a href="https://dev.to/mintycrisp/a-frame-pac-man-xr-game-clone-overview-20ba">Article</a></li>
+	<li>Image Fallback JS : <a href="https://github.com/Minty-Crisp/Image-Fallback.js">Repo</a></li>
+	</ul>
+</aside>
+</section>
+
+<!-- Prototypes -->
+<section>
+<aside id="learning">
+	<h3>Learning A-Frame Scenes</h3>
+	<ul>
+	<li>3D Idle Click Demo : <a href="./scenes/3d-idle-click-demo.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-idle-click-game-progress-overview-32l8">Article</a></li>
+	<li>VR Thunderstorm Scene, Asset Spawn, Teleportation &amp; Find Secret : <a href="./scenes/vr-thunderstorm-spawn-teleportation.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-thunderstorm-scene-w-teleportation-types-and-overview-3g3h">Article</a></li>
+	<li>3D Swipe Node Locomotion : <a href="./scenes/3d-swipe-node-locomotion.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-isometric-node-navigation-overview-4cni">Article</a></li>
+	<li>VR Landscape Scene, Hover Locomotion &amp; Asset Respawn : <a href="./scenes/vr-landscape-locomotion-respawn.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-hub-home-ui-locomotion-4m38">Article</a></li>
+	<li>3D Asset Customization : <a href="./scenes/3d-asset-customization.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-asset-color-customization-overview-2o86">Article</a></li>
+	<li>VR Animation Playground : <a href="./scenes/vr-animation-playground.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-animation-testing-scene-and-overview-3llj">Article</a></li>
+	<li>VR Orb Sky Changer : <a href="./scenes/vr-orb-sky-changer.html">View Scene</a> - <a href="https://dev.to/mintycrisp/a-frame-web-xr-orb-sky-changer-scene-and-overview-17f5">Article</a></li>
+	</ul>
+</aside>
+</section>
+
+<!-- About Me -->
+<hr>
+<h2>About Me</h2>
+
+<!-- Photo -->
+<section>
+	<img id="photo" src="./assets/img/4up.jpg">
+</section>
+
+<!-- Skills & Experience -->
+<section>
+<aside id="skillsExp">
+	<h3>Skills</h3>
+	<details>
+	<summary>Design</summary>
+	<ul>
+	<li>Web XR (3D, VR, AR) UX</li>
+	<li>3D Assets, Animation &amp; Optimization</li>
+	<li>Still &amp; Motion Graphics</li>
+	</ul>
+	</details>
+	<details>
+	<summary>Frameworks</summary>
+	<ul>
+	<li>A-Frame</li>
+	<li>Wordpress</li>
+	<li>RenPy</li>
+	</ul>
+	</details>
+	<details>
+	<summary>Languages</summary>
+	<ul>
+	<li>HTML</li>
+	<li>CSS</li>
+	<li>Javascript</li>
+	<li>Three.js</li>
+	<li>Git</li>
+	<li>Python</li>
+	<li>Bash</li>
+	<li>Batch</li>
+	</ul>
+	</details>
+	<details>
+	<summary>Systems &amp; Technology</summary>
+	<ul>
+	<li>Troubleshoot, Repair, Maintain &amp; Build</li>
+	<li>Mac, Windows, Linux, Android, Network &amp; Virtual Machines</li>
+	<li>Desktop, Laptop, Mobile, Server, Console, Imaging, Print &amp; Misc</li>
+	<li>Digital &amp; Analog</li>
+	<li>Research &amp; QA</li>
+	<li>Apple Certified</li>
+	</ul>
+	</details>
+	<details>
+	<summary>Software</summary>
+	<ul>
+	<li>Blender</li>
+	<li>Adobe CC Suite</li>
+	<li>Final Cut Suite</li>
+	<li>Apple i Suites</li>
+	<li>Office Suite</li>
+	<li>Wide Variety of System &amp; Third Party Tools</li>
+	</ul>
+	</details>
+	<details>
+	<summary>Video &amp; Photo</summary>
+	<ul>
+	<li>Cinematography, Video Editing, VFX &amp; Production</li>
+	<li>Photography, Photo Editing, Manipulation &amp; Restoration</li>
+	<li>Live Production</li>
+	<li>Stop-Motion Animation</li>
+	</ul>
+	</details>
+	<details>
+	<summary>Other</summary>
+	<ul>
+	<li>Tutoring</li>
+	<li>Collaborating</li>
+	<li>Organization</li>
+	<li>Quick Learner</li>
+	<li>Puzzle Solver</li>
+	<li>Product &amp; Service Sales</li>
+	</ul>
+	</details>
+	<h3>Experience</h3>
+	<details>
+	<summary>History</summary>
+	<ul>
+	<li>IT, Web, Video, Photo &amp; Tutor Freelancer</li>
+	<li>Product Photographer &amp; Assistant </li>
+	<li>IT Helpdesk, On-Site Support and Vendor Coordinator</li>
+	<li>NOC Engineer</li>
+	<li>Live Stream Coordinator, Editor and Assistant Editor, Camera Operator, Boom, PA and Asset Manager</li>
+	<li>Tutor Volunteer</li>
+	<li>Level 2 IT, Consultant, Apple, Web, Tutor Specialist and Vendor Coordinator</li>
+	<li>QA Software Specialist</li>
+	<li>Lead Salesman, Photo Restoration / Manipulation, Hardware Repair, Tutor and Vendor Coordinator</li>
+	<li>Graphics Design and Print Specialist</li>
+	</ul>
+	</details>
+</aside>
+</section>
+
+<!-- Future -->
+<section>
+<aside id="future">
+	<h2>A few words...</h2>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;I love learning new things and figuring out how they work. From the more mundane stuff like the innovative irrigation systems over the millennia to the mind boggling cosmic web that makes up our known universe. With so much to discover, my interest in technology never waivered. Thanks to the hard work and innovations of so many people, technology has caught up with many of our now so called science fiction ideas.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;One of these popular ideas is the <b>Metaverse</b>, spawned from many artistic visions like the novels <i>Snow Crash</i> and <i>Ready Player One</i>. They often involve a single unified system that is extensible, customizable and connects a lot people. Currently the easiest and best way to reach as many people as possible is to simply create a website. Thankfully the fundamental technologies behind websites have gotten exponentially better and more powerful.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;From more advanced base tools HTML, CSS and Javascript to the Web XR API and amazing frameworks like Three.js / A-Frame. The work of open-source contributions have been inspiring. Including many other excellent public tools / contributions like Blender or just people sharing their knowledge, experience and efforts. Simply put, the streamlined ability to create 3D, VR, AR interactable experiences in a Web Browser is the foundation required for the pop-culture version of the Metaverse that we dream about. What we need now is more and more people trying out these technologies, testing the limits of it and just attempting to make something interesting.</p>
+	<p>And that is exactly what I plan on doing.</p>
+</aside>
+</section>
+
+<h2>Thanks for visiting!</h2>
+
+<section>
+	<a href="#"><button id="topButton">Top ^</button></a>
+</section>
+
+</main>
 
 <!-- Footer -->
-<footer id="footer">
-<div class="inner">
+<footer>
+	<blockquote><small id="randomquote">
+		"Quote" - Attribution
+	</small></blockquote>
 
-
-<!-- Connect Links -->
-<section>
-<h2>Connect</h2>
-<ul class="icons">
-	<li><a href="https://github.com/Minty-Crisp" target="_blank" class="icon brands style3 fa-github-alt"><span class="label">GitHub</span></a></li>
-	<li><a href="https://glitch.com/@mintycrisp" target="_blank" class="icon solid style3 fa-fish"><span class="label">Glitch</span></a></li>
-	<li><a href="https://dev.to/mintycrisp" target="_blank" class="icon brands style3 fa-dev"><span class="label">Dev</span></a></li>
-	<li><a href="https://mintycrisp.itch.io/" target="_blank" class="icon brands style3 fa-itch-io"><span class="label">Itch.io</span></a></li>
-	<li><a href="https://reddit.com/user/Minty-Crisp/" target="_blank" class="icon brands style3 fa-reddit-alien"><span class="label">Reddit</span></a></li>
-	<li><a href="https://twitter.com/minty_crisp" target="_blank" class="icon brands style3 fa-twitter"><span class="label">Twitter</span></a></li>
-	<li><a href="https://www.twitch.tv/mintycrisp0" target="_blank" class="icon brands style3 fa-twitch"><span class="label">Twitch</span></a></li>
-	<li><a href="about-me.html#snap" target="_blank" class="icon brands style3 fa-snapchat"><span class="label">Snapchat</span></a></li>
-	<li><a href="about-me.html#discord" target="_blank" class="icon brands style3 fa-discord"><span class="label">Discord</span></a></li>
-	<li><a href="https://ko-fi.com/mintycrisp" target="_blank" class="icon solid style3 fa-mug-hot"><span class="label">Ko-Fi</span></a></li>
-	<li><a href="https://www.patreon.com/user/mintycrisp" target="_blank" class="icon brands style3 fa-patreon"><span class="label">Patreon</span></a></li>
-	<li><a href="https://www.linkedin.com/in/minty-crisp-892b55241" target="_blank" class="icon brands style3 fa-linkedin"><span class="label">Linkedin</span></a></li>
-	<li><a href="about-me.html#email" class="icon solid style3 fa-envelope"><span class="label">Email</span></a></li>
-	<li><a href="about-me.html" class="icon solid style3 fa-address-card"><span class="label">About Me</span></a></li>
-</ul>
-</section>
-
-<!-- Tag Cloud -->
-<section>
-<div>
-<h2>Great Resources for Web XR</h2>
-<span>
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Fundamentals" target="_blank">Web XR API</a>
-<a href="https://blender.org/" target="_blank">Blender</a>
-<a href="blendswap.com/">Blend Swap</a>
-<a href="https://aframe.io/docs" target="_blank">A-Frame Docs</a>
-<a href="https://blog.glitch.com/">Glitch Blog</a>
-<a href="https://www.youtube.com/playlist?list=PL8MkBHej75fJD-HveDzm4xKrciC5VfYuV">Learn A-Frame Video Playlist</a>
-<a href="https://supermedium.com/superframe/">Supermedium Component</a>
-<a href="https://js13kgames.github.io/resources/">Resource Collection List</a>
-<a href="https://threejs.org/examples/" target="_blank">ThreeJS Examples</a>
-<a href="https://webglfundamentals.org/webgl/lessons/resources/webgl-state-diagram.html">WebGL Shader Editor</a>
-<a href="https://thebookofshaders.com/">The Book of Shaders w/ Editor</a>
-<a href="https://css-tricks.com/archives/">Css Tricks Blog</a>
-</span>
-</div>
-</section>
-
-<!-- Bottom Page Quote -->
-<section id="footerQuote">
-<div>
-
-<blockquote id="randomquote">"Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore." - Scruff McGruff</blockquote>
-
-</div>
-</section>
-
-<!-- Copyright & Credit Info -->
-<ul class="copyright">
-<li>&copy; Minty Crisp. All rights reserved</li>
-<li>Base Template by: <a href="http://html5up.net">HTML5 UP</a></li>
-</ul>
-
-<!-- End Footer Wrapper -->
-</div>
 </footer>
 
-<!-- End Body Wrapper -->
-</div>
-
-<!-- Menu Footer Functions -->
-<script src="assets/js/menufootersupport.js"></script>
-
-<!--
-Original Template Credits
-Phantom by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<!-- Random Quote JS -->
+<script src="assets/js/randomquote.js"></script>
 
 </body>
+
 </html>

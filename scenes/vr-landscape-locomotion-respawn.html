@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minty Crisp | Justin Ekema - VR Locomotion &amp; Landscape Respawn</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="../assets/img/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-touch-icon.png">
+<link rel="mask-icon" href="../assets/img/safari-pinned-tab.svg" color="#5bbad5">
+<!-- TBD
+<link rel="manifest" href="./site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+-->
+<!-- Search Info -->
+<meta name="description" content="Minty Crisp | Justin Ekema - VR Locomotion &amp; Landscape Respawn">
+<meta name="keywords" content="A-Frame,aframe,xr,webxr,vr,webvr,ar, webar,html,css,javascript,3d,blender,prototype,prototypes,virtual,reality,virtualreality,animation,animations,articles,blog,minty,crisp,mintycrisp,minty-crisp,minty_crisp,justin,ekema,justinekema">
+<!-- Social Media Share -->
+<meta property="og:title" content="Minty Crisp | Justin Ekema - VR Locomotion &amp; Landscape Respawn">
+<meta property="og:type" content="XR">
+<meta property="og:url" content="justinekema.com">
+<!-- TBD
+<meta property="og:image" content="assets/img/share.jpg">
+-->
+<!-- A-Frame official release 1.3.0 -->
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<!-- A-Frame 3 Gradient -->
+<script src="https://unpkg.com/@tlaukkan/aframe-three-color-gradient-shader@0.0.1/index.js"></script>
+<!-- JS -->
+<script src="../assets/js/prototypes.js"></script>
+<!-- MVP.css -->
+<link rel="stylesheet" href="../assets/css/mvp.css">
+<!-- CSS -->
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<style>
+body {
+background-image: none;
+}
+</style>
+
+<body>
+
+<!-- Sticky -->
+<div id="stickyBar" class="sticky flexRow">
+	<span class="flexRow flexStart">
+		<img id="stickyIcon" src="../assets/img/logo.png" alt="site-icon" / class="flexCol">
+		<span id="stickyTitle" class="flexCol"><h3>Minty Crisp | Justin Ekema - VR Locomotion &amp; Landscape Respawn</h3></span>
+	</span>
+	<span class="flexRow">
+		<a id="stickyButton" class="flexCol" target="_blank" href="https://dev.to/mintycrisp/a-frame-web-xr-hub-home-ui-locomotion-4m38">Article</a>
+	</span>
+</div>
+
+<!-- Main -->
+<main>
+
+<a-scene canvas-test variable-init spawnmediabuttons environmentspawnwithuser  
+vr-mode-ui="enabled: true"
+renderer="antialias: true; colorManagement: true; sortObjects: true">
+<!-- - - - - - - - - - - Assets - - - - - - - - - - -->
+<a-assets>
+    <!-- canvas -->
+    <canvas id="canvas"></canvas>
+    <!-- Skyai -->
+    <img id="skyai" src="../assets/img/360/ai-generated-modified.jpg" preload="auto" crossorigin="anonymous">
+    <!-- Gradient -->
+    <img id="gradient" src="../assets/img/misc/UI-colors.PNG" preload="auto" crossorigin="anonymous">
+    <!-- 3D Buttons -->
+    <a-asset-item id="border" src="../assets/3d/border.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="play" src="../assets/3d/play.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="pause" src="../assets/3d/pause.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="backward" src="../assets/3d/backward.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="forward" src="../assets/3d/forward.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="left_skip" src="../assets/3d/left_skip.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="right_skip" src="../assets/3d/right_skip.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="settings" src="../assets/3d/settings.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="stop" src="../assets/3d/stop.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="cancel" src="../assets/3d/cancel.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <!-- 3D Environment -->
+    <a-asset-item id="landscape" src="../assets/3d/landscape.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="purplegrass" src="../assets/3d/purple-grass-patch.glb" preload="auto" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="tree6" src="../assets/3d/Tree_e.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="cloud" src="../assets/3d/cloud1.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="flower1" src="../assets/3d/flower1.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+    <!-- - - - - - - - - - - Mixins - - - - - - - - - - -->
+<a-mixin id="barSwitchAnim"
+
+animation__brakeOn="property: position; from: 0 0.5 0; to: 0 -0.25 0; dur: 1050; delay: 450; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: brakeOn"
+
+animation__brakeOff="property: position; from: 0 -0.25 0; to: 0 0.5 0; dur: 500; delay: 250; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: brakeOff"
+></a-mixin>
+
+</a-assets>
+
+<!-- - - - - - - - - - - Scene - - - - - - - - - - -->
+
+<a-text id="canvasTextTest" class="" visible="true"
+geometry="primitive: plane; height: 1; width: 1" rotation="0 0 0" position="0 2 -3"
+material="shader: flat; src:#canvas; side: front"
+value="Walk Around for environment spawn. Test out the Settings button and screen."
+color="white"
+opacity="1"
+font="sourcecodepro"
+align="center"
+anchor="center"
+baseline="center"
+letter-spacing="5"
+line-height="50"
+width="1"
+wrap-count="20"
+></a-text>
+
+<!-- Main Window Screens -->
+<a-curvedimage src="#gradient" id="left"
+height="1.75" radius="1.5"
+position="0 2 -2" rotation="0 0 0" scale="3 3 3"
+theta-length="0" theta-start="-115"
+
+animation__popin40="property: theta-length; from: 0; to: 40; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-curvedimage>
+<!-- Left Border -->
+<a-curvedimage id="leftBorder" class="screenBorder"
+height="1.9" radius="1.55"
+position="0 2 -2.001" rotation="0 0 0" scale="3 3 3"
+theta-length="0" theta-start="-117"
+material="shader: threeColorGradientShader; topColor: #FFFFFF; middleColor: #BF81C6; bottomColor: #BB70C3; offset: 0.0; side: double"
+
+animation__popin42="property: theta-length; from: 0; to: 42; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-curvedimage>
+
+<!-- Middle Screen -->
+<a-curvedimage src="#gradient" id="middle"
+height="1.75" radius="1.5"
+position="0 2 -2" rotation="0 0 0" scale="3 3 3"
+theta-length="00" theta-start="120"
+
+animation__popin120="property: theta-length; from: 0; to: 120; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-curvedimage>
+<!-- Middle Border -->
+<a-curvedimage id="middleBorder" class="screenBorder"
+height="2" radius="1.6"
+position="0 2 -2.001" rotation="0 0 0" scale="3 3 3"
+theta-length="00" theta-start="120"
+material="shader: threeColorGradientShader; topColor: #FFFFFF; middleColor: #BF81C6; bottomColor: #BB70C3; offset: 0.0; side: double"
+animation__popin120="property: theta-length; from: 0; to: 120; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-curvedimage>
+
+<!-- Middle Text -->
+<a-text id="middleScreenText" class="otherText"
+visible="true"
+value="Minty Crisp XR!"
+color="#e84db2"
+align="center"
+width="16"
+opacity="0.42"
+font="sourcecodepro"
+position="0 6 -6.5" rotation="0 0 0" scale="0 0 0"
+
+animation__popin="property: scale; from: 0 0 0; to: 1 1 1; dur: 3000; delay: 1000; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-text>
+
+<!-- Right Screen -->
+<a-curvedimage src="#gradient" id="right"
+height="1.75" radius="1.5"
+position="0 2 -2" rotation="0 0 0" scale="3 3 3"
+theta-length="0" theta-start="75"
+
+animation__popin40="property: theta-length; from: 0; to: 40; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-curvedimage>
+<!-- Right Border -->
+<a-curvedimage id="leftBorder" class="screenBorder"
+height="1.9" radius="1.55"
+position="0 2 -2.001" rotation="0 0 0" scale="3 3 3"
+theta-length="0" theta-start="75"
+material="shader: threeColorGradientShader; topColor: #FFFFFF; middleColor: #BF81C6; bottomColor: #BB70C3; offset: 0.0; side: double"
+
+animation__popin42="property: theta-length; from: 0; to: 42; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInOutElastic; elasticity: 400; autoplay: true; enabled: true;"
+></a-curvedimage>
+
+<!-- Settings Window -->
+<a-plane id="settingsWindow" visible="false" src="#gradient"
+height="1" width="2" rotation="0 0 0" position="0 1.5 -2"
+material="shader: flat"
+>
+<!-- Settings Window Border -->
+<a-plane id="settingsBorder" class="screenBorder"
+height="1.125" width="2.125" rotation="0 0 0" position="0 0 -0.01" visible="true"
+material="shader: threeColorGradientShader; topColor: #FFFFFF; middleColor: #BF81C6; bottomColor: #BB70C3; offset: 0.0; side: both"
+></a-plane>
+
+<!-- Settings Window Label -->
+<a-entity id="settingsText"
+text="value: Settings\n; color: black; align: center; width: 3; opacity: 1; font: sourcecodepro"
+position="0 0.45 0" rotation="0 0 0"
+></a-entity>
+
+<!-- Theme 1 Text -->
+<a-entity id="settingsTheme1Text"
+text="value: Theme #1 : ; color: black; align: center; width: 2; opacity: 1; font: sourcecodepro"
+position="-0.65 0.25 0" rotation="0 0 0"
+>
+
+<!-- Theme 1 Color Image | Default - White Text-->
+<a-text id="settingsTheme1Button" class="themeButton" themechangebutton 
+geometry="primitive: plane; height: 0.125; width: 0.6" rotation="0 0 0" position="0.55 0 0.005" visible="true"
+material="shader: flat; color: #e84db2"
+value="Cherry"
+color="white"
+align="center"
+width="2"
+opacity="1"
+font="sourcecodepro"
+></a-text>
+</a-entity>
+
+<!-- Theme 2 Text -->
+<a-entity id="settingsTheme2Text"
+text="value: Theme #2 : ; color: black; align: center; width: 2; opacity: 1; font: sourcecodepro"
+position="-0.65 0.1 0" rotation="0 0 0"
+>
+
+<!-- Theme 2 Color Image -->
+<a-text id="settingsTheme2Button" class="themeButton" themechangebutton 
+geometry="primitive: plane; height: 0.125; width: 0.6" rotation="0 0 0" position="0.55 0 0.005" visible="true"
+material="shader: flat; color: #00d2ed"
+value="Vaporwave"
+color="black"
+align="center"
+width="2"
+opacity="1"
+font="sourcecodepro"
+></a-text>
+</a-entity> 
+<!-- Theme 3 Text -->
+<a-entity id="settingsTheme3Text"
+text="value: Theme #3 : ; color: black; align: center; width: 2; opacity: 1; font: sourcecodepro"
+position="-0.65 -0.05 0" rotation="0 0 0"
+>
+
+<!-- Theme 3 Color Image -->
+<a-text id="settingsTheme3Button" class="themeButton" themechangebutton 
+geometry="primitive: plane; height: 0.125; width: 0.6" rotation="0 0 0" position="0.55 0 0.005" visible="true"
+material="shader: flat; color: #33b281"
+value="Forest"
+color="black"
+align="center"
+width="2"
+opacity="1"
+font="sourcecodepro"
+></a-text>
+</a-entity> 
+
+<!-- Save Text -->
+<a-plane id="settingsSaveButton"
+height="0.125" width="0.4" rotation="0 0 0"position="-0.35 -0.35 0.005" visible="true"
+material="shader: flat; color: #FFFFFF"
+text="value: Save...; color: black; align: center; width: 2; opacity: 1; font: sourcecodepro"
+></a-plane>
+<!-- Cancel Text -->
+<a-plane id="settingsCancelButton"
+height="0.125" width="0.4" rotation="0 0 0"position="0.35 -0.35 0.005" visible="true"
+material="shader: flat; color: #FFFFFF"
+text="value: Cancel.; color: black; align: center; width: 2; opacity: 1; font: sourcecodepro"
+></a-plane>
+</a-plane>
+
+<!-- #UI -->
+<a-entity id="ui"
+position="0 0 0" rotation="0 0 0" scale="1 1 1"
+>
+
+<!-- Forward Bar -->
+<a-entity id="directionForward" class="clickable"
+position="0 1.25 0" rotation="0 0 0" scale="1 1 1"
+
+geometry="primitive: cone; openEnded: true; height: 0.4; radiusBottom: 1.5; radiusTop: 2; segmentsHeight: 6; segmentsRadial: 24; thetaStart: 0; thetaLength: 360"
+
+material="color: black; side: double; shader: flat; opacity: 0.15"
+
+animation__brakeOn="property: position; from: 0 1.25 0; to: 0 -0.25 0; dur: 1250; delay: 250; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: brakeOn"
+
+animation__brakeOff="property: position; from: 0 -0.25 0; to: 0 1.25 0; dur: 700; delay: 100; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: brakeOff"
+></a-entity>
+
+<!-- Reverse Bar -->
+<a-entity id="directionReverse" class="clickable"
+position="0 1 0" rotation="0 0 0" scale="1 1 1"
+
+geometry="primitive: cone; openEnded: true; height: 0.001; radiusBottom: 1.25; radiusTop: 1.5; segmentsHeight: 1; segmentsRadial: 24; thetaStart: 0; thetaLength: 360"
+
+material="color: black; side: double; shader: flat; opacity: 0.15"
+
+animation__brakeOn="property: position; from: 0 1 0; to: 0 -0.5 0; dur: 1150; delay: 350; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: brakeOn"
+
+animation__brakeOff="property: position; from: 0 -0.5 0; to: 0 1 0; dur: 700; delay: 250; loop: false; dir: normal; easing: easeInOutSine; elasticity: 400; autoplay: false; enabled: true; startEvents: brakeOff"
+></a-entity>
+
+
+
+<!-- Parking Brake Bar 1 -->
+<a-entity id="directionBrake1" class="clickable directionBrake" mixin="barSwitchAnim"
+position="0 0.5 0" rotation="0 0 0" scale="1 1 1"
+
+geometry="primitive: cone; openEnded: true; height: 0.01; radiusBottom: 0.75; radiusTop: 1; segmentsHeight: 1; segmentsRadial: 8; thetaStart: 0; thetaLength: 30"
+
+material="color: black; side: double; shader: flat; opacity: 0.15"
+></a-entity>
+
+<!-- Parking Brake Bar 2 -->
+<a-entity id="directionBrake2" class="clickable directionBrake" mixin="barSwitchAnim"
+position="0 0.5 0" rotation="0 0 0" scale="1 1 1"
+
+geometry="primitive: cone; openEnded: true; height: 0.01; radiusBottom: 0.75; radiusTop: 1; segmentsHeight: 1; segmentsRadial: 8; thetaStart: 90; thetaLength: 30"
+
+material="color: black; side: double; shader: flat; opacity: 0.15"
+></a-entity>
+
+<!-- Parking Brake Bar 3 -->
+<a-entity id="directionBrake3" class="clickable directionBrake" mixin="barSwitchAnim"
+position="0 0.5 0" rotation="0 0 0" scale="1 1 1"
+
+geometry="primitive: cone; openEnded: true; height: 0.01; radiusBottom: 0.75; radiusTop: 1; segmentsHeight: 1; segmentsRadial: 8; thetaStart: 180; thetaLength: 30"
+
+material="color: black; side: double; shader: flat; opacity: 0.15"
+></a-entity>
+
+<!-- Parking Brake Bar 4 -->
+<a-entity id="directionBrake4" class="clickable directionBrake" mixin="barSwitchAnim"
+position="0 0.5 0" rotation="0 0 0" scale="1 1 1"
+
+geometry="primitive: cone; openEnded: true; height: 0.01; radiusBottom: 0.75; radiusTop: 1; segmentsHeight: 1; segmentsRadial: 8; thetaStart: 270; thetaLength: 30"
+
+material="color: black; side: double; shader: flat; opacity: 0.15"
+></a-entity>
+
+</a-entity>
+
+<!-- - - - - - - - - - - Clouds - - - - - - - - - - -->
+<a-entity id="clouds"
+position="-100 75 -100"
+
+animation__1="property: object3D.position; from: -100 50 -100; to: 100 50 100; dur: 320000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+>
+<!-- Cloud 1 -->
+<a-entity id="cloud1"
+scale="3 3 3"
+gltf-model="#cloud"
+position="-60 0 100"
+
+animation__1="property: object3D.rotation.x; from: 0; to: 360; dur: 250000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__2="property: object3D.rotation.y; from: 0; to: 360; dur: 300000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__3="property: object3D.rotation.z; from: 0; to: 360; dur: 400000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Cloud 2 -->
+<a-entity id="cloud2"
+scale="2 2 2"
+gltf-model="#cloud"
+position="0 0 0"
+
+animation__1="property: object3D.rotation.x; from: 0; to: -360; dur: 250000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__2="property: object3D.rotation.y; from: 0; to: 360; dur: 300000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__3="property: object3D.rotation.z; from: 0; to: -360; dur: 400000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Cloud 3 -->
+<a-entity id="cloud3"
+scale="1 1 1"
+gltf-model="#cloud"
+position="100 0 -40"
+
+animation__1="property: object3D.rotation.x; from: 0; to: 360; dur: 250000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__2="property: object3D.rotation.y; from: 0; to: -360; dur: 300000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__3="property: object3D.rotation.z; from: 0; to: 360; dur: 400000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+<!-- End Clouds -->
+</a-entity>
+
+<!-- - - - - - - - - - - Horizon - - - - - - - - - - -->
+<!-- Mountains -->
+<a-entity id="mountains"
+position="0 50 0">
+<!-- Mountain1 -->
+<a-cone id='mountain1'
+position="175 0 175" rotation="" scale="20 20 20"
+radius-bottom="5" radius-top="0"
+open-ended="true" height="10"
+segments-height="1" segments-radial="9"
+theta-length="120" theta-start="0"
+material="shader: threeColorGradientShader; topColor: #3b2f1d; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain2 -->
+<a-cone id='mountain2'
+position="75 0 250" rotation="" scale="20 20 20"
+radius-bottom="10" radius-top="0"
+open-ended="true" height="7"
+segments-height="1" segments-radial="9"
+theta-length="150" theta-start="-60"
+material="shader: threeColorGradientShader; topColor: #846943; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain3 -->
+<a-cone id='mountain3'
+position="332 0 -191.5" rotation="" scale="20 20 20"
+radius-bottom="5" radius-top="0"
+open-ended="true" height="10"
+segments-height="1" segments-radial="9"
+theta-length="120" theta-start="75"
+material="shader: threeColorGradientShader; topColor: #3b2f1d; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain4 -->
+<a-cone id='mountain4'
+position="240 0 45.5" rotation="" scale="20 20 20"
+radius-bottom="10" radius-top="0"
+open-ended="true" height="7"
+segments-height="1" segments-radial="9"
+theta-length="160" theta-start="0"
+material="shader: threeColorGradientShader; topColor: #846943; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain5 -->
+<a-cone id='mountain5'
+position="-84 0 -194" rotation="" scale="20 20 20"
+radius-bottom="5" radius-top="0"
+open-ended="true" height="10"
+segments-height="1" segments-radial="9"
+theta-length="120" theta-start="145"
+material="shader: threeColorGradientShader; topColor: #846943; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain6 -->
+<a-cone id='mountain6'
+position="143 0 -220" rotation="" scale="20 20 20"
+radius-bottom="10" radius-top="0"
+open-ended="true" height="7"
+segments-height="1" segments-radial="9"
+theta-length="160" theta-start="90"
+material="shader: threeColorGradientShader; topColor: #846943; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain7 -->
+<a-cone id='mountain7'
+position="-291 0 174" rotation="0 45 0" scale="20 20 20"
+radius-bottom="5" radius-top="0"
+open-ended="true" height="10"
+segments-height="1" segments-radial="9"
+theta-length="120" theta-start="260"
+material="shader: threeColorGradientShader; topColor: #846943; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain8 -->
+<a-cone id='mountain8'
+position="-254 0 -98" rotation="" scale="20 20 20"
+radius-bottom="10" radius-top="0"
+open-ended="true" height="7"
+segments-height="1" segments-radial="9"
+theta-length="160" theta-start="180"
+material="shader: threeColorGradientShader; topColor: #846943; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain9 -->
+<a-cone id='mountain9'
+position="-174 0 243" rotation="" scale="20 20 20"
+radius-bottom="10" radius-top="0"
+open-ended="true" height="7"
+segments-height="1" segments-radial="9"
+theta-length="130" theta-start="-85"
+material="shader: threeColorGradientShader; topColor: #3b2f1d; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain10 -->
+<a-cone id='mountain10'
+position="-325 -23 41.5" rotation="" scale="20 20 20"
+radius-bottom="10" radius-top="0"
+open-ended="true" height="7"
+segments-height="1" segments-radial="9"
+theta-length="150" theta-start="-140"
+material="shader: threeColorGradientShader; topColor: #3b2f1d; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain11 -->
+<a-cone id='mountain11'
+position="-55 0 -284" rotation="" scale="20 20 20"
+radius-bottom="5" radius-top="0"
+open-ended="true" height="10"
+segments-height="1" segments-radial="9"
+theta-length="120" theta-start="115"
+material="shader: threeColorGradientShader; topColor: #3b2f1d; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+<!-- Mountain12 -->
+<a-cone id='mountain12'
+position="-180 0 -285" rotation="" scale="20 20 20"
+radius-bottom="5" radius-top="0"
+open-ended="true" height="10"
+segments-height="1" segments-radial="9"
+theta-length="120" theta-start="175"
+material="shader: threeColorGradientShader; topColor: #3b2f1d; middleColor: #402e16; bottomColor: #402e16; offset: 0.0; side: back"
+></a-cone>
+</a-entity>
+<!-- Horizon Ring -->
+<a-ring
+position="0 0 0" rotation="-90 0 0"
+radius-inner="280" radius-outer="490"
+segments-phi="10" segments-theta="32"
+theta-start="0" theta-length="360"
+material="color: #402e16; shader: flat; opacity: 1;"
+></a-ring>
+
+<!-- - - - - - - - - - - Floor - - - - - - - - - - -->
+<a-entity id="landscape" gltf-model="#landscape"
+position="0 -1 0" rotation="0 0 0" scale="1 1 1"
+></a-entity>
+
+<!-- Floor -->
+<a-circle id="floor" class="themeui"
+rotation="-90 0 0" radius="2" position="0 -0.5 0"
+material="shader: flat; color: #e84db2; side: both; opacity: 0.5"
+></a-circle> 
+
+<!-- - - - - - - - - - - Sky - - - - - - - - - - -->
+<!-- Sky -->
+<a-sky id="sky" src="#skyai" material="" geometry="" rotation="0 180 0" scale="1 1 1"></a-sky>
+
+
+<!-- Gaze | Fusing Cursor & Raycaster 
+        <a-entity id="mouseCursor"
+
+        position="0 0 -0.1"
+        scale="0.15 0.15 0.15"
+        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: grey; shader: flat; side: double"
+
+        raycaster="enabled: true; lineColor: red; lineOpacity: 0.5; showLine: true; objects: .clickable; "
+
+        cursor="fuse: false; fuseTimeout: 2000; rayOrigin: mouseCursor; mouseCursorStylesEnabled: true;"
+        cursor="fuse: true; fuseTimeout: 2000; rayOrigin: mouseCursor; mouseCursorStylesEnabled: true; downEvents: []; upEvents: [];"
+
+        animation__fusing="property: scale; from: .15 .15 .15; to: 0.05 0.05 0.05; dur: 2000; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: fusing;"
+
+        animation__click="property: scale; from: .15 .15 .15; to: 0.05 0.05 0.05; dur: 100; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: click;"
+
+        animation__mousereset="property: scale; to: .15 .15 .15; dur: 500; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: mouseleave;"
+        >
+        </a-entity>
+
+-->
+
+<!--  Player, Head & Controller | Click Cursor & Raycaster  -->
+<!-- Player Body -->
+<a-entity id="player" position="0 0 0" belt="uiid: ui; controller1id: controller1; courserid: mouseCursor;"
+movement-controls="enabled: false; controls: gamepad, trackpad, keyboard, touch; speed: 0.35; fly: false; constrainToNavMesh: false; camera: #userView;"
+>
+    <!-- Player Head | Rotation -->
+    <a-entity id="userView"
+    position="0 1.6 0"
+    look-controls="pointerLockEnabled: false" 
+    wasd-controls="enabled: false;"
+	camera="active: true"
+>
+        <a-entity id="mouseCursor" visible="true"
+        position="0 0 -0.5"
+        scale="0.75 0.75 0.75"
+        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: grey; shader: flat; side: double"
+        raycaster="enabled: true; autoRefresh: true; objects: .clickable; origin: 0, 0, 0; direction: 0, 0, -1; far: infinity; near: 0; interval: 0; lineColor: red; lineOpacity: 0.5; showLine: false; useWorldCoordinates: false"
+        cursor="fuse: false; rayOrigin: mouseCursor; mouseCursorStylesEnabled: true;"
+        animation__click="property: scale; from: 0.75 0.75 0.75; to: 0.15 0.15 0.15; dur: 100; delay: 0; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: click;"
+        animation__click2="property: scale; from: 0.15 0.15 0.15; to: 0.25 0.25 0.25; dur: 25; delay: 100; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: click;"
+        animation__mousereset="property: scale; from: 0.25 0.25 0.25; to: 0.75 0.75 0.75; dur: 300; delay: 400; loop: false; dir: normal; easing: easeInCubic; elasticity: 400; autoplay: false; enabled: true; startEvents: click;"
+        ></a-entity>
+
+    </a-entity>
+
+    <!-- Controller -->
+    <a-entity id="controller1" visible="true"
+    laser-controls=""
+    raycaster="enabled: true; lineColor: red; lineOpacity: 0.5; showLine: true; objects: .clickable; "
+    cursor=""
+
+    position="0 0 -1"
+    rotation="0 0 0"
+    scale="0.15 0.15 0.15"
+    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+    material="color: grey; shader: flat; side: double"
+     >
+    <!-- Controller UI -->
+    <!-- Test UI -->
+    <a-entity id="controllerTestUI"
+    scale="0.5 0.5 0.5"
+    geometry="primitive: plane; width: 0.25; height: 0.1;"
+    position="-0.15 -0.15 -0.25" rotation="0 0 0"
+    material="color: #ac2d2d; shader: flat; opacity: 0.69; side: double"
+    text="value: Selection Mode :\n\n Click; color: white; align: center; width:0.5"
+    ></a-entity>
+    </a-entity>
+
+</a-entity>
+
+<!-- - - - - - - - - - - Lights - - - - - - - - - - -->
+<!-- Lights -->
+<!-- Directional -->
+<a-entity id="directionalLight"
+light="type: directional; intensity: 0.5; castShadow: false" position="0 0.65 0.25"
+></a-entity> 
+<!-- Ambient -->
+<a-entity id="ambientLight"
+light="type: ambient; color: #716a9a; intensity: 0.5"
+></a-entity> 
+</a-scene>
+
+
+</main>
+</body>
+</html>

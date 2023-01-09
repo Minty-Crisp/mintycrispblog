@@ -1,8 +1,4 @@
-/*
-Genie Gold Idle Clicker v0.5
-by Minty Crisp @ MintyCrisp.com
-CSS
-*/
+/* Genie Gold CSS */
 
 :root {
 --subScreenDisplay: none;
@@ -119,8 +115,6 @@ display: inline-flex;
 #newGame{
 margin-top: 30vh;
 }
-
-
 
 .container {
 position: absolute;
@@ -410,21 +404,15 @@ width: fit-contents;
 display: inline-flex;
 justify-content: flex-start;
 flex-direction: row;
-
 }
-
 
 .currentBadge {
 margin-left: 1%;
 margin-right: 1%;
 display: inline-flex;
 justify-content: space-evenly;
-
 flex-wrap: wrap;
 }
-
-
-
 
 #badgeStore {
 display: inline-flex;
@@ -464,9 +452,6 @@ margin: 0.25em;
 
 -webkit-box-shadow: 2px 2px 12px 2px #1B1A17; 
 box-shadow: 2px 2px 12px 2px #1B1A17;
-}
-
-.storeCostOverlay {
 }
 
 .badgeInner {
@@ -558,12 +543,10 @@ top: 5%;
 right: 0;
 }
 
-
 .shadow {
 -webkit-box-shadow: 2px 2px 12px 2px #1B1A17; 
 box-shadow: 2px 2px 12px 2px #1B1A17;
 }
-
 
 .notifications {
 display: block;
@@ -588,7 +571,6 @@ padding-left: 12px;
 padding-right: 12px;
 -webkit-box-shadow: 2px 2px 12px 2px #F0A500 !important;
 box-shadow: 2px 2px 12px 2px #F0A500 !important;
-
 }
 
 .notificationsCrit div h2 {
@@ -625,7 +607,6 @@ left: 1%;
 }
 
 .notification-anim {
-
 animation-name: notificationMove, notificationFade;
 animation-duration: 1.25s;
 animation-timing-function: cubic-bezier(.1, -0.6, .95, .31);
@@ -633,7 +614,6 @@ animation-iteration-count: 1;
 animation-fill-mode: forwards; /* Save the Animation Changes */
 animation-play-state: running; /*  */
 animation-delay: 0s;
-
 }
 
 .errors {
@@ -646,10 +626,8 @@ position: fixed;
 z-index: 100;
 margin-top: auto;
 opacity: 0;
-
 border-style: dashed;
 border-color: #CF7500;
-
 pointer-events: none;
 }
 
@@ -658,7 +636,6 @@ line-height: normal;
 color: #99154E;
 }
 
-
 .topmid {
 text-align: center;
 top: 29%;
@@ -666,16 +643,13 @@ left: 35%;
 }
 
 .error-anim {
-
 animation-name: errorMove, errorFade;
 animation-duration: 2s;
 animation-timing-function: cubic-bezier(.1, -0.6, .95, .31);
 animation-iteration-count: 1;
 animation-fill-mode: forwards; /* Save the Animation Changes */
 animation-play-state: running; /*  */
-
 animation-delay: 0s, 0s;
-
 }
 
 #discountButtons {
@@ -689,13 +663,10 @@ margin-bottom: 0.25rem;
 .storeDiscounts {
 width: inherit;
 margin-left: 1em;
-
 }
 
 .storeDiscounts button{
 width: max-contents;
-
-
 }
 
 .storeDiscounts button h2{
@@ -706,11 +677,7 @@ padding: 3%;
 color: #F0A500;
 }
 
-
-
-
 /* Events */
-/* F0A500 */
 
 .event {
 display: block;
@@ -722,14 +689,11 @@ z-index: 70;
 margin-top: auto;
 padding: 0.1em;
 opacity: 0;
-
 border-style: dashed;
 border-width: medium;
 border-color: #FFC93C;
-
 pointer-events: none;
 }
-
 
 .eventLines {
 display: flex;
@@ -738,7 +702,6 @@ padding-left: 0.1em;
 padding-right: 0.1em;
 padding-top: 0.3 em;
 }
-
 
 .eventTextContainer {
 color: #99154E;
@@ -751,7 +714,6 @@ top: 19%;
 left: 25%;
 }
 
-
 .event-anim {
 animation-name: eventNotifyMove, eventNotifyFade;
 animation-duration: var(--eventAnimDur);
@@ -761,7 +723,6 @@ animation-fill-mode: forwards; /* Save the Animation Changes */
 animation-play-state: running; /*  */
 animation-delay: 0s;
 }
-
 
 .event-endcut-anim {
 animation-name: eventNotifyMoveEnd;
@@ -802,8 +763,6 @@ animation-fill-mode: forwards; /* Save the Animation Changes */
 animation-play-state: running; /*  */
 animation-delay: 0s;
 }
-
-
 
 .event-end-anim {
 animation-name: eventNotifyFade, eventEndMove;
@@ -860,7 +819,6 @@ top: 40%;
 transform: translateY(40%);
 }
 
-
 .bonusRoundSelection {
 display: none;
 height: 100%;
@@ -890,13 +848,10 @@ z-index: 3;
 pointer-events: none;
 }
 
-
-
 /* Button Click Active */
 :focus {
 outline: #F88F01 auto 1px;
 }
-
 
 /* Bonus Selections */
 .bonusSelection {
@@ -922,11 +877,6 @@ right: 10%;
 #bonus5 {
 top: 65%;
 right: 65%;
-}
-
-
-.bonus-reveal-text {
-
 }
 
 .event-anim-bonus-reveal {
@@ -962,7 +912,6 @@ display: block ;
 	100% {background-color: #1B1A17; border-style: dashed; border-color: #99154E; color: #CF7500; opacity: 0.98}
 }
 
-
 @keyframes eventBonusRevealContent {
 	0% {
 		content: "" ;
@@ -983,8 +932,6 @@ display: block ;
 		content: "*****" ;
 	}
 }
-
-
 
 @keyframes eventFadeIn {
 	0% {opacity: 0;}
@@ -1063,9 +1010,6 @@ display: block ;
 	100% {opacity: 0;}
 }
 
-
-
-
 .loading-ellipsis::after {
 animation-name: loading-ellipsis;
 animation-duration: 4s;
@@ -1111,7 +1055,6 @@ display: block ;
 .settingsScreenStartHidden {
     display: var(--settingsScreenDisplay) !important;
 }
-
 
 /* upgrades Screen Hidden Class */
 .storeScreenStartHidden {
