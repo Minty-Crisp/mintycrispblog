@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IVX by Minty Crisp</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="16x16" crossorigin="anonymous" href="./toy/img/favicon/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="./toy/img/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./toy/img/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./toy/img/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="./toy/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<!-- Search Info -->
+<meta name="description" content="IVX by Minty Crisp">
+<meta name="keywords" content="A-Frame, aframe, xr, webxr, vr, webvr, ar, webar, html, css, javascript, 3d, blender, virtual, reality, virtualreality, ivx, companion, apps, games, minty, crisp, mintycrisp, minty-crisp, minty_crisp, justin, ekema, justinekema">
+<!-- Social Media Share -->
+<meta property="og:title" content="IVX by Minty Crisp">
+<meta property="og:type" content="XR">
+<meta property="og:url" content="mintycrisp.com">
+<!-- A-Frame Master -->
+<script src="./toy/js/aframe-master.min.js"></script>
+<!-- Orbit Controls -->
+<script src="https://unpkg.com/aframe-orbit-controls@1.3.2/dist/aframe-orbit-controls.min.js"></script>
+<!-- IVX by Minty Crisp -->
+<script src="./ivx.js"></script>
+<script src="./toy.js"></script>
+</head>
+<body id="htmlBody">
+<!-- - - - - - - - - HTML Menu - - - - - - - - -->
+<div id="fullScreen">
+<!-- Sticky -->
+<div id="stickyBar" class="sticky flexRow">
+	<span class="flexRow flexStart">
+    <button id="stickyMinty" class="flexCol"onclick="window.location.href='https://mintycrisp.com';">Minty Crisp</button></span>
+	<span class="flexRow">
+		<span class="flexCol"><h4 id="scenarioHeaderTitle"></h4></span>
+		<button id="stickyMenu" class="flexCol">.......</button>
+	</span>
+</div>
+<!-- End Full Screen -->
+</div>
+<li><a href="https://mintycrisp.com"></a></li>
+
+
+<div id="beginDiv">
+  <div class="center-container">
+    <div class="center-item" id="logo-container">
+      <img src="./toy/img/favicon/apple-touch-icon.png" class="menu" id="logo">
+    </div>
+    <div class="center-item" id="startInfo-container">
+      <h4 id="startInfo">Minty Crisp Action Figure</h4>
+    </div>
+    <div class="center-item" id="startButton-container">
+      <button class="menu" id="startButton">Enter</button>
+    </div>
+    <div class="center-item" id="startRequirements-container">
+      <h4 id="startRequirements">*For Desktop &amp; Mobile*</h4>
+    </div>
+  </div>
+</div>
+<!-- - - - - - - - - A-Scene - - - - - - - - -->
+<div id='sceneHolder'>
+<a-scene
+ivx='type: orbit'
+library
+home-library
+home-scenes
+toy-library
+toy-scenes
+xr-mode-ui="enabled: true; enterVRButton: #startButton; enterVREnabled: true; enterAREnabled: false; XRMode: vr;"
+device-orientation-permission-ui="enabled: false; deviceMotionMessage: Allow access to Motion and Orientation?"
+renderer="antialias: true; colorManagement: true; stencil: true"
+>
+<!-- - - - - - - - - - - Assets - - - - - - - - - - -->
+<a-assets timeout="10000">
+
+<!-- - - - - - - - - - - Preload - - - - - - - - - -
+<a-asset-item id="assetCherryTree" src="./toy/3d/enviro/cherry-tree.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<img id="gradient" src="../assets/img/misc/UI-colors.PNG" preload="auto" crossorigin="anonymous">
+<audio id="lightningsound" src="../assets/audio/74892__parnellij__lightning-strike.wav" preload="auto"></audio>
+-->
+
+<!-- Images -->
+<img id="assetSticker" src="./toy/img/sticker.png" preload="auto" crossorigin="anonymous">
+<!-- 3D -->
+<a-asset-item id="assetPlastic" src="./toy/3d/toy/plastic.obj" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetBoard" src="./toy/3d/toy/board.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetGame" src="./toy/3d/toy/game.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetHair" src="./toy/3d/toy/hair.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetHeadphones" src="./toy/3d/toy/headphones.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetHMD" src="./toy/3d/toy/hmd.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetMinty" src="./toy/3d/toy/minty.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="assetPizza" src="./toy/3d/toy/pizza.glb" preload="auto" crossorigin="anonymous"></a-asset-item>
+
+
+<!-- - - - - - - - - - - Mixins - - - - - - - - - - -->
+<!-- - - - - - - - - - - Canvases - - - - - - - - - - -->
+<canvas id="roamCameraCanvas"></canvas>
+<canvas id="hand1CameraCanvas"></canvas>
+<canvas id="hand2CameraCanvas"></canvas>
+</a-assets>
+<!-- - - - - - -  - - Playing Field - - -  - - - - - -->
+<!-- - - - - - -  - - Player Controls - - -  - - - - - -->
+<a-entity id="playerRig" position="0 0 0"
+><a-entity id="playerBody" position="0 0 0"
+><a-entity id="playerHead" position="0 0 0"
+><a-entity id="headRig" position="0 0 0"
+><a-camera id="camera"
+position="0 1.6 0"
+look-controls="enabled: true; reverseMouseDrag: false; reverseTouchDrag: false; touchEnabled: true; mouseEnabled: true; pointerLockEnabled: false; magicWindowTrackingEnabled: true"
+wasd-controls="enabled: false;"
+></a-camera></a-entity></a-entity></a-entity></a-entity>
+<!-- - - - - - - - - - - Lights - - - - - - - - - - -->
+<!-- Directional -->
+<a-entity id="directionalLight"
+light="type: directional; intensity: 0.1; castShadow: false" position="-1 1 -1"
+></a-entity>
+<a-entity id="ambientLight"
+light="type: ambient; color: #99154E; intensity: 0.7"
+></a-entity>
+</a-scene>
+</div>
+<!-- - - - - - - - - - - End - - - - - - - - - - -->
+</body>
+</html>
